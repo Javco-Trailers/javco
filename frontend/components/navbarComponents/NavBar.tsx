@@ -1,17 +1,31 @@
-import { MoonIcon, SunIcon, Bars3Icon } from "@heroicons/react/24/outline";
+import { MoonIcon, SunIcon, Bars3Icon, XCircleIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import javco_logo from "../../public/javco_logo.png";
+import path from "path";
+
+const pathsForNav = [{href: "/", text: "Home"}, {href:"/services", text: "Services"}, {href: "/about", text: "About Us"} ,{href: "#", text: "Contact Us"}]
+
+interface pathObj {
+  href: string;
+  text: string;
+}
 
 function NavBar() {
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
-  const [pathName, setPathName] = useState<string>("");
+  const [pathsFiltered, setPathsFiltered] = useState<pathObj[] |null>(null);
+
+
+  const path = usePathname();
 
   useEffect(() => {
-    const path = usePathname()
-    
-  }, [])
+    let paths = pathsForNav.filter((element: pathObj) => element.href !== path);
+    setPathsFiltered(paths);
+  }, []);
+
+ 
+
 
   return (
     <>
@@ -28,11 +42,17 @@ function NavBar() {
             {/* Navigation */}
             <div className="flex items-center gap-6 mr-1 md:mr-5 ml-auto">
               {/* Primary Navigation (Hidden on Small Screens) */}
-              <div className="hidden md:flex md:justify-end md:gap-12">
-                <a href="/services">Services</a>
+              {pathsFiltered && (
+                  <div className="hidden md:flex md:justify-end md:gap-12">
+                    {pathsFiltered.map((element: pathObj, index: number) => (
+                      <a key={index} href={element.href}>{element.text}</a>
+                    ))}  
+                  </div>
+                )}
+                {/* <a href="/services">Services</a>
                 <a href="/about">About Us</a>
                 <a href="#">Contact Us</a>
-              </div>
+               */}
 
               {/* Secondary Navigation (Hidden on Extra Small Screens) */}
               <div className="hidden xs:flex items-center gap-10 ml-auto">
@@ -59,27 +79,22 @@ function NavBar() {
 
    {/* Mobile navigation */}
 <div
-  className={`fixed z-20 w-full bg-white overflow-hidden flex flex-col lg:hidden gap-12 top-0 right-0 ${!toggleMenu ? "h-0" : "h-auto mt-4 w-auto" }`}
+  className={`fixed z-20 w-full bg-white overflow-hidden flex flex-col lg:hidden gap-12 top-0 right-0 ${!toggleMenu ? "h-0" : "h-auto mt-4 w-2/5" }`}
 >
   <div className="mt-4 px-8">
     <div className="flex flex-col items-end justify-end gap-8 font-bold tracking-wider">
       <button
-        className="text-jgreen focus:outline-none"
+        className="focus:outline-none"
         onClick={() => setToggleMenu(!toggleMenu)}
       >
         <div className={!toggleMenu ? "h-6" : "h-6" } >
-        <Bars3Icon className={!toggleMenu ? "h-6" : "h-6" } />
+        <Bars3Icon className={!toggleMenu ? "h-6" : "hidden" } />
+        <XCircleIcon className={!toggleMenu ? "hidden" : "h-6"}/>
         </div>
       </button>
-      <a href="/services" onClick={() => setToggleMenu(!toggleMenu)}>
-        Services
-      </a>
-      <a href="/about" onClick={() => setToggleMenu(!toggleMenu)}>
-        About Us
-      </a>
-      <a className="mb-2" href="#" onClick={() => setToggleMenu(!toggleMenu)}>
-        Contact Us
-      </a>
+      {pathsFiltered&& (pathsFiltered.map((element: pathObj, index:number) => (
+                      <a className="mb-2" key={index} href={element.href}>{element.text}</a>
+                    )))}  
     </div>
   </div>
 </div>
