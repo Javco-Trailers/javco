@@ -1,10 +1,17 @@
 import { MoonIcon, SunIcon, Bars3Icon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import javco_logo from "../../public/javco_logo.png";
 
 function NavBar() {
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState<boolean>(false);
+  const [pathName, setPathName] = useState<string>("");
+
+  useEffect(() => {
+    const path = usePathname()
+    
+  }, [])
 
   return (
     <>
