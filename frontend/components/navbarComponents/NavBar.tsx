@@ -87,9 +87,7 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
         </nav>
 
    {/* Mobile navigation */}
-<div
-  className={`fixed z-20 w-full bg-white overflow-hidden flex flex-col lg:hidden gap-12 top-0 right-0 ${!toggleMenu ? "h-0" : "h-auto mt-4 w-2/5" }`}
->
+   <div className={`fixed z-20 bg-white overflow-hidden flex flex-col lg:hidden gap-12 top-0 right-0  ${!toggleMenu ? "h-0 w-full" : "h-auto flex-shrink-0 w-2/5 mt-4" } border-l-4 border-b-4 border-jblue`}>
   <div className="mt-4 px-8">
     <div className="flex flex-col items-end justify-end gap-8 font-bold tracking-wider">
       <button
@@ -97,17 +95,18 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
         onClick={() => setToggleMenu(!toggleMenu)}
       >
         <div className={!toggleMenu ? "h-6" : "h-6" } >
-        <Bars3Icon className={!toggleMenu ? "h-6" : "hidden" } />
-        <XCircleIcon className={!toggleMenu ? "hidden" : "h-6"}/>
+          <Bars3Icon className={!toggleMenu ? "h-6" : "hidden" } />
+          <XCircleIcon className={!toggleMenu ? "hidden" : "h-6"} />
         </div>
       </button>
-      {pathsFiltered&& (pathsFiltered.map((element: pathObj, index:number) => (
-                      <a className="mb-2" key={index} href={element.href}>{element.text}</a>
-                    )))}  
-                    <a key="Contact1" href="#contact" onClick={() => scrollToSection("contact")}>Contact Us</a>
+      {pathsFiltered && (pathsFiltered.map((element: pathObj, index: number) => (
+        <a className="mb-2" key={index} href={element.href}>{element.text}</a>
+      )))}
+      <a className="mb-2" key="Contact1" href="#contact" onClick={() => scrollToSection("contact")}>Contact Us</a>
     </div>
   </div>
 </div>
+
 </div>
     </>
   );

@@ -3,8 +3,9 @@
 import React from "react";
 import "./globals.css";
 import NavBar from '@/components/navbarComponents/NavBar';
-import ContactUs from "@/components/navbarComponents/contactUs/contactUs";
+import ContactUs from "@/components/contactUs/contactUs";
 import scrollToSection from "@/globalFunctions/scrollToSections";
+import Copyright from "@/components/copyright/copyRight";
 
 export default function Home() {
 
@@ -51,6 +52,7 @@ export default function Home() {
    <br/>
    <div id="contact">
    <ContactUs/>
+   <Copyright/>
    </div>
   </div>
 </>
