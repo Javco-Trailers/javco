@@ -5,16 +5,24 @@ import Image from "next/image";
 import javco_logo from "../../public/javco_logo.png";
 import path from "path";
 
-const pathsForNav = [{href: "/", text: "Home"}, {href:"/services", text: "Services"}, {href: "/about", text: "About Us"} ,{href: "#", text: "Contact Us"}]
+const pathsForNav = [{href: "/", text: "Home"}, {href:"/services", text: "Services"}, {href: "/about", text: "About Us"}]
 
 interface pathObj {
   href: string;
   text: string;
 }
 
-function NavBar() {
+interface NavBarProps{
+  scrollToSection: (sectionId: string) => void;
+}
+
+//const ContactUs: React.FC<ContactUsProps>
+
+const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   const [pathsFiltered, setPathsFiltered] = useState<pathObj[] |null>(null);
+  //for the rendering of a popUp of form
+  const [getQuoteClicked, setGetQuoteClicked] = useState<boolean>(false);
 
 
   const path = usePathname();
@@ -35,7 +43,7 @@ function NavBar() {
             {/* Logo */}
             <div className="flex items-center absolute left-0">
               <a href="/" className="flex gap-1 font-bold text-gray-700 items-center">
-                <Image className="h-16 w-16 text-primary mx-6" src={javco_logo} alt="Javco" />
+                <Image className="h-16 w-16 text-primary mx-6" src={javco_logo} alt="Javco" priority />
               </a>
             </div>
 
@@ -47,6 +55,7 @@ function NavBar() {
                     {pathsFiltered.map((element: pathObj, index: number) => (
                       <a key={index} href={element.href}>{element.text}</a>
                     ))}  
+                    <a key="Contact1" href="#contact" onClick={() => scrollToSection("contact")}>Contact Us</a>
                   </div>
                 )}
                 {/* <a href="/services">Services</a>
@@ -95,6 +104,7 @@ function NavBar() {
       {pathsFiltered&& (pathsFiltered.map((element: pathObj, index:number) => (
                       <a className="mb-2" key={index} href={element.href}>{element.text}</a>
                     )))}  
+                    <a key="Contact1" href="#contact" onClick={() => scrollToSection("contact")}>Contact Us</a>
     </div>
   </div>
 </div>
