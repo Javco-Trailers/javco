@@ -14,7 +14,7 @@ const ImageWithOverlay: React.FC<ImageProps> = ({ imageUrl, text, alt }) => {
     <div className="relative">
       <Image src={imageUrl} alt={alt} layout="fill" objectFit="cover" />
       <div className="absolute inset-0 flex items-center justify-center">
-        <p className="text-white text-lg font-bold">{text}</p>
+        <p className="text-white text-lg font-bold mb-6">{text}</p>
       </div>
     </div>
   );
