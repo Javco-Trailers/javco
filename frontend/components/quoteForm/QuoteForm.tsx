@@ -94,7 +94,7 @@ export default function QuoteForm({setShowQuote}:{setShowQuote:React.Dispatch<Re
         className="text-black p-1 border-2 border-jblue mr-4"
       />
       <div className="flex flex-col items-start md:flex-row">
-      <input type="submit" className="text-center bg-jblue text-white mt-4 p-2 w-1/5 cursor-pointervmr-4" />
+      <input type="submit" className="text-center bg-jblue rounded text-white mt-4 p-2 w-1/5 cursor-pointervmr-4" />
       
 
       </div>
