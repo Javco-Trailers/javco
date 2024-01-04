@@ -1,9 +1,9 @@
-import { MoonIcon, SunIcon, Bars3Icon, XCircleIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XCircleIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import javco_logo from "../../public/javco_logo.png";
-import path from "path";
+
 
 const pathsForNav = [{href: "/", text: "Home"}, {href:"/services", text: "Services"}, {href: "/about", text: "About Us"}]
 
@@ -63,18 +63,7 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
                 <a href="#">Contact Us</a>
                */}
 
-              {/* Secondary Navigation (Hidden on Extra Small Screens) */}
-              <div className="hidden xs:flex items-center gap-10 ml-auto">
-                <div className="hidden lg:flex items-center gap-2">
-                  <MoonIcon className="h-6 w-6" />
-                  <SunIcon className="h-6 w-6" />
-                </div>
-                <div>
-                  <button className="rounded-full border-solid border-2 border-gray-300 py-2 px-4 hover:bg-gray-700 hover:text-gray-100">
-                    Free Trial
-                  </button>
-                </div>
-              </div>
+              
 
               {/* Mobile navigation toggle */}
               <div className="md:hidden flex items-center m-4">
