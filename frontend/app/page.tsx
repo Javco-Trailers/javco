@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
 import React from "react";
 import "./globals.css";
-import NavBar from '@/components/navbarComponents/NavBar';
+import NavBar from "@/components/navbarComponents/NavBar";
 import ContactUs from "@/components/contactUs/contactUs";
 import scrollToSection from "@/globalFunctions/scrollToSections";
 import Copyright from "@/components/copyright/copyRight";
 import LandingPage from "@/components/landingPageContent/landingPageContent";
 import Slideshow from "@/components/landingPageContent/landingPageImageSlideShow";
+import QuoteForm from "@/components/quoteForm/QuoteForm";
+
 
 export default function Home() {
-
- 
   return (
 <>
 <div className="overflow-x-hidden">
