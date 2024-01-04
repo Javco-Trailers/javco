@@ -1,4 +1,5 @@
 import { Bars3Icon, XCircleIcon } from "@heroicons/react/24/outline";
+import { FileQuestion } from "lucide-react";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -50,18 +51,17 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
             {/* Navigation */}
             <div className="flex items-center gap-6 mr-1 md:mr-5 ml-auto">
               {/* Primary Navigation (Hidden on Small Screens) */}
+              
               {pathsFiltered && (
                   <div className="hidden md:flex md:justify-end md:gap-12">
                     {pathsFiltered.map((element: pathObj, index: number) => (
                       <a key={index} href={element.href}>{element.text}</a>
                     ))}  
                     <a key="Contact1" href="#contact" onClick={() => scrollToSection("contact")}>Contact Us</a>
+                    <a className="flex flex-row"><FileQuestion/> Request a Quote</a>
                   </div>
                 )}
-                {/* <a href="/services">Services</a>
-                <a href="/about">About Us</a>
-                <a href="#">Contact Us</a>
-               */}
+    
 
               
 
@@ -76,25 +76,36 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
         </nav>
 
    {/* Mobile navigation */}
-   <div className={`fixed z-20 bg-white overflow-hidden flex flex-col lg:hidden gap-12 top-0 right-0  ${!toggleMenu ? "h-0 w-full" : "h-auto flex-shrink-0 w-2/5 mt-4" } border-l-4 border-b-4 border-jblue`}>
+   <div className={`fixed z-20 bg-white overflow-hidden flex flex-col lg:hidden gap-12 top-0 right-0 ${!toggleMenu ? "h-0 w-full" : "h-auto flex-shrink-0 w-2/5 mt-4"} border-l-4 border-b-4 border-jblue`}>
   <div className="mt-4 px-8">
     <div className="flex flex-col items-end justify-end gap-8 font-bold tracking-wider">
       <button
         className="focus:outline-none"
         onClick={() => setToggleMenu(!toggleMenu)}
       >
-        <div className={!toggleMenu ? "h-6" : "h-6" } >
-          <Bars3Icon className={!toggleMenu ? "h-6" : "hidden" } />
+        <div className={!toggleMenu ? "h-6" : "h-6"}>
+          <Bars3Icon className={!toggleMenu ? "h-6" : "hidden"} />
           <XCircleIcon className={!toggleMenu ? "hidden" : "h-6"} />
         </div>
       </button>
-      {pathsFiltered && (pathsFiltered.map((element: pathObj, index: number) => (
+
+      {pathsFiltered && pathsFiltered.map((element: pathObj, index: number) => (
         <a className="mb-2" key={index} href={element.href}>{element.text}</a>
-      )))}
-      <a className="mb-2" key="Contact1" href="#contact" onClick={() => scrollToSection("contact")}>Contact Us</a>
+      ))}
+
+      <a className="mb-2" href="#contact" onClick={() => scrollToSection("contact")}>
+        Contact Us
+      </a>
+
+      <div className="flex flex-row justify-end items-center mb-2">
+        <FileQuestion />
+        <span className="ml-2">Request a Quote</span>
+      </div>
+
     </div>
   </div>
 </div>
+
 
 </div>
     </>
