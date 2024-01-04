@@ -33,6 +33,11 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
     setPathsFiltered(paths);
   }, []);
 
+  // handler
+  function handleBlur(){
+    setToggleMenu(false);
+  }
+
  
 
 
@@ -76,7 +81,7 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
         </nav>
 
    {/* Mobile navigation */}
-   <div className={`fixed z-20 bg-white overflow-hidden flex flex-col lg:hidden gap-12 top-0 right-0 ${!toggleMenu ? "h-0 w-full" : "h-auto flex-shrink-0 w-2/5 mt-4"} border-l-4 border-b-4 border-jblue`}>
+   <div onBlur={handleBlur} onMouseLeave={handleBlur} className={`fixed z-20 bg-white overflow-hidden flex flex-col lg:hidden gap-12 top-0 right-0 ${!toggleMenu ? "h-0 w-full" : "h-auto flex-shrink-0 w-2/5 mt-4"} border-l-4 border-b-4 border-jblue`}>
   <div className="mt-4 px-8">
     <div className="flex flex-col items-end justify-end gap-8 font-bold tracking-wider">
       <button

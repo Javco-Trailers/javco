@@ -8,31 +8,41 @@ import ImageWithOverlay from "@/components/imageWithOverlay/ImageWithOverlay";
 import StorageSection from "@/components/servicePageComponents/Storage";
 import RentalsSection from "@/components/servicePageComponents/Rentals";
 import SalesSection from "@/components/servicePageComponents/Sales";
+import SellTrailers from "@/components/servicePageComponents/SellTrailers";
 
 export default function Home() {
     return (
   <>
+  <div className="overflow-x-hidden">
+  
+
     <div className="bg-white text-jblue mb-2 shadow-lg shadow-indigo-500/40 rounded-b px-8">
      <NavBar scrollToSection={scrollToSection}/>
      </div>
-    <div>
+    <div className="border-b-2 border-jblue">
       <RentalsSection/>
     </div>
 
-     <div>
+    <div className="border-b-2 border-jblue">
       <SalesSection/>
+     </div>
+
+     <div className="border-b-2 border-jblue">
+      <SellTrailers/>
      </div>
 
      <div>
       <StorageSection/>
      </div>
 
-     <div>
+     <div id="contact">
      <ContactUs/>
      </div>
      <div>
      <Copyright/>
      </div>
+
+</div>
   </>
     )
 }  

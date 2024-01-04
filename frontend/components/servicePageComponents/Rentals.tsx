@@ -1,14 +1,19 @@
 import React from 'react';
 import ImageWithOverlay from '../imageWithOverlay/ImageWithOverlay';
+import truckOne from "../../public/truck_slide_1.jpg";
+
 
 const RentalsSection = () => {
   return (
     <section className="bg-gray-100 p-8">
       <div className="max-w-3xl mx-auto text-center">
+      
+        <p className={`text-black text-lg font-bold mb-2`}>Rentals</p>
+      
         <div className="mt-4 mb-4">
-          <ImageWithOverlay imageUrl="/" alt="Rentals" text="Rentals" />
+          <ImageWithOverlay imageUrl={truckOne.src} alt="Rentals"/>
         </div>
-        <div className="m-4 p-2">
+        <div className="font-semibold m-4 p-4">
           <p className="text-center">Need a semi-trailer for a short time?</p>
           <p className="text-center">For who knows how long?</p>
           <p className="text-center">
