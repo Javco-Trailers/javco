@@ -2,6 +2,7 @@ import { Bars3Icon, XCircleIcon } from "@heroicons/react/24/outline";
 import { FileQuestion } from "lucide-react";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import QuoteForm from "../quoteForm/QuoteForm";
 import Image from "next/image";
 import javco_logo from "../../public/javco_logo.png";
 
@@ -38,6 +39,9 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
     setToggleMenu(false);
   }
 
+  function handleClickForQuote(){
+    setGetQuoteClicked(true);
+  }
  
 
 
@@ -63,7 +67,7 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
                       <a key={index} href={element.href}>{element.text}</a>
                     ))}  
                     <a key="Contact1" href="#contact" onClick={() => scrollToSection("contact")}>Contact Us</a>
-                    <a className="flex flex-row"><FileQuestion/> Request a Quote</a>
+                    <a className="flex flex-row" href="#Quote" onClick={handleClickForQuote}><FileQuestion/> Request a Quote</a>
                   </div>
                 )}
     
@@ -104,14 +108,16 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
 
       <div className="flex flex-row justify-end items-center mb-2">
         <FileQuestion />
-        <span className="ml-2">Request a Quote</span>
+        <span className="ml-2" onClick={handleClickForQuote}>Request a Quote</span>
       </div>
 
     </div>
   </div>
 </div>
 
-
+{getQuoteClicked && (
+  <QuoteForm setShowQuote={setGetQuoteClicked}/>
+)}
 </div>
     </>
   );

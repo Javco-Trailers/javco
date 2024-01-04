@@ -8,7 +8,7 @@ import scrollToSection from "@/globalFunctions/scrollToSections";
 import Copyright from "@/components/copyright/copyRight";
 import LandingPage from "@/components/landingPageContent/landingPageContent";
 import Slideshow from "@/components/landingPageContent/landingPageImageSlideShow";
-import QuoteForm from "@/components/quoteForm/QuoteForm";
+
 
 
 export default function Home() {
