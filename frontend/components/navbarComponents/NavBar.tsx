@@ -51,10 +51,11 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
         <nav className="w-full">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center absolute left-0">
+            <div className="flex flex-col justify-center items-center absolute left-0">
               <a href="/" className="flex gap-1 font-bold text-gray-700 items-center">
-                <Image className="h-16 w-16 text-primary mx-6" src={javco_logo} alt="Javco" priority />
+                <Image className="h-16 w-36 text-primary mt-2 mx-6" src={javco_logo} alt="Javco" priority />
               </a>
+              <div className="text-jblue text-xs mb-2">Javco Trailer Sales Inc.</div>
             </div>
 
             {/* Navigation */}
@@ -85,7 +86,7 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
         </nav>
 
    {/* Mobile navigation */}
-   <div onBlur={handleBlur} onMouseLeave={handleBlur} className={`fixed z-20 bg-white overflow-hidden flex flex-col lg:hidden gap-12 top-0 right-0 ${!toggleMenu ? "h-0 w-full" : "h-auto flex-shrink-0 w-2/5 mt-4"} border-l-4 border-b-4 border-jblue`}>
+   <div onBlur={handleBlur} onMouseLeave={handleBlur} className={`fixed z-20 bg-white overflow-hidden flex flex-col lg:hidden gap-12 top-0 right-0 ${!toggleMenu ? "h-0 w-full" : "h-auto flex-shrink-0 w-2/5 mt-4  border-l-4 border-b-4 border-jblue"}`}>
   <div className="mt-4 px-8">
     <div className="flex flex-col items-end justify-end gap-8 font-bold tracking-wider">
       <button

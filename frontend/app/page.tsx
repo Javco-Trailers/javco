@@ -19,8 +19,9 @@ export default function Home() {
    <NavBar scrollToSection={scrollToSection}/>
    </div>
    <div className="bg-jblue text-white text-center">
-        <h1 className="font-bold text-5xl p-2">Affordable Semi-Trailers</h1>
-        <p className="p-2 text-xl font-semibold">"Budget-Friendly Trailers, Business-Ready Adventures"</p>
+        <h1 className="font-bold text-5xl p-2">Your Premier Destination for Semi-trailers</h1>
+        <p className="p-2 text-xl font-semibold">"Need a traielr? Javco has you covered! We offer a wide selection of Semi-trailers for storage, cartage & OTR use."</p>
+        <h2 className="font-bold text-2xl mb-4">Rent or Buy NOW!</h2>
       </div>
    <div>
     <Slideshow/>
