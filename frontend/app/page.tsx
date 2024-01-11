@@ -21,7 +21,7 @@ export default function Home() {
    <div className="bg-jblue text-white text-center">
         <h1 className="font-bold text-5xl p-2">Your Premier Destination for Semi-trailers</h1>
         <div className="flex flex-col justify-center items-center">
-          <div className="font-semibold flex flex-row justify-between w-2/5 p-2">
+          <div className="font-semibold flex flex-row justify-between w-1/5 p-2">
             <p>-Dry Vans</p>
             <p>-Reefers</p>
           </div>
