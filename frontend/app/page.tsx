@@ -20,8 +20,18 @@ export default function Home() {
    </div>
    <div className="bg-jblue text-white text-center">
         <h1 className="font-bold text-5xl p-2">Your Premier Destination for Semi-trailers</h1>
-        <p className="p-2 text-xl font-semibold">"Need a traielr? Javco has you covered! We offer a wide selection of Semi-trailers for storage, cartage & OTR use."</p>
-        <h2 className="font-bold text-2xl mb-4">Rent or Buy NOW!</h2>
+        <div className="flex flex-col justify-center items-center">
+          <div className="font-semibold flex flex-row justify-between w-2/5 p-2">
+            <p>-Dry Vans</p>
+            <p>-Reefers</p>
+          </div>
+          <div className="font-semibold flex flex-row w-2/5 justify-between p-2">
+            <p>-Flatbeds</p>
+            <p>-Tankers</p>
+          </div>
+        </div>
+        <p className="p-2 text-xl font-semibold">"Need a trailer? Javco has you covered! We offer a wide selection of Semi-trailers for storage, cartage & OTR use."</p>
+        <h2 className="font-bold text-2xl mb-4 p-2">Rent or Buy NOW!</h2>
       </div>
    <div>
     <Slideshow/>

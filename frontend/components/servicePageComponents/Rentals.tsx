@@ -13,12 +13,31 @@ const RentalsSection = () => {
         <div className="mt-4 mb-4">
           <ImageWithOverlay imageUrl={truckOne.src} alt="Rentals"/>
         </div>
-        <div className="font-semibold m-4 p-4">
-          <p className="text-center">Need a semi-trailer for a short time?</p>
-          <p className="text-center">For who knows how long?</p>
-          <p className="text-center">
-            "Every day, Javco revolutionizes customer experiences, offering dynamic rental agreements designed to exceed expectations. Our commitment to flexibility means we're not just meeting needs, we're exceeding them—making business exciting and tailored just for you!"
-          </p>
+        <div className="m-4 p-4">
+          <p className="text-left font-bold mb-4">Javco maintains a quality multi-brand rental fleet for both your short and long-term needs</p>
+        <div className='border-t-2 border-jblue border-b-2'>
+          <ul>
+            <li className='text-left  mb-4'>
+              <p className='font-semibold mb-2 mt-2'>Storage Trailers</p>
+              <ul>
+                <li className="ml-6">
+                  - Alleviate your cramped warehouse space with the security and flexibility of a storage trailer.
+                  Javco will deliver right to your dock or jobsite!
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+    <div>
+      <ul>
+          <li className='text-left'>
+            <p className='font-semibold mb-2 mt-2'>Cartage & OTR Trailers</p>
+            <ul className='ml-6'>
+              - Javco maintains a quality multi-brand rental feelt of cartage and OTR trailers. Fill out a credit application and request a quote. Owner operators welcome!
+            </ul>
+          </li>
+         </ul>
+         </div>
         </div>
       </div>
     </section>

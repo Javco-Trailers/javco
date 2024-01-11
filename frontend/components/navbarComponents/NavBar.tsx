@@ -55,7 +55,7 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
               <a href="/" className="flex gap-1 font-bold text-gray-700 items-center">
                 <Image className="h-16 w-36 text-primary mt-2 mx-6" src={javco_logo} alt="Javco" priority />
               </a>
-              <div className="text-jblue text-xs mb-2">Javco Trailer Sales Inc.</div>
+              <div className="text-jblue font-semibold text-xs mb-2">Javco Trailer Sales Inc.</div>
             </div>
 
             {/* Navigation */}
