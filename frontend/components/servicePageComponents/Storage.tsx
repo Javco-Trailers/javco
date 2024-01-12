@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageWithOverlay from '../imageWithOverlay/ImageWithOverlay';
-import truckTwo from "../../public/truck_slide_2.jpg";
+import storage from "../../public/picture 2-email-edited.jpg";
 
 const StorageSection = () => {
   return (
@@ -8,7 +8,7 @@ const StorageSection = () => {
       <div className="max-w-3xl mx-auto text-center">
       <p className={`text-black text-lg font-bold mb-2`}>Storage</p>
         <div className='mt-4 mb-4'>
-      <ImageWithOverlay imageUrl={truckTwo.src} alt="Storage"/>
+      <ImageWithOverlay imageUrl={storage.src} alt="Storage"/>
       </div>
         <p className="text-lg text-gray-600 mb-8">
           Javco believes in providing the BEST solution for your temporary storage needs, ensuring seamless operations and cost-effective solutions.

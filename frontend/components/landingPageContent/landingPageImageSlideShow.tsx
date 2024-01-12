@@ -3,8 +3,8 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import truckOne from "../../public/truck_slide_1.jpg";
-import truckTwo from "../../public/truck_slide_2.jpg";
+import truckOne from "../../public/Picture-2-WhatsApp-part1edited.jpg";
+import truckTwo from "../../public/Picture-2-WhatsApp-part2edited.jpg";
 
 export default function Slideshow() {
 

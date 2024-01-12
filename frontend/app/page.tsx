@@ -21,11 +21,11 @@ export default function Home() {
    <div className="bg-jblue text-white text-center">
         <h1 className="font-bold text-5xl p-2">Your Premier Destination for Semi-trailers</h1>
         <div className="flex flex-col justify-center items-center">
-          <div className="font-semibold flex flex-row justify-between w-1/5 p-2">
+          <div className="font-semibold flex flex-row justify-between p-2 w-3/5 md:w-1/5">
             <p>-Dry Vans</p>
             <p>-Reefers</p>
           </div>
-          <div className="font-semibold flex flex-row w-2/5 justify-between p-2">
+          <div className="font-semibold flex flex-row w-2/5 justify-between p-2 w-3/5 md:w-1/5">
             <p>-Flatbeds</p>
             <p>-Tankers</p>
           </div>

@@ -1,7 +1,7 @@
 // components/AboutUsSection.tsx
 import React from 'react';
 import ImageWithOverlay from '../imageWithOverlay/ImageWithOverlay';
-import truckImage from '../../public/truck_slide_1.jpg';
+import salesLot from '../../public/picture-1-email-edited.jpg';
 
 
 const AboutUsSection: React.FC = () => {
@@ -10,7 +10,7 @@ const AboutUsSection: React.FC = () => {
       <div className="max-w-3xl mx-auto">
         <h1 className='text-center mb-2 font-bold'>About us</h1>
         <div className="mb-4">
-          <ImageWithOverlay imageUrl={truckImage.src} alt="Truck" />
+          <ImageWithOverlay imageUrl={salesLot.src} alt="Truck" />
         </div>
         <p className="text-lg text-left font-semibold text-gray-600 mb-2 p-4">
           Javco Trailer Sales, Inc. was founded in 1984 by the unlikely duo of Avner Hizmi and John (name?).

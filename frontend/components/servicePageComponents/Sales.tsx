@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageWithOverlay from '../imageWithOverlay/ImageWithOverlay';
-import truckTwo from "../../public/truck_slide_2.jpg";
+import lot from "../../public/Picture-1-WhatsApp-edited.jpg";
 
 const SalesSection = () => {
   return (
@@ -8,7 +8,7 @@ const SalesSection = () => {
       <div className="max-w-3xl mx-auto text-center">
       <p className={`text-black text-lg font-bold mb-2`}>Sales</p>
         <div className="mb-4">
-          <ImageWithOverlay imageUrl={truckTwo.src} alt="Sales" />
+          <ImageWithOverlay imageUrl={lot.src} alt="Sales" />
         </div>
         <div className="font-semibold m-4 p-4">
           <p className="text-left">
