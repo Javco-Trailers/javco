@@ -34,7 +34,7 @@ export default function Slideshow() {
       alt="Slide 1"
       width={1920}
       height={1080}
-      className="object-cover w-full h-full"
+      className="object-cover w-full h-[40vh]"
     />
   </div>
   <div className="w-full mt-4 mx-auto">
@@ -43,7 +43,7 @@ export default function Slideshow() {
       alt="Slide 2"
       width={1920}
       height={1080}
-      className="object-cover w-full h-full"
+      className="object-cover w-full h-[40vh]"
     />
   </div>
 </Slider>
