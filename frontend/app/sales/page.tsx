@@ -5,8 +5,6 @@ import NavBar from "@/components/navbarComponents/NavBar"
 import ContactUs from "@/components/contactUs/contactUs";
 import Copyright from "@/components/copyright/copyRight";
 import ImageWithOverlay from "@/components/imageWithOverlay/ImageWithOverlay";
-import StorageSection from "@/components/servicePageComponents/Storage";
-import RentalsSection from "@/components/servicePageComponents/Rentals";
 import SalesSection from "@/components/servicePageComponents/Sales";
 import SellTrailers from "@/components/servicePageComponents/SellTrailers";
 

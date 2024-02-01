@@ -1,5 +1,7 @@
 import React from 'react';
+import Link from 'next/link';
 import ImageWithOverlay from '../imageWithOverlay/ImageWithOverlay';
+
 
 
 
@@ -20,8 +22,8 @@ const RentalsSection = () => {
                 <li className="ml-6">
                   - Alleviate your cramped warehouse space with the security and flexibility of a storage trailer.
                   Javco will deliver right to your dock or jobsite! 
-                  <a className='text-jblue' href="tel:+12628359400"> <u>Call</u></a> or
-                  <a className='text-jblue' href="mailto:info@javco.co?subject=Javco Inquiry"> <u>email</u></a> now for a quote!
+                  <Link className='text-jblue' href="tel:+12628359400"> <u>Call</u></Link> or
+                  <Link className='text-jblue' href="mailto:info@javco.co?subject=Javco Inquiry"> <u>email</u></Link> now for a quote!
                 </li>
               </ul>
             </li>
@@ -37,6 +39,9 @@ const RentalsSection = () => {
           </li>
          </ul>
          </div>
+         <div className='flex justify-start items-start'>
+        <a className='text-jblue underline' href={"/creditApplication.pdf"} target="_blank" download>Download Credit Application</a>
+        </div>
         </div>
         <div className="mt-8">
           <h3 className="text-2xl font-bold mb-4">Industries We Serve</h3>
