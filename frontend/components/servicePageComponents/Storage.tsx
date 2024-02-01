@@ -22,20 +22,7 @@ const StorageSection = () => {
           {renderFeature("Affordable", "Save on warehouse costs, transportation fees, and enhance operational performance.")}
         </div>
 
-        <div className="mt-8">
-          <h3 className="text-2xl font-bold mb-4">Industries We Serve</h3>
-          <ul className="text-lg text-gray-600 list-disc">
-            <li>Manufacturing</li>
-            <li>Shopping centers</li>
-            <li>Lawn & garden</li>
-            <li>Recycling centers</li>
-            <li>Hotels</li>
-            <li>Post bulk mail</li>
-            <li>Construction sites</li>
-            <li>Merchandizers</li>
-            <li>Tradeshow conventions</li>
-          </ul>
-        </div>
+        
       </div>
     </section>
   );

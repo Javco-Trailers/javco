@@ -5,9 +5,10 @@ import { usePathname } from "next/navigation";
 import QuoteForm from "../quoteForm/QuoteForm";
 import Image from "next/image";
 import javco_logo from "../../public/javco_logo.png";
+import Link from "next/link";
 
 
-const pathsForNav = [{href: "/", text: "Home"}, {href:"/services", text: "Services"}, {href: "/about", text: "About Us"}]
+const pathsForNav = [{href: "/", text: "Home"}, {href:"/rentals", text: "Rentals"}, {href:"/sales", text: "Sales"} ,{href: "/about", text: "About Us"}]
 
 interface pathObj {
   href: string;
@@ -65,10 +66,10 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
               {pathsFiltered && (
                   <div className="hidden md:flex md:justify-end md:gap-12">
                     {pathsFiltered.map((element: pathObj, index: number) => (
-                      <a key={index} href={element.href}>{element.text}</a>
+                      <Link key={index} href={element.href}>{element.text}</Link>
                     ))}  
-                    <a key="Contact1" href="#contact" onClick={() => scrollToSection("contact")}>Contact Us</a>
-                    <a className="flex flex-row" href="#Quote" onClick={handleClickForQuote}><FileQuestion/> Request a Quote</a>
+                    <Link key="Contact1" href="#contact" onClick={() => scrollToSection("contact")}>Contact Us</Link>
+                    <Link className="flex flex-row" href="#Quote" onClick={handleClickForQuote}><FileQuestion/> Request a Quote</Link>
                   </div>
                 )}
     

@@ -19,9 +19,7 @@ export default function Home() {
     <div className="bg-white text-jblue mb-2 shadow-lg shadow-indigo-500/40 rounded-b px-8">
      <NavBar scrollToSection={scrollToSection}/>
      </div>
-    <div className="border-b-2 border-jblue">
-      <RentalsSection/>
-    </div>
+    
 
     <div className="border-b-2 border-jblue">
       <SalesSection/>
@@ -31,9 +29,6 @@ export default function Home() {
       <SellTrailers/>
      </div>
 
-     <div>
-      <StorageSection/>
-     </div>
 
      <div id="contact">
      <ContactUs/>

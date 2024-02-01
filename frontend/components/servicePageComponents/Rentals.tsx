@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageWithOverlay from '../imageWithOverlay/ImageWithOverlay';
-import truckOne from "../../public/truck_slide_1.jpg";
+
 
 
 const RentalsSection = () => {
@@ -10,9 +10,6 @@ const RentalsSection = () => {
       
         <p className={`text-black text-lg font-bold mb-2`}>Rentals</p>
       
-        <div className="mt-4 mb-4">
-          <ImageWithOverlay imageUrl={truckOne.src} alt="Rentals"/>
-        </div>
         <div className="m-4 p-4">
           <p className="text-left font-bold mb-4">Javco maintains a quality multi-brand rental fleet for both your short and long-term needs</p>
         <div className='border-t-2 border-jblue border-b-2'>
@@ -22,7 +19,9 @@ const RentalsSection = () => {
               <ul>
                 <li className="ml-6">
                   - Alleviate your cramped warehouse space with the security and flexibility of a storage trailer.
-                  Javco will deliver right to your dock or jobsite!
+                  Javco will deliver right to your dock or jobsite! 
+                  <a className='text-jblue' href="tel:+12628359400"> <u>Call</u></a> or
+                  <a className='text-jblue' href="mailto:info@javco.co?subject=Javco Inquiry"> <u>email</u></a> now for a quote!
                 </li>
               </ul>
             </li>
@@ -33,11 +32,25 @@ const RentalsSection = () => {
           <li className='text-left'>
             <p className='font-semibold mb-2 mt-2'>Cartage & OTR Trailers</p>
             <ul className='ml-6'>
-              - Javco maintains a quality multi-brand rental feelt of cartage and OTR trailers. Fill out a credit application and request a quote. Owner operators welcome!
+              - Javco maintains a quality multi-brand rental fleet of cartage and OTR trailers. Fill out a credit application and request a quote! Owner operators welcome!
             </ul>
           </li>
          </ul>
          </div>
+        </div>
+        <div className="mt-8">
+          <h3 className="text-2xl font-bold mb-4">Industries We Serve</h3>
+          <ul className="text-lg text-gray-600 list-disc">
+            <li>Manufacturing</li>
+            <li>Shopping centers</li>
+            <li>Lawn & garden</li>
+            <li>Recycling centers</li>
+            <li>Hotels</li>
+            <li>Post bulk mail</li>
+            <li>Construction sites</li>
+            <li>Merchandizers</li>
+            <li>Tradeshow conventions</li>
+          </ul>
         </div>
       </div>
     </section>
