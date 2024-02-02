@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import axios from "axios";
 
 type FormValues = {
   firstName: string;
   lastName: string;
-  email: string;
+  // email: string;
   zipCode: string;
   phoneNumber: string;
   business: string;
@@ -16,7 +15,14 @@ type FormValues = {
 
 
 export default function QuoteForm({setShowQuote}:{setShowQuote:React.Dispatch<React.SetStateAction<boolean>>}) {
-  const [showSuccess, setShowSuccess] = useState<boolean>(false);
+  const [dataForEmail, setDataForEmail] = useState<FormValues | null>(null);
+
+  useEffect(() =>{
+    if(dataForEmail){
+      document.getElementById("hiddenLink")?.click();
+      setShowQuote(false);
+    }
+  }, [dataForEmail])
 
   const {
     register,
@@ -25,18 +31,7 @@ export default function QuoteForm({setShowQuote}:{setShowQuote:React.Dispatch<Re
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/send-mail`,
-        data
-      );
-      console.log("Response from backend:", response.data);
-      if(response.data === "Email sent successfully"){
-        setShowSuccess(true);
-      }
-    } catch (error) {
-      console.error("Error sending POST request:", error);
-    }
+   setDataForEmail(data);
   };
 
   //handler
@@ -72,7 +67,7 @@ export default function QuoteForm({setShowQuote}:{setShowQuote:React.Dispatch<Re
         className="text-black p-1 border-2 border-jblue mr-4"
       />
       {errors.lastName && <p className="text-xs text-red-500">*{errors.lastName.message}</p>}
-      <label>Email</label>
+      {/* <label>Email</label>
       <input
         type="text"
         className="text-black p-1 border-2 border-jblue mr-4"
@@ -84,7 +79,7 @@ export default function QuoteForm({setShowQuote}:{setShowQuote:React.Dispatch<Re
           },
         })}
       />
-      {errors.email && <p className="text-xs text-red-500">*{errors.email.message}</p>}
+      {errors.email && <p className="text-xs text-red-500">*{errors.email.message}</p>} */}
       <label>Zipcode</label>
       <input
         {...register("zipCode", { required: "Zip Code is required" })}
@@ -106,28 +101,20 @@ export default function QuoteForm({setShowQuote}:{setShowQuote:React.Dispatch<Re
         {...register("lengthOfUse")}
         className="text-black p-1 border-2 border-jblue mr-4"
       />
-      <div className="flex flex-col items-start justify-center">
+      <div className="flex flex-col items-center justify-center">
   <input
     type="submit"
     className="text-start bg-jblue rounded text-white mt-4 p-2 cursor-pointer"
   />
 </div>
-
     </form>
+    <div className='flex justify-start items-start'>
+        <a className='text-jblue underline' href={"/creditApplication.pdf"} target="_blank" download>Download Credit Application PDF</a>
+        </div>
     </div>
-
-    {showSuccess && (
-
-<div className="fixed inset-0 bg-black bg-opacity-50 z-[102]">
-<div className="bg-white rounded text-start w-4/5 p-4 font-semibold fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-  <p>Request Sent Successfully! Please wait up to 2 business days for a response.</p>
-  <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={closeQuote}>
-    Got it!
-  </button>
-</div>
-</div>
-
-    )}
+    <a id="hiddenLink" className="hidden" href={`mailto:info@javco.co?subject=Javco Inquiry&body=First Name: ${dataForEmail?.firstName}
+    %0D%0ALast Name: ${dataForEmail?.lastName}%0D%0AZip code: ${dataForEmail?.zipCode}%0D%0ALength of use: ${dataForEmail?.lengthOfUse}%0D%0A
+    Phone number: ${dataForEmail?.phoneNumber}%0D%0APurpose: ${dataForEmail?.purpose}%0D%0ABusiness Name: ${dataForEmail?.business || "Business name not specified"}%0D%0A%0D%0APlease prodvide any additional information below this line%0D%0A%0D%0A_________________________________________________________`}/>  
     </div>
   );
 }

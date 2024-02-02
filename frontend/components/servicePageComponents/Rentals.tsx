@@ -40,7 +40,7 @@ const RentalsSection = () => {
          </ul>
          </div>
          <div className='flex justify-start items-start'>
-        <a className='text-jblue underline' href={"/creditApplication.pdf"} target="_blank" download>Download Credit Application</a>
+        <a className='text-jblue underline' href={"/creditApplication.pdf"} target="_blank" download>Download Credit Application PDF</a>
         </div>
         </div>
         <div className="mt-8">
