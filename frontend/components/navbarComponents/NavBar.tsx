@@ -2,7 +2,7 @@
 
 import { Bars3Icon, XCircleIcon } from "@heroicons/react/24/outline";
 import { FileQuestion } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import QuoteForm from "../quoteForm/QuoteForm";
 import Image from "next/image";
