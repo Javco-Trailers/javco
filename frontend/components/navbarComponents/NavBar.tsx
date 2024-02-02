@@ -1,3 +1,5 @@
+"use client"
+
 import { Bars3Icon, XCircleIcon } from "@heroicons/react/24/outline";
 import { FileQuestion } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -23,17 +25,10 @@ interface NavBarProps{
 
 const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
-  const [pathsFiltered, setPathsFiltered] = useState<pathObj[] |null>(null);
-  //for the rendering of a popUp of form
   const [getQuoteClicked, setGetQuoteClicked] = useState<boolean>(false);
-
 
   const path = usePathname();
 
-  useEffect(() => {
-    let paths = pathsForNav.filter((element: pathObj) => element.href !== path);
-    setPathsFiltered(paths);
-  }, []);
 
   // handler
   function handleBlur(){
@@ -53,31 +48,36 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex flex-col justify-center items-center absolute left-0">
-              <a href="/" className="flex gap-1 font-bold text-gray-700 items-center">
-                <Image className="h-16 w-36 text-primary mt-2 mx-6" src={javco_logo} alt="Javco" priority />
-              </a>
-              <div className="text-jblue font-semibold text-xs mb-2">Javco Trailer Sales Inc.</div>
+              <Link href="/" className="flex gap-1 font-bold text-gray-700 items-center">
+                <Image className="h-16 w-36 text-primary mt-2 mx-6 pt-4" src={javco_logo} alt="Javco" priority />
+              </Link>
+              <p className="text-jblue font-semibold text-xs mb-2 pb-4">Javco Trailer Sales Inc.</p>
             </div>
 
             {/* Navigation */}
             <div className="flex items-center gap-6 mr-1 md:mr-5 ml-auto">
               {/* Primary Navigation (Hidden on Small Screens) */}
               
-              {pathsFiltered && (
-                  <div className="hidden md:flex md:justify-end md:gap-12">
-                    {pathsFiltered.map((element: pathObj, index: number) => (
+              
+                  <div className="hidden lg:flex md:justify-end md:gap-12">
+                    {pathsForNav.map((element: pathObj, index: number) => (
+                      <div className={`flex items-center justify-center h-[4vh] p-2 ${element.href === path ? "border-l-2 border-r-2 border-jblue" : "border-l-0 border-r-0"}`} key={`b${index}`}>
                       <Link key={index} href={element.href}>{element.text}</Link>
-                    ))}  
+                    </div>))}  
+                    <div className={`flex items-center justify-center h-[4vh] p-2 `} >
                     <Link key="Contact1" href="#contact" onClick={() => scrollToSection("contact")}>Contact Us</Link>
+                    </div>
+                    <div className={`flex items-center justify-center h-[4vh] p-2 `} >
                     <Link className="flex flex-row" href="#Quote" onClick={handleClickForQuote}><FileQuestion/> Request a Quote</Link>
+                    </div>
                   </div>
-                )}
+                
     
 
               
 
               {/* Mobile navigation toggle */}
-              <div className="md:hidden flex items-center m-4">
+              <div className="lg:hidden flex items-center m-4">
                 <button onClick={() => setToggleMenu(!toggleMenu)}>
                   <Bars3Icon className="h-6" />
                 </button>
@@ -100,7 +100,7 @@ const NavBar: React.FC<NavBarProps> = ({scrollToSection}) => {
         </div>
       </button>
 
-      {pathsFiltered && pathsFiltered.map((element: pathObj, index: number) => (
+      {pathsForNav.map((element: pathObj, index: number) => (
         <a className="mb-2" key={index} href={element.href}>{element.text}</a>
       ))}
 
