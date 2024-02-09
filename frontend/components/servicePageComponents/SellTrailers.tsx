@@ -9,7 +9,7 @@ const SellTrailers = () => {
         <p className={`text-black text-lg font-bold mb-2`}>Sell Your Trailers to Javco</p>
         <div className="font-semibold m-4 p-4">
           <p className="text-center">
-            "Thinking of selling your trailers? Choose Javco as your trusted partner. We offer a seamless process for selling your trailers, providing a blend of fair pricing and reliable service. Javco ensures that your journey in selling trailers is not just profitable but also hassle-free. Let's make the deal exciting – sell your trailers to Javco today!"
+            Thinking of selling your trailers? Choose Javco as your trusted partner. We offer a seamless process for selling your trailers, providing a blend of fair pricing and reliable service. Javco ensures that your journey in selling trailers is not just profitable but also hassle-free. Let's make the deal exciting – sell your trailers to Javco today!
           </p>
         </div>
       </div>

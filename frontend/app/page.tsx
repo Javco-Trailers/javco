@@ -30,7 +30,7 @@ export default function Home() {
             <p>-Tankers</p>
           </div>
         </div>
-        <p className="p-2 text-xl font-semibold">"Need a trailer? Javco has you covered! We offer a wide selection of Semi-trailers for storage, cartage & OTR use."</p>
+        <p className="p-2 text-xl font-semibold">Need a trailer? Javco has you covered! We offer a wide selection of Semi-trailers for storage, cartage & OTR use.</p>
         <h2 className="font-bold text-2xl mb-4 p-2"><a href="/rentals"><u>Rent</u></a> or <a href="/sales"><u>Buy</u></a> <a href="mailto:info@javco.co?subject=Javco Inquiry"><u>NOW!</u></a></h2>
       </div>
    <div>
