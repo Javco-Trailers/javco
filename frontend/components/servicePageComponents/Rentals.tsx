@@ -1,6 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import ImageWithOverlay from "../imageWithOverlay/ImageWithOverlay";
+import Image from "next/image";
+import DryVanInside from "../../public/DryVanInside.jpg"
+import DryVansLinedUp from "../../public/dryvansatdock.jpg"
+import ReefersLinedUp from "../../public/reefers lined up.jpg"
 
 const RentalsSection = () => {
   return (
@@ -42,6 +45,12 @@ const RentalsSection = () => {
               </li>
             </ul>
           </div>
+          
+    <div className="flex flex-col p-4 justify-around md:flex-row">
+      <Image className="p-2" src={DryVanInside.src} height={200} width={300} alt="Picture of the interior of a dry van"/>
+      <Image className="p-2" src={DryVansLinedUp.src} height={200} width={300} alt="Picture of Dry Vans lined up at the docks"/>
+      <Image className="p-2" src={ReefersLinedUp.src} height={200} width={300} alt="Picture of Dry Vans lined up at the docks"/>
+     </div>
           <div>
             <ul>
               <li className="text-left">
