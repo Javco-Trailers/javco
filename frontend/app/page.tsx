@@ -7,7 +7,8 @@ import ContactUs from "@/components/contactUs/contactUs";
 import scrollToSection from "@/globalFunctions/scrollToSections";
 import Copyright from "@/components/copyright/copyRight";
 import LandingPage from "@/components/landingPageContent/landingPageContent";
-import Slideshow from "@/components/landingPageContent/landingPageImageSlideShow";
+import Image from "next/image";
+import Aerial from "../public/AerialPic.jpg"
 
 
 
@@ -33,8 +34,8 @@ export default function Home() {
         <p className="p-2 text-xl font-semibold">Need a trailer? Javco has you covered! We offer a wide selection of Semi-trailers for storage, cartage & OTR use.</p>
         <h2 className="font-bold text-2xl mb-4 p-2"><a href="/rentals"><u>Rent</u></a> or <a href="/sales"><u>Buy</u></a> <a href="mailto:info@javco.co?subject=Javco Inquiry"><u>NOW!</u></a></h2>
       </div>
-   <div>
-    <Slideshow/>
+   <div className="flex items-center justify-center">
+  <Image src={Aerial.src} alt="Aerial view of Javco's land" height={400} width={600}/>
     </div>
     <div>
     <LandingPage/>
