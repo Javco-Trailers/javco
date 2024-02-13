@@ -4,9 +4,11 @@ import scrollToSection from "@/globalFunctions/scrollToSections";
 import NavBar from "@/components/navbarComponents/NavBar"
 import ContactUs from "@/components/contactUs/contactUs";
 import Copyright from "@/components/copyright/copyRight";
-import ImageWithOverlay from "@/components/imageWithOverlay/ImageWithOverlay";
 import SalesSection from "@/components/servicePageComponents/Sales";
 import SellTrailers from "@/components/servicePageComponents/SellTrailers";
+import Image from "next/image";
+import Reefer from "../../public/ReeferVan.png"
+import DryVan from "../../public/DryVanForSales.png"
 
 export default function Home() {
     return (
@@ -21,6 +23,11 @@ export default function Home() {
 
     <div className="border-b-2 border-jblue">
       <SalesSection/>
+     </div>
+
+     <div className="flex flex-col p-4 justify-around md:flex-row">
+      <Image src={Reefer.src} height={400} width={500} alt="Picture of a red truck pulling a reefer trailer"/>
+      <Image src={DryVan.src} height={400} width={500} alt="Picture of a blue truck pulling a dry van trailer"/>
      </div>
 
      <div className="border-b-2 border-jblue">
