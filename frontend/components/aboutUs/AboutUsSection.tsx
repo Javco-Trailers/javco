@@ -10,7 +10,7 @@ const AboutUsSection: React.FC = () => {
   return (
     <section className="bg-gray-100 p-8">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-2xl text-center mb-2 font-bold text-black">About us</h1>
+        <h1 className="text-4xl text-center mb-4 font-bold text-jblue">About us</h1>
         <div className="flex justify-center items-center mb-4">
           <Image height={400} width={500} src={YoungFounders.src} alt="Founders of Javco when younger at a desk discussing business" />
         </div>
