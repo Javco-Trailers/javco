@@ -19,7 +19,9 @@ export default function Home() {
     <div className="bg-white text-jblue mb-2 shadow-lg shadow-indigo-500/40 rounded-b px-8">
      <NavBar scrollToSection={scrollToSection}/>
      </div>
-    
+     <div className="w-full bg-white p-2 h-1/5 text-center">
+     <h1 className={`text-jblue text-4xl font-bold mb-2`}>Sales</h1>
+     </div>
      <div className="flex flex-col p-4 justify-around md:flex-row">
       <Image src={Reefer.src} height={400} width={500} alt="Picture of a red truck pulling a reefer trailer"/>
       <Image src={DryVan.src} height={400} width={500} alt="Picture of a blue truck pulling a dry van trailer"/>

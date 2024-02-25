@@ -17,6 +17,10 @@ export default function Home() {
     <div className="bg-white text-jblue mb-2 shadow-lg shadow-indigo-500/40 rounded-b px-8">
      <NavBar scrollToSection={scrollToSection}/>
      </div>
+
+     <div className="w-full bg-white p-2 h-1/5 text-center">
+     <h1 className={`text-jblue text-4xl font-bold mb-2`}>Rentals</h1>
+     </div>
     <div className="border-b-2 border-jblue">
       <RentalsSection/>
     </div>

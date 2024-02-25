@@ -3,18 +3,19 @@ import Link from "next/link";
 import Image from "next/image";
 import DryVanInside from "../../public/DryVanInside.jpg"
 import DryVansLinedUp from "../../public/dryvansatdock.jpg"
-import ReefersLinedUp from "../../public/reefers lined up.jpg"
+
 
 const RentalsSection = () => {
   return (
     <section className="bg-gray-100 p-8">
+      
          <div className="flex flex-col h-[50vh] p-4 justify-around md:flex-row">
       <Image className="p-2" src={DryVanInside.src} height={200} width={400} alt="Picture of the interior of a dry van"/>
       <Image className="p-2" src={DryVansLinedUp.src} height={200} width={1000} alt="Picture of Dry Vans lined up at the docks"/>
     
      </div>
       <div className="max-w-3xl mx-auto text-center">
-        <h1 className={`text-jblue text-4xl font-bold mb-2`}>Rentals</h1>
+       
 
         <div className="m-4 p-4">
        

@@ -7,7 +7,7 @@ const SalesSection = () => {
   return (
     <section className="bg-gray-100 p-8">
       <div className="max-w-3xl mx-auto text-center">
-      <h1 className={`text-jblue text-4xl font-bold mb-2`}>Sales</h1>
+      
         <div className="font-semibold m-4 p-4">
           <p className="text-left text-gray-600">
             - Get the right trailer for the right price! Javco is a licensed
