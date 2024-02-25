@@ -1,6 +1,5 @@
 import React from "react";
-import ImageWithOverlay from "../imageWithOverlay/ImageWithOverlay";
-import truckTwo from "../../public/truck_slide_2.jpg";
+
 
 const SellTrailers = () => {
   return (
@@ -11,12 +10,9 @@ const SellTrailers = () => {
         </p>
         <div className="font-semibold m-4 p-4">
           <p className="text-center text-gray-600">
-            Thinking of selling your trailers? Choose Javco as your trusted
-            partner. We offer a seamless process for selling your trailers,
-            providing a blend of fair pricing and reliable service. Javco
-            ensures that your journey in selling trailers is not just profitable
-            but also hassle-free. Let's make the deal exciting – sell your
-            trailers to Javco today!
+            Thinking of selling your trailer? Javco is always looking for quality inventory at a fair price.
+            Whether you want to trade-in or just downsize your fleet, we'll make the process easy and pain-free.
+            Tell us what you have <a className="underline font-semibold text-jblue" href="mailto:info@javco.co?subject=Javco Inquiry For Selling Trailer" target="_blank">HERE</a>.
           </p>
         </div>
       </div>
