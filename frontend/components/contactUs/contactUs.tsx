@@ -22,7 +22,7 @@ const ContactUs: React.FC = () => {
           <a
           target="_blank"
             className="flex flex-row mb-2 text-center md:mb-0 p-2 no-underline hover:underline"
-            href="https://www.google.com/maps/place/Javco/@42.7770913,-87.9577285,18z/data=!4m10!1m2!2m1!1sjavco!3m6!1s0x88056e9f83ef8f35:0xe48743b24e89655e!8m2!3d42.7756897!4d-87.9554314!15sCgVqYXZjb1oHIgVqYXZjb5IBDnRyYWlsZXJfZGVhbGVy4AEA!16s%2Fg%2F1tx_6yhb?entry=ttu"
+            href="https://www.google.com/maps/place/DB+GARAGE+Inc./@42.7755845,-87.957928,17z/data=!3m1!4b1!4m6!3m5!1s0x88056c22e317e839:0xdd69626e9b928605!8m2!3d42.7755806!4d-87.9553531!16s%2Fg%2F11gfdfp5yy?entry=ttu"
           >
             <MapPinIcon /> 3873 S. 27th St Franksville, WI 53126
           </a>
@@ -31,7 +31,7 @@ const ContactUs: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-around">
           
           <div className="flex justify-center align-center p-4 md:mr-2">
-        <iframe width="500" height="450"  loading="lazy" src={`https://www.google.com/maps/embed/v1/place?q=place_id:ChIJjxsc1j1sBYgRQUsZinaKg8o&key=${process.env.NEXT_PUBLIC_MAPS}`}></iframe>
+        <iframe width="500" height="450"  loading="lazy" src={`https://www.google.com/maps/embed/v1/place?q=place_id:ChIJOegX4yJsBYgRBYaSm25iad0&key=${process.env.NEXT_PUBLIC_MAPS}`}></iframe>
         </div>
         </div>
       </div>
