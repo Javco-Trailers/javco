@@ -8,16 +8,16 @@ import ReefersLinedUp from "../../public/reefers lined up.jpg"
 const RentalsSection = () => {
   return (
     <section className="bg-gray-100 p-8">
-        
+         <div className="flex flex-col h-[50vh] p-4 justify-around md:flex-row">
+      <Image className="p-2" src={DryVanInside.src} height={200} width={400} alt="Picture of the interior of a dry van"/>
+      <Image className="p-2" src={DryVansLinedUp.src} height={200} width={1000} alt="Picture of Dry Vans lined up at the docks"/>
+    
+     </div>
       <div className="max-w-3xl mx-auto text-center">
         <h1 className={`text-jblue text-4xl font-bold mb-2`}>Rentals</h1>
 
         <div className="m-4 p-4">
-        <div className="flex flex-col h-[50vh] p-4 justify-around md:flex-row">
-      <Image className="p-2" src={DryVanInside.src} height={200} width={600} alt="Picture of the interior of a dry van"/>
-      <Image className="p-2" src={DryVansLinedUp.src} height={200} width={1000} alt="Picture of Dry Vans lined up at the docks"/>
-    
-     </div>
+       
           <p className="text-left font-bold mb-4 text-black">
             Javco maintains a quality multi-brand rental fleet for both your
             short and long-term needs

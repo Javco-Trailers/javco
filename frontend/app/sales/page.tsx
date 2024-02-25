@@ -20,15 +20,15 @@ export default function Home() {
      <NavBar scrollToSection={scrollToSection}/>
      </div>
     
-
-    <div className="border-b-2 border-jblue">
-      <SalesSection/>
-     </div>
-
      <div className="flex flex-col p-4 justify-around md:flex-row">
       <Image src={Reefer.src} height={400} width={500} alt="Picture of a red truck pulling a reefer trailer"/>
       <Image src={DryVan.src} height={400} width={500} alt="Picture of a blue truck pulling a dry van trailer"/>
      </div>
+    <div className="border-b-2 border-jblue">
+      <SalesSection/>
+     </div>
+
+     
 
      <div className="border-b-2 border-jblue">
       <SellTrailers/>
