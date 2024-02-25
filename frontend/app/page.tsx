@@ -6,9 +6,9 @@ import NavBar from "@/components/navbarComponents/NavBar";
 import ContactUs from "@/components/contactUs/contactUs";
 import scrollToSection from "@/globalFunctions/scrollToSections";
 import Copyright from "@/components/copyright/copyRight";
-import LandingPage from "@/components/landingPageContent/landingPageContent";
 import Image from "next/image";
-import Aerial from "../public/AerialPic.jpg"
+import JavcoSignZoomed from "../public/JavcoSignZoomed.jpg"
+
 
 
 
@@ -20,7 +20,7 @@ export default function Home() {
    <NavBar scrollToSection={scrollToSection}/>
    </div>
    <div className="bg-jblue text-white text-center">
-        <h1 className="font-bold text-5xl p-2">Your Premier Destination for Semi-trailers</h1>
+        <h1 className="font-bold text-5xl p-2">Welcome to Javco Trailer Sales Inc.</h1>
         <div className="flex flex-col justify-center items-center">
           <div className="font-semibold flex flex-row justify-between p-2 w-3/5 md:w-1/5">
             <p>-Dry Vans</p>
@@ -34,12 +34,15 @@ export default function Home() {
         <p className="p-2 text-xl font-semibold">Need a trailer? Javco has you covered! We offer a wide selection of Semi-trailers for storage, cartage & OTR use.</p>
         <h2 className="font-bold text-2xl mb-4 p-2"><a href="/rentals"><u>Rent</u></a> or <a href="/sales"><u>Buy</u></a> <a href="mailto:info@javco.co?subject=Javco Inquiry"><u>NOW!</u></a></h2>
       </div>
-   <div className="flex items-center justify-center">
-  <Image src={Aerial.src} alt="Aerial view of Javco's land" height={400} width={600}/>
+   <div className="flex items-center justify-center mb-4">
+  <Image src={JavcoSignZoomed.src} alt="Aerial view of Javco's land" height={400} width={600}/>
     </div>
-    <div>
-    <LandingPage/>
-    </div>
+    <div className="text-center">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 text-jblue">
+        Your Premier Destination for Affordable and Exceptional Semi-Trailers!
+        </h1>
+       
+      </div>
 
     <div id="contact">
    <ContactUs/>
