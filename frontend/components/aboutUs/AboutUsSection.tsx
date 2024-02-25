@@ -4,6 +4,7 @@ import Image from "next/image";
 import salesLot from "../../public/picture-1-email-edited.jpg";
 import YoungFounders from "../../public/FoundersWhenYoung.jpg";
 import Memorial from "../../public/JavcoFounders.jpg"
+import Aerial from "../../public/AerialPic.jpg"
 
 const AboutUsSection: React.FC = () => {
   return (
@@ -30,6 +31,9 @@ const AboutUsSection: React.FC = () => {
           5,000 square-foot building which serves as our base of operations to
           this day.
         </p>
+        <div className="flex justify-center items-center mb-4">
+          <Image height={200} width={400} src={Aerial.src} alt="An aerial shot of the Javco premises" />
+        </div>
         <p className="text-lg text-left font-semibold text-gray-600 mb-8 p-4">
           Avner passed away in November of 2011. John passed away in May of
           2022. We are forever indebted to their entrepreneurship, ingenuity,
