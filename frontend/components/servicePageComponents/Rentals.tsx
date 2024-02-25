@@ -8,10 +8,16 @@ import ReefersLinedUp from "../../public/reefers lined up.jpg"
 const RentalsSection = () => {
   return (
     <section className="bg-gray-100 p-8">
+        
       <div className="max-w-3xl mx-auto text-center">
-        <p className={`text-black text-lg font-bold mb-2`}>Rentals</p>
+        <h1 className={`text-jblue text-4xl font-bold mb-2`}>Rentals</h1>
 
         <div className="m-4 p-4">
+        <div className="flex flex-col h-[50vh] p-4 justify-around md:flex-row">
+      <Image className="p-2" src={DryVanInside.src} height={200} width={600} alt="Picture of the interior of a dry van"/>
+      <Image className="p-2" src={DryVansLinedUp.src} height={200} width={1000} alt="Picture of Dry Vans lined up at the docks"/>
+    
+     </div>
           <p className="text-left font-bold mb-4 text-black">
             Javco maintains a quality multi-brand rental fleet for both your
             short and long-term needs
@@ -19,9 +25,9 @@ const RentalsSection = () => {
           <div className="border-t-2 border-jblue border-b-2">
             <ul>
               <li className="text-left  mb-4">
-                <p className="font-semibold mb-2 mt-2 text-black">
+                <h2 className="font-bold text-xl mb-2 mt-2 text-jblue">
                   Storage Trailers
-                </p>
+                </h2>
                 <ul>
                   <li className="ml-6 text-gray-600">
                     - Alleviate your cramped warehouse space with the security
@@ -46,17 +52,13 @@ const RentalsSection = () => {
             </ul>
           </div>
           
-    <div className="flex flex-col p-4 justify-around md:flex-row">
-      <Image className="p-2" src={DryVanInside.src} height={200} width={300} alt="Picture of the interior of a dry van"/>
-      <Image className="p-2" src={DryVansLinedUp.src} height={200} width={300} alt="Picture of Dry Vans lined up at the docks"/>
-      <Image className="p-2" src={ReefersLinedUp.src} height={200} width={300} alt="Picture of Dry Vans lined up at the docks"/>
-     </div>
+  
           <div>
             <ul>
               <li className="text-left">
-                <p className="font-semibold mb-2 mt-2 text-black">
+              <h2 className="font-bold text-xl mb-2 mt-2 text-jblue">
                   Cartage & OTR Trailers
-                </p>
+                </h2>
                 <ul className="ml-6 text-gray-600">
                   - Javco maintains a quality multi-brand rental fleet of
                   cartage and OTR trailers. Fill out a credit application and
