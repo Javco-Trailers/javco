@@ -7,26 +7,36 @@ const SalesSection = () => {
   return (
     <section className="bg-gray-100 p-8">
       <div className="max-w-3xl mx-auto text-center">
-      
-        <div className="font-semibold m-4 p-4">
-          <p className="text-left text-gray-600">
-            - Get the right trailer for the right price! Javco is a licensed
+
+        <div className="border-t-2 border-jblue border-b-2">
+            <ul>
+              <li className="text-left  mb-4">
+                <h2 className="font-bold text-xl mb-2 mt-2 text-jblue">
+                Buy Trailers
+                </h2>
+                <ul>
+                  <li className="ml-6 text-gray-600">
+                  - Get the right trailer for the right price! Javco is a licensed
             dealer of used dry vans, reefers, flatbed, and tanker trailers.
-            <Link className="text-jblue" href="tel:+12628359400">
+            <Link className="text-jblue underline" href="tel:+12628359400">
               {" "}
-              <u>Call</u>
+              Call
             </Link>{" "}
             or
             <Link
-              className="text-jblue"
+              className="text-jblue underline"
               href="mailto:info@javco.co?subject=Javco Inquiry"
             >
               {" "}
-              <u>email</u>
+              email
             </Link>{" "}
             NOW and ask about our current inventory!
-          </p>
-        </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
       </div>
     </section>
   );
