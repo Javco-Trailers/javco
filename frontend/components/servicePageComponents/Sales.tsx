@@ -1,6 +1,4 @@
 import React from "react";
-import ImageWithOverlay from "../imageWithOverlay/ImageWithOverlay";
-import lot from "../../public/Picture-1-WhatsApp-edited.jpg";
 import Link from "next/link";
 
 const SalesSection = () => {
