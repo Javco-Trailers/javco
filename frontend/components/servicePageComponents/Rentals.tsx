@@ -9,9 +9,9 @@ const RentalsSection = () => {
   return (
     <section className="bg-gray-100 p-8">
       
-         <div className="flex flex-col h-[50vh] p-4 justify-around md:flex-row">
-      <Image className="p-2" src={DryVanInside.src} height={200} width={400} alt="Picture of the interior of a dry van"/>
-      <Image className="p-2" src={DryVansLinedUp.src} height={200} width={1000} alt="Picture of Dry Vans lined up at the docks"/>
+         <div className="flex flex-col h-1/6 p-4 justify-around md:flex-row">
+      <Image className="p-2" src={DryVanInside.src} height={200} width={300} alt="Picture of the interior of a dry van"/>
+      <Image className="p-2" src={DryVansLinedUp.src} height={200} width={600} alt="Picture of Dry Vans lined up at the docks"/>
     
      </div>
       <div className="max-w-3xl mx-auto text-center">
