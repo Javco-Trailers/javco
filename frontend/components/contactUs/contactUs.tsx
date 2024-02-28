@@ -31,7 +31,7 @@ const ContactUs: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-around">
           
           <div className="flex justify-center align-center p-4 md:mr-2">
-        <iframe width="500" height="450"  loading="lazy" src={`https://www.google.com/maps/embed/v1/place?q=place_id:ChIJjxsc1j1sBYgRQUsZinaKg8o&key=${process.env.NEXT_PUBLIC_MAPS}`}></iframe>
+        <iframe width="500" height="450"  loading="lazy" src={`https://www.google.com/maps/embed/v1/place?q=place_id:ChIJNY_vg59uBYgRXmWJTrJDh-Q&key=${process.env.NEXT_PUBLIC_MAPS}`}></iframe>
         </div>
         </div>
       </div>
