@@ -1,4 +1,4 @@
-# javco
+# Javco
 Website for Javco semi trailers
 ## Built with NEXTJS
 
