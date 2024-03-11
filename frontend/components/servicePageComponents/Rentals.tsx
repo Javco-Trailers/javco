@@ -1,24 +1,32 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import DryVanInside from "../../public/DryVanInside.jpg"
-import DryVansLinedUp from "../../public/dryvansatdock.jpg"
-
+import DryVanInside from "../../public/DryVanInside.jpg";
+import DryVansLinedUp from "../../public/dryvansatdock.jpg";
 
 const RentalsSection = () => {
   return (
     <section className="bg-gray-100 p-8">
-      
-         <div className="flex flex-col h-1/6 p-4 justify-around md:flex-row">
-      <Image className="p-2" src={DryVanInside.src} height={200} width={300} alt="Picture of the interior of a dry van"/>
-      <Image className="p-2" src={DryVansLinedUp.src} height={200} width={600} alt="Picture of Dry Vans lined up at the docks"/>
-    
-     </div>
+      <div className="flex flex-col h-1/6 p-4 justify-around md:flex-row">
+        <Image
+          className="p-2"
+          src={DryVanInside.src}
+          height={200}
+          width={300}
+          alt="Picture of the interior of a dry van"
+          priority
+        />
+        <Image
+          className="p-2"
+          src={DryVansLinedUp.src}
+          height={200}
+          width={600}
+          alt="Picture of Dry Vans lined up at the docks"
+          priority
+        />
+      </div>
       <div className="max-w-3xl mx-auto text-center">
-       
-
         <div className="m-4 p-4">
-       
           <p className="text-left font-bold mb-4 text-black">
             Javco maintains a quality multi-brand rental fleet for both your
             short and long-term needs
@@ -52,12 +60,11 @@ const RentalsSection = () => {
               </li>
             </ul>
           </div>
-          
-  
+
           <div>
             <ul>
               <li className="text-left">
-              <h2 className="font-bold text-xl mb-2 mt-2 text-jblue">
+                <h2 className="font-bold text-xl mb-2 mt-2 text-jblue">
                   Cartage & OTR Trailers
                 </h2>
                 <ul className="ml-6 text-gray-600">

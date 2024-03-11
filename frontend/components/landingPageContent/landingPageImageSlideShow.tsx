@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -7,7 +6,6 @@ import truckOne from "../../public/Picture-2-WhatsApp-part1edited.jpg";
 import truckTwo from "../../public/Picture-2-WhatsApp-part2edited.jpg";
 
 export default function Slideshow() {
-
   const settings = {
     accessibility: true,
     dots: true,
@@ -27,27 +25,28 @@ export default function Slideshow() {
 
   return (
     <>
-     <Slider>
-  <div className="w-full mt-4 mx-auto">
-    <Image
-      src={truckOne}
-      alt="Slide 1"
-      width={1920}
-      height={1080}
-      className="object-cover w-full h-[40vh]"
-    />
-  </div>
-  <div className="w-full mt-4 mx-auto">
-    <Image
-      src={truckTwo}
-      alt="Slide 2"
-      width={1920}
-      height={1080}
-      className="object-cover w-full h-[40vh]"
-    />
-  </div>
-</Slider>
-
+      <Slider>
+        <div className="w-full mt-4 mx-auto">
+          <Image
+            src={truckOne}
+            alt="Slide 1"
+            width={1920}
+            height={1080}
+            className="object-cover w-full h-[40vh]"
+            priority
+          />
+        </div>
+        <div className="w-full mt-4 mx-auto">
+          <Image
+            src={truckTwo}
+            alt="Slide 2"
+            width={1920}
+            height={1080}
+            className="object-cover w-full h-[40vh]"
+            priority
+          />
+        </div>
+      </Slider>
     </>
-  )
+  );
 }
