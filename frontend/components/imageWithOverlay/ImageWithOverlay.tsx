@@ -24,7 +24,7 @@ const ImageWithOverlay: React.FC<ImageProps> = ({
         width={1920}
         height={1080}
         className="object-cover w-full h-full"
-        priority
+        loading="lazy"
       />
       <div className="absolute inset-0 flex items-center justify-center">
         <p className={`text-${textColor} text-lg font-bold mb-6`}>{text}</p>

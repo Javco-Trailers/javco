@@ -26,14 +26,14 @@ export default function Home() {
             height={400}
             width={500}
             alt="Picture of a red truck pulling a reefer trailer"
-            priority
+            loading="lazy"
           />
           <Image
             src={DryVan.src}
             height={400}
             width={500}
             alt="Picture of a blue truck pulling a dry van trailer"
-            priority
+            loading="lazy"
           />
         </div>
         <div className="border-b-2 border-jblue">

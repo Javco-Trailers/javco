@@ -33,7 +33,7 @@ export default function Slideshow() {
             width={1920}
             height={1080}
             className="object-cover w-full h-[40vh]"
-            priority
+            loading="lazy"
           />
         </div>
         <div className="w-full mt-4 mx-auto">
@@ -43,7 +43,7 @@ export default function Slideshow() {
             width={1920}
             height={1080}
             className="object-cover w-full h-[40vh]"
-            priority
+            loading="lazy"
           />
         </div>
       </Slider>

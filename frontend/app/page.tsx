@@ -27,7 +27,7 @@ export default function Home() {
             alt="Aerial view of Javco's land"
             height={400}
             width={600}
-            priority
+            loading="lazy"
           />
         </div>
         <div className="text-center">

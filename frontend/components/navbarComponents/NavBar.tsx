@@ -57,7 +57,7 @@ const NavBar: React.FC<NavBarProps> = ({ scrollToSection }) => {
                   className="h-16 w-36 text-primary mt-2 mx-6 pt-4"
                   src={javco_logo}
                   alt="Javco"
-                  priority
+                  loading="lazy"
                 />
               </Link>
               <p className="text-jblue font-semibold text-xs mb-2 pb-4">

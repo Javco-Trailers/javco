@@ -14,7 +14,7 @@ const RentalsSection = () => {
           height={200}
           width={300}
           alt="Picture of the interior of a dry van"
-          priority
+          loading="lazy"
         />
         <Image
           className="p-2"
@@ -22,7 +22,7 @@ const RentalsSection = () => {
           height={200}
           width={600}
           alt="Picture of Dry Vans lined up at the docks"
-          priority
+          loading="lazy"
         />
       </div>
       <div className="max-w-3xl mx-auto text-center">
