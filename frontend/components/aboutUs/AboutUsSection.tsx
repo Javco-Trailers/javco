@@ -1,10 +1,10 @@
 // components/AboutUsSection.tsx
 import React from "react";
 import Image from "next/image";
-import salesLot from "../../public/picture-1-email-edited.jpg";
-import YoungFounders from "../../public/FoundersWhenYoung.jpg";
-import Memorial from "../../public/JavcoFounders.jpg";
-import Aerial from "../../public/AerialPic.jpg";
+import salesLot from "../../public/picture-1-email-edited-min.jpg";
+import YoungFounders from "../../public/FoundersWhenYoung-min.jpg";
+import Memorial from "../../public/JavcoFounders-min.jpg";
+import Aerial from "../../public/AerialPic-min.jpg";
 
 const AboutUsSection: React.FC = () => {
   return (

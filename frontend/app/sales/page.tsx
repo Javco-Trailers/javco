@@ -7,8 +7,8 @@ import Copyright from "@/components/copyright/copyRight";
 import SalesSection from "@/components/servicePageComponents/Sales";
 import SellTrailers from "@/components/servicePageComponents/SellTrailers";
 import Image from "next/image";
-import Reefer from "../../public/ReeferVan.png";
-import DryVan from "../../public/DryVanForSales.png";
+import Reefer from "../../public/ReeferVan-min.png";
+import DryVan from "../../public/DryVanForSales-min.png";
 
 export default function Home() {
   return (

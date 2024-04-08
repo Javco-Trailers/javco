@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import DryVanInside from "../../public/DryVanInside.jpg";
-import DryVansLinedUp from "../../public/dryvansatdock.jpg";
+import DryVanInside from "../../public/DryVanInside-min.jpg";
+import DryVansLinedUp from "../../public/dryvansatdock-min.jpg";
 
 const RentalsSection = () => {
   return (

@@ -7,7 +7,7 @@ import ContactUs from "@/components/contactUs/contactUs";
 import scrollToSection from "@/globalFunctions/scrollToSections";
 import Copyright from "@/components/copyright/copyRight";
 import Image from "next/image";
-import JavcoSignZoomed from "../public/JavcoSignZoomed.jpg";
+import JavcoSignZoomed from "../public/JavcoSignZoomed-min.jpg";
 
 export default function Home() {
   return (
