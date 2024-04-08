@@ -61,23 +61,6 @@ its customers great value.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Contributing
-
-If you feel something is missing or you can add to this project, feel free to clone the repository and run 
-
-```
-npm i
-```
-
-then make a branch and name it something like 
-
-```
-githubusername/mybranchreason
-
-```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- CONTACT -->
 ## Contact
