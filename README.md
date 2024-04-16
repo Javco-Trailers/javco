@@ -21,7 +21,6 @@
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -58,23 +57,6 @@ its customers great value.
 - [x] Quick and eay pages for customer readability
 - [ ] Improve lighthouse accessibility scores
 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Contributing
-
-If you feel something is missing or you can add to this project, feel free to clone the repository and run 
-
-```
-npm i
-```
-
-then make a branch and name it something like 
-
-```
-githubusername/mybranchreason
-
-```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
