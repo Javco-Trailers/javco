@@ -14,6 +14,7 @@ const pathsForNav = [
   { href: "/rentals", text: "Rentals" },
   { href: "/sales", text: "Sales" },
   { href: "/about", text: "About Us" },
+  { href: "/inventory", text: "Inventory" },
 ];
 
 interface pathObj {
