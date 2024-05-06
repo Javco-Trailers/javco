@@ -30,7 +30,7 @@ const InventoryContainer = () => {
         )}
         {/* Main content goes here */}
         {allInventory && (
-          <div className="flex-wrap">
+          <div className="flex-wrap p-1 w-full">
             {allInventory?.map(
               (inventoryItem: InventoryItem, index: number) => {
                 return (
