@@ -41,7 +41,7 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
         </div>
       )}
       {imagesForInventoryItem && (
-        <div className="flex flex-col  h-full w-full rounded border-4 border-stone-300 shadow-xl p-2">
+        <div className="flex flex-col  h-full w-[80vw] md:w-full rounded border-4 border-stone-300 shadow-xl p-2">
           <div className="relative h-full w-full">
             <Maximize2
               onClick={handleZoom}

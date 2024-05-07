@@ -1,9 +1,12 @@
-import axios, { AxiosError } from "axios";
-import { SetStateAction } from "react";
+import axios from "axios";
+import { SetStateAction, Dispatch } from "react";
 
+axios.defaults.withCredentials = true;
 // apiCalls for inventory
 
-export const getAllInventory = (setStateFunction: SetStateAction<any>) => {
+export const getAllInventory = (
+  setStateFunction: Dispatch<SetStateAction<any>>
+) => {
   axios
     .get(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory`)
     .then((response) => {
@@ -31,6 +34,9 @@ export const adminLogin = async (username: string, password: string) => {
       {
         username: username,
         password: password, // Ensure you're sending all required data
+      },
+      {
+        withCredentials: true, // This ensures that cookies are sent with the request
       }
     );
 
@@ -57,14 +63,25 @@ export const adminLogin = async (username: string, password: string) => {
 
 export const adminLogout = () => {
   axios
-    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/logout`)
+    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/logout`, {
+      withCredentials: true, // This ensures that cookies are sent with the request
+    })
     .then((response) => console.log("Successful Logout", response.status));
 };
 
-export const adminAlreadyLoggedInCheck = () => {
-  axios
-    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/protected`)
-    .then((response) =>
-      console.log("You are already logged in", response.status)
-    );
+export const adminAlreadyLoggedInCheck = (
+  setStateFunction: Dispatch<SetStateAction<boolean>>
+) => {
+  try {
+    axios
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/protected`, {
+        withCredentials: true, // This ensures that cookies are sent with the request
+      })
+      .then((response) => {
+        console.log("You are already logged in", response.status);
+        setStateFunction(true);
+      });
+  } catch (error: any) {
+    console.log(error.response);
+  }
 };
