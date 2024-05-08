@@ -10,10 +10,12 @@ import { useRouter } from "next/navigation";
 import NavBar from "@/components/navbarComponents/NavBar";
 import "../../globals.css";
 import scrollToSection from "@/globalFunctions/scrollToSections";
+import ImageAddAndDelete from "@/components/inventory-components/ImageAddAndDelete";
 
 const Dashboard = () => {
   const [authSuccessful, setAuthSuccessful] = useState<boolean>(false);
   const [statusCode, setStatusCode] = useState<number | null>(null);
+  const [currentTab, setCurrentTab] = useState<string>("Home");
 
   const router = useRouter();
   const optionsForCMS = [
@@ -30,15 +32,22 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    console.log(statusCode);
     statusCode && statusCode === 401 ? router.push("/admin/login") : null;
   }, [statusCode]);
+
+  useEffect(() => {
+    console.log(currentTab);
+  }, [currentTab]);
 
   const handleLogout = () => {
     adminLogout();
     router.push("/admin/login");
   };
 
+  const handleTabChange = (e: any) => {
+    const chosenTabValue = e.target.value;
+    setCurrentTab(chosenTabValue);
+  };
   return (
     <section className="bg-gray-100 p-8 relative">
       <NavBar scrollToSection={scrollToSection} />
@@ -51,7 +60,7 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="w-1/5 flex flex-col">
-            <select className="mb-2 rounded">
+            <select onChange={handleTabChange} className="mb-2 rounded">
               {optionsForCMS.map((tabValue, index) => (
                 <option key={`tabValue-${index}`}>{tabValue}</option>
               ))}
@@ -65,6 +74,11 @@ const Dashboard = () => {
           </div>
         )}
       </div>
+      {currentTab === "Inventory" && (
+        <div>
+          <ImageAddAndDelete />
+        </div>
+      )}
     </section>
   );
 };
