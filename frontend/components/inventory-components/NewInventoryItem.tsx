@@ -22,11 +22,6 @@ const NewInventoryItem: React.FC = () => {
     reset,
   } = useForm<Inputs>();
   const [preview, setPreview] = useState<string[]>([]);
-  const [formDataCheck, setFormData] = useState<any>(null);
-
-  useEffect(() => {
-    console.log(formDataCheck);
-  }, [formDataCheck]);
 
   const changedHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;

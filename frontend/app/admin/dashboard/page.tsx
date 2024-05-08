@@ -16,6 +16,7 @@ const Dashboard = () => {
   const [authSuccessful, setAuthSuccessful] = useState<boolean>(false);
   const [statusCode, setStatusCode] = useState<number | null>(null);
   const [currentTab, setCurrentTab] = useState<string>("Home");
+  const [addNew, setAddNew] = useState<boolean>(false);
 
   const router = useRouter();
   const optionsForCMS = [
@@ -66,7 +67,7 @@ const Dashboard = () => {
             >
               Logout
             </button>
-            <select onChange={handleTabChange} className="mb-2 rounded">
+            <select onChange={handleTabChange} className="mb-4 rounded">
               {optionsForCMS.map((tabValue, index) => (
                 <option key={`tabValue-${index}`}>{tabValue}</option>
               ))}
@@ -75,6 +76,29 @@ const Dashboard = () => {
         )}
       </div>
       {currentTab === "Inventory" && (
+        <div>
+          {!addNew ? (
+            <button
+              onClick={() => {
+                setAddNew(true);
+              }}
+              className="p-2 mb-3  bg-jblue text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              Add New
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setAddNew(false);
+              }}
+              className="p-2 mb-3  bg-jblue text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              Close
+            </button>
+          )}
+        </div>
+      )}
+      {currentTab === "Inventory" && addNew && (
         <div>
           <NewInventoryItem />
         </div>
