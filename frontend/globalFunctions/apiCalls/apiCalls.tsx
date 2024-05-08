@@ -70,18 +70,32 @@ export const adminLogout = () => {
 };
 
 export const adminAlreadyLoggedInCheck = (
-  setStateFunction: Dispatch<SetStateAction<boolean>>
+  setStateFunction: Dispatch<SetStateAction<boolean>>,
+  setStatusCode: Dispatch<SetStateAction<number | null>>
 ) => {
-  try {
-    axios
-      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/protected`, {
-        withCredentials: true, // This ensures that cookies are sent with the request
-      })
-      .then((response) => {
-        console.log("You are already logged in", response.status);
-        setStateFunction(true);
-      });
-  } catch (error: any) {
-    console.log(error.response);
-  }
+  axios
+    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/protected`, {
+      withCredentials: true, // Ensure cookies are sent with the request
+    })
+    .then((response) => {
+      setStatusCode(response.status); // Set status code from the response
+      console.log("You are already logged in", response.status);
+      setStateFunction(true); // Set the state function indicating login is successful
+    })
+    .catch((error) => {
+      // Handle errors
+      if (error.response) {
+        // If a response exists, get the status code
+        const status = error.response.status; // Retrieve the status code from the error response
+        setStatusCode(status); // Set the status code
+        if (status === 401) {
+          console.log("Unauthorized, status code 401");
+          setStateFunction(false); // Indicate that the user is not logged in
+        } else {
+          console.error(`Error with status code: ${status}`);
+        }
+      } else {
+        console.error("No response received or unknown error");
+      }
+    });
 };

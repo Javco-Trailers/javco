@@ -4,18 +4,21 @@ import {
   adminAlreadyLoggedInCheck,
 } from "@/globalFunctions/apiCalls/apiCalls";
 import { useRouter } from "next/navigation";
+import "../../app/globals.css";
+import { MoonLoader } from "react-spinners";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [authSuccessful, setAuthSuccessful] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true); // New loading state
+  const [statusCode, setStatusCode] = useState<number | null>(null);
 
   const router = useRouter();
 
   useEffect(() => {
     const checkAuth = async () => {
-      adminAlreadyLoggedInCheck(setAuthSuccessful); // Perform auth check
+      adminAlreadyLoggedInCheck(setAuthSuccessful, setStatusCode); // Perform auth check
       setLoading(false); // Set loading to false after the check
     };
 
@@ -41,6 +44,13 @@ const AdminLogin = () => {
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
+      {loading && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" // Full-screen overlay with opaque background
+        >
+          <MoonLoader size={50} color="#2164a6" />
+        </div>
+      )}
       <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
         <form onSubmit={handleLogin}>
@@ -78,7 +88,7 @@ const AdminLogin = () => {
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full px-4 py-2 bg-jblue text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             Login
           </button>
