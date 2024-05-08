@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import NavBar from "@/components/navbarComponents/NavBar";
 import "../../globals.css";
 import scrollToSection from "@/globalFunctions/scrollToSections";
-import ImageAddAndDelete from "@/components/inventory-components/ImageAddAndDelete";
+import NewInventoryItem from "@/components/inventory-components/NewInventoryItem";
 
 const Dashboard = () => {
   const [authSuccessful, setAuthSuccessful] = useState<boolean>(false);
@@ -60,23 +60,23 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="w-1/5 flex flex-col">
+            <button
+              className="p-2 mb-3  bg-jblue text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
             <select onChange={handleTabChange} className="mb-2 rounded">
               {optionsForCMS.map((tabValue, index) => (
                 <option key={`tabValue-${index}`}>{tabValue}</option>
               ))}
             </select>
-            <button
-              className="px-4 py-2 bg-jblue text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
           </div>
         )}
       </div>
       {currentTab === "Inventory" && (
         <div>
-          <ImageAddAndDelete />
+          <NewInventoryItem />
         </div>
       )}
     </section>
