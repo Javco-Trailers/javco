@@ -52,6 +52,16 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
         </button>
         {/* Content of the zoomed-in inventory card */}
         <h1 className="text-2xl font-bold">Model: {inventoryItem.model}</h1>
+
+        <p className="font-bold text-black">
+          <u>Year</u>: {inventoryItem.year}
+        </p>
+        <p className="font-bold text-black">
+          <u>Model</u>: {inventoryItem.model}
+        </p>
+        <p className="font-bold text-black">
+          <u>Price</u>: {inventoryItem.price}
+        </p>
         <p className="font-semibold">
           Details: {inventoryItem.detailed_description}
         </p>

@@ -66,6 +66,9 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
             <u>Model</u>: {inventoryItem.model}
           </p>
           <p className="font-bold text-black">
+            <u>Price</u>: {inventoryItem.price}
+          </p>
+          <p className="font-bold text-black">
             <u>About</u>: {inventoryItem.short_description}
           </p>
         </div>
