@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import "../../app/globals.css";
 import Image from "next/image";
 import { XCircleIcon } from "lucide-react";
+import { addNewInventoryItem } from "@/globalFunctions/apiCalls/apiCalls";
 
 type Inputs = {
   year: string;
@@ -22,12 +23,14 @@ const NewInventoryItem: React.FC = () => {
     reset,
   } = useForm<Inputs>();
   const [preview, setPreview] = useState<string[]>([]);
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
 
   const changedHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
 
     if (files) {
       const newPreviews: string[] = []; // Store new previews
+      const newFiles: File[] = [];
 
       // Process each file asynchronously
       Array.from(files).forEach((file) => {
@@ -36,31 +39,38 @@ const NewInventoryItem: React.FC = () => {
         reader.onload = (loadEvent) => {
           if (loadEvent.target) {
             const dataUrl = loadEvent.target.result as string;
-            newPreviews.push(dataUrl); // Add the new data URL to the array
+            newPreviews.push(dataUrl);
+            newFiles.push(file);
           }
 
-          // When all files have been processed, update the state
           if (newPreviews.length === files.length) {
-            setPreview((prev) => [...prev, ...newPreviews]); // Update the state with all new previews
+            setPreview((prev) => [...prev, ...newPreviews]);
+            setUploadedFiles((prev) => [...prev, ...newFiles]);
           }
         };
 
-        reader.readAsDataURL(file); // Start reading the file
+        reader.readAsDataURL(file);
       });
     }
   };
 
   const removeFile = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const indexOfPhoto = event.currentTarget.getAttribute("data-index");
+    const index = event.currentTarget.getAttribute("data-index") || "";
+    const indexAsNumber = parseInt(index);
 
-    if (indexOfPhoto !== null) {
-      const index = parseInt(indexOfPhoto, 10); // Parse the string to an integer
-      if (!isNaN(index) && index >= 0 && index < preview.length) {
-        // Ensure the index is valid
-        const updatedPreview = [...preview]; // Create a copy of the preview array
-        updatedPreview.splice(index, 1); // Remove the item at the specified index
-        setPreview(updatedPreview); // Set the updated array as the new state
-      }
+    if (
+      !isNaN(indexAsNumber) &&
+      indexAsNumber >= 0 &&
+      indexAsNumber < preview.length
+    ) {
+      const updatedPreview = [...preview];
+      const updatedFiles = [...uploadedFiles];
+
+      updatedPreview.splice(indexAsNumber, 1); // Remove the preview
+      updatedFiles.splice(indexAsNumber, 1); // Remove the corresponding file
+
+      setPreview(updatedPreview);
+      setUploadedFiles(updatedFiles); // Update the state
     }
   };
 
@@ -77,8 +87,11 @@ const NewInventoryItem: React.FC = () => {
     formData.append("price", data.price);
 
     // Handle files
+    uploadedFiles.forEach((file, index) => {
+      formData.append(`files`, file); // 'files' is the key to represent multiple files
+    });
 
-    // Submit the form data to the backend
+    addNewInventoryItem(formData);
 
     reset();
   };

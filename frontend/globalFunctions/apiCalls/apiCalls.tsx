@@ -25,6 +25,14 @@ export const getPhotosForSingleInventory = (
     });
 };
 
+export const addNewInventoryItem = (newItem: any) => {
+  axios
+    .post(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory`, newItem)
+    .then((response) => {
+      console.log(response.data);
+    });
+};
+
 //apiCalls for Login/Logout/Protected
 
 export const adminLogin = async (username: string, password: string) => {

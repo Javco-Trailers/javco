@@ -30,17 +30,15 @@ const InventoryContainer = () => {
         )}
         {/* Main content goes here */}
         {allInventory && (
-          <div className="flex-wrap p-1 w-full">
-            {allInventory?.map(
-              (inventoryItem: InventoryItem, index: number) => {
-                return (
-                  <InventoryCard
-                    key={`inventory-item-${index}`}
-                    inventoryItem={inventoryItem}
-                  />
-                );
-              }
-            )}
+          <div className="flex flex-col flex-wrap md:flex-row w-full p-1 justify-between">
+            {allInventory.map((inventoryItem, index) => (
+              <div
+                key={`inventory-item-${index}`}
+                className="w-full sm:w-1/2 md:w-1/3 p-2"
+              >
+                <InventoryCard inventoryItem={inventoryItem} />
+              </div>
+            ))}
           </div>
         )}
       </div>
