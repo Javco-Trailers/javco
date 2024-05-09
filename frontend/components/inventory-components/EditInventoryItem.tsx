@@ -59,15 +59,49 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
   });
 
   const [preview, setPreview] = useState<string[]>([]); // Initialize with empty array
-  const [uploadedFiles, setUploadedFiles] = useState<any[]>(
-    inventoryItem.image_ids
-  );
+  const [uploadedFiles, setUploadedFiles] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (preview.length > 0) {
+      const uploadedFilestoMakeInitialArray: any[] = [];
+      preview.map((url, index) => {
+        uploadedFilestoMakeInitialArray.push(
+          base64ToFile(url, `${inventoryItem._id}${index}`)
+        );
+      });
+
+      setUploadedFiles(uploadedFilestoMakeInitialArray);
+    }
+  }, [preview]);
 
   useEffect(() => {
     // Fetch and set images
     getPhotosForSingleInventory(setPreview, inventoryItem._id);
   }, [inventoryItem._id]); // Only fetch images when component mounts or inventory ID changes
 
+  // changing the preview to files to send back
+
+  function base64ToFile(dataUrl: string, filename: string) {
+    // Extract the base64 data
+    const base64String = dataUrl.split(",")[1]; // Remove the prefix to get only the base64 content
+
+    // Convert base64 to binary
+    const binaryString = atob(base64String);
+
+    // Convert binary string to Uint8Array
+    const binaryData = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+      binaryData[i] = binaryString.charCodeAt(i);
+    }
+
+    // Create a Blob from the binary data
+    const blob = new Blob([binaryData], { type: "image/jpeg" });
+
+    // Create a File object from the Blob with a filename
+    return new File([blob], filename, { type: "image/jpeg" });
+  }
+
+  //change for adding files
   const changedHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
 

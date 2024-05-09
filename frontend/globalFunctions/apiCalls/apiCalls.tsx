@@ -39,7 +39,7 @@ export const deleteInventoryItem = (inventory_id: any) => {
 
 export const updateInventoryItem = (inventory_id: any, formData: any) => {
   axios
-    .patch(
+    .put(
       `${process.env.NEXT_PUBLIC_BASE_URL}/inventory/${inventory_id}`,
       formData
     )
