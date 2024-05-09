@@ -178,7 +178,63 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="mb-4 space-y-4">
+      <div>
+        <label htmlFor="year">Year:</label>
+        <input
+          type="number"
+          {...register("year", { required: true })} // Register input with React Hook Form
+          defaultValue={inventoryItem.year.toString()}
+        />
+        {errors.year && <span>Year is required</span>}
+      </div>
+
+      <div>
+        <label htmlFor="make">Make:</label>
+        <input
+          type="text"
+          {...register("make", { required: true })}
+          defaultValue={inventoryItem.make}
+        />
+        {errors.make && <span>Make is required</span>}
+      </div>
+
+      <div>
+        <label htmlFor="model">Model:</label>
+        <input
+          type="text"
+          {...register("model", { required: true })}
+          defaultValue={inventoryItem.model}
+        />
+        {errors.model && <span>Model is required</span>}
+      </div>
+
+      <div>
+        <label htmlFor="price">Price:</label>
+        <input
+          type="text"
+          {...register("price", { required: true })}
+          defaultValue={inventoryItem.price.toString()} // Convert to string
+        />
+        {errors.price && <span>Price is required</span>}
+      </div>
+
+      <div>
+        <label htmlFor="short_description">Short Description:</label>
+        <textarea
+          {...register("short_description")}
+          defaultValue={inventoryItem.short_description}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="detailed_description">Detailed Description:</label>
+        <textarea
+          {...register("detailed_description")}
+          defaultValue={inventoryItem.detailed_description}
+        />
+      </div>
+
       <label htmlFor="files">Files:</label>
       <input type="file" accept="image/*" multiple onChange={changedHandler} />
       <div className="flex flex-wrap">

@@ -123,7 +123,7 @@ const Dashboard = () => {
         </div>
       )}
       {currentTab === "Inventory" && editDelete && inventoryItems && (
-        <div>
+        <div className="mb-2">
           {inventoryItems.map((item: InventoryItem, index: number) => {
             return (
               <EditInventoryItem
