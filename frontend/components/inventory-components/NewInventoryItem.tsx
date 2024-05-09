@@ -107,6 +107,7 @@ const NewInventoryItem: React.FC = () => {
           {...register("year", { required: true })}
           className="input-style"
           placeholder="Enter year"
+          type="number"
         />
         {errors.year && <p className="text-red-500">Year is required</p>}
       </div>
@@ -168,7 +169,13 @@ const NewInventoryItem: React.FC = () => {
       <label htmlFor="files" className="mr-2">
         Files:
       </label>
-      <input type="file" name="file" multiple onChange={changedHandler} />{" "}
+      <input
+        type="file"
+        name="file"
+        accept="image/*"
+        multiple
+        onChange={changedHandler}
+      />{" "}
       {/* Handle file changes */}
       <div className="flex flex-wrap">
         {preview.map((url, index) => (
@@ -199,7 +206,7 @@ const NewInventoryItem: React.FC = () => {
       {/* Submit button */}
       <button
         type="submit"
-        className="px-4 py-2 bg-jblue hover:bg-pink-600 text-white rounded"
+        className="px-4 py-2 bg-jblue hover:bg-pink-700 text-white rounded"
       >
         Submit
       </button>

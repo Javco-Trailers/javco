@@ -1,0 +1,191 @@
+import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import Image from "next/image";
+import { XCircleIcon } from "lucide-react";
+import {
+  updateInventoryItem,
+  deleteInventoryItem,
+  getPhotosForSingleInventory,
+} from "@/globalFunctions/apiCalls/apiCalls";
+
+interface InventoryItem {
+  _id: string;
+  year: number;
+  make: string;
+  model: string;
+  price: string;
+  short_description: string;
+  detailed_description: string;
+  image_ids: string[]; // Array of existing image IDs
+}
+
+interface EditInventoryItemProps {
+  inventoryItem: InventoryItem; // The existing inventory item to edit
+  setInventoryItems: Dispatch<SetStateAction<InventoryItem[] | null>>;
+  inventoryItems: InventoryItem[];
+  index: number;
+}
+
+type Inputs = {
+  year: string;
+  make: string;
+  model: string;
+  price: string;
+  short_description: string;
+  detailed_description: string;
+  files: any;
+};
+
+const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
+  inventoryItem,
+  setInventoryItems,
+  inventoryItems,
+  index,
+}) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<Inputs>({
+    defaultValues: {
+      year: inventoryItem.year.toString(),
+      make: inventoryItem.make,
+      model: inventoryItem.model,
+      price: inventoryItem.price,
+      short_description: inventoryItem.short_description,
+      detailed_description: inventoryItem.detailed_description,
+    },
+  });
+
+  const [preview, setPreview] = useState<string[]>([]); // Initialize with empty array
+  const [uploadedFiles, setUploadedFiles] = useState<any[]>(
+    inventoryItem.image_ids
+  );
+
+  useEffect(() => {
+    // Fetch and set images
+    getPhotosForSingleInventory(setPreview, inventoryItem._id);
+  }, [inventoryItem._id]); // Only fetch images when component mounts or inventory ID changes
+
+  const changedHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+
+    if (files) {
+      const newPreviews: string[] = [];
+      const newFiles: File[] = [];
+
+      Array.from(files).forEach((file) => {
+        const reader = new FileReader();
+
+        reader.onload = (loadEvent) => {
+          if (loadEvent.target) {
+            const dataUrl = loadEvent.target.result as string;
+            newPreviews.push(dataUrl);
+            newFiles.push(file);
+          }
+
+          if (newPreviews.length === files.length) {
+            setPreview((prev) => [...prev, ...newPreviews]);
+            setUploadedFiles((prev) => [...prev, ...newFiles]);
+          }
+        };
+
+        reader.readAsDataURL(file);
+      });
+    }
+  };
+
+  const removeFile = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const index = event.currentTarget.getAttribute("data-index") || "";
+    const indexAsNumber = parseInt(index);
+
+    if (
+      !isNaN(indexAsNumber) &&
+      indexAsNumber >= 0 &&
+      indexAsNumber < preview.length
+    ) {
+      const updatedPreview = [...preview];
+      const updatedFiles = [...uploadedFiles];
+
+      updatedPreview.splice(indexAsNumber, 1); // Remove the preview
+      updatedFiles.splice(indexAsNumber, 1); // Remove the corresponding file
+
+      setPreview(updatedPreview);
+      setUploadedFiles(updatedFiles); // Update the state
+    }
+  };
+
+  const onSubmit: SubmitHandler<Inputs> = (data: any) => {
+    const formData = new FormData();
+
+    // Ensure fields are correctly appended to FormData
+    formData.append("year", data.year);
+    formData.append("make", data.make);
+    formData.append("model", data.model);
+    formData.append("short_description", data.short_description || "");
+    formData.append("detailed_description", data.detailed_description || "");
+    formData.append("price", data.price);
+
+    // Handle files
+    uploadedFiles.forEach((file, index) => {
+      formData.append(`files`, file); // 'files' is the key to represent multiple files
+    });
+
+    updateInventoryItem(inventoryItem._id, formData); // Call API to update
+
+    reset(); // Optionally reset form after submission
+  };
+
+  const handleDelete = () => {
+    const newInventoryItems = inventoryItems.filter((_, i) => i !== index); // Create a new array without the deleted item
+    setInventoryItems(newInventoryItems); // Update state with the new array
+    deleteInventoryItem(inventoryItem._id); // Deletes the inventory item
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <label htmlFor="files">Files:</label>
+      <input type="file" accept="image/*" multiple onChange={changedHandler} />
+      <div className="flex flex-wrap">
+        {preview.map((url, index) => (
+          <div key={index} className="relative">
+            <button
+              onClick={removeFile}
+              data-index={index}
+              className="absolute top-3 right-3 bg-white rounded-full text-red-500 hover:text-red-700"
+            >
+              <XCircleIcon size={24} />
+            </button>
+            <Image
+              src={url}
+              alt={`Preview ${index}`}
+              height={200}
+              width={200}
+              className="p-2 rounded"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="flex justify-between">
+        <button
+          type="button"
+          onClick={handleSubmit(onSubmit)}
+          className="px-4 py-2 bg-jblue hover:bg-pink-700 text-white rounded"
+        >
+          Save
+        </button>
+        <button
+          type="button"
+          onClick={handleDelete}
+          className="px-4 py-2 bg-red-600 text-white rounded"
+        >
+          Delete
+        </button>
+      </div>
+    </form>
+  );
+};
+
+export default EditInventoryItem;

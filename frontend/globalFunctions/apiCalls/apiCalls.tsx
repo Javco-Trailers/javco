@@ -33,6 +33,21 @@ export const addNewInventoryItem = (newItem: any) => {
     });
 };
 
+export const deleteInventoryItem = (inventory_id: any) => {
+  axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory/${inventory_id}`);
+};
+
+export const updateInventoryItem = (inventory_id: any, formData: any) => {
+  axios
+    .patch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/inventory/${inventory_id}`,
+      formData
+    )
+    .then((response) => {
+      console.log(response.data);
+    });
+};
+
 //apiCalls for Login/Logout/Protected
 
 export const adminLogin = async (username: string, password: string) => {

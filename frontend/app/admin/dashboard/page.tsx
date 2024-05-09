@@ -5,18 +5,25 @@ import { MoonLoader } from "react-spinners";
 import {
   adminLogout,
   adminAlreadyLoggedInCheck,
+  getAllInventory,
 } from "@/globalFunctions/apiCalls/apiCalls";
 import { useRouter } from "next/navigation";
 import NavBar from "@/components/navbarComponents/NavBar";
 import "../../globals.css";
 import scrollToSection from "@/globalFunctions/scrollToSections";
 import NewInventoryItem from "@/components/inventory-components/NewInventoryItem";
+import EditInventoryItem from "@/components/inventory-components/EditInventoryItem";
+import { InventoryItem } from "@/app/types/types";
 
 const Dashboard = () => {
   const [authSuccessful, setAuthSuccessful] = useState<boolean>(false);
   const [statusCode, setStatusCode] = useState<number | null>(null);
   const [currentTab, setCurrentTab] = useState<string>("Home");
   const [addNew, setAddNew] = useState<boolean>(false);
+  const [editDelete, setEditDelete] = useState<boolean>(false);
+  const [inventoryItems, setInventoryItems] = useState<InventoryItem[] | null>(
+    null
+  );
 
   const router = useRouter();
   const optionsForCMS = [
@@ -30,6 +37,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     adminAlreadyLoggedInCheck(setAuthSuccessful, setStatusCode);
+    getAllInventory(setInventoryItems);
   }, []);
 
   useEffect(() => {
@@ -62,7 +70,7 @@ const Dashboard = () => {
         ) : (
           <div className="w-1/5 flex flex-col">
             <button
-              className="p-2 mb-3  bg-jblue text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="p-2 mb-3  bg-jblue text-white rounded-lg hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               onClick={handleLogout}
             >
               Logout
@@ -77,21 +85,32 @@ const Dashboard = () => {
       </div>
       {currentTab === "Inventory" && (
         <div>
-          {!addNew ? (
-            <button
-              onClick={() => {
-                setAddNew(true);
-              }}
-              className="p-2 mb-3  bg-jblue text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            >
-              Add New
-            </button>
+          {!addNew && !editDelete ? (
+            <div>
+              <button
+                onClick={() => {
+                  setAddNew(true);
+                }}
+                className="p-2 mb-3 mr-3 bg-jblue text-white rounded-lg hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                Add New
+              </button>
+              <button
+                onClick={() => {
+                  setEditDelete(true);
+                }}
+                className="p-2 mb-3  bg-jblue text-white rounded-lg hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                Edit/Delete Item
+              </button>
+            </div>
           ) : (
             <button
               onClick={() => {
                 setAddNew(false);
+                setEditDelete(false);
               }}
-              className="p-2 mb-3  bg-jblue text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="p-2 mb-3  bg-jblue text-white rounded-lg hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               Close
             </button>
@@ -101,6 +120,21 @@ const Dashboard = () => {
       {currentTab === "Inventory" && addNew && (
         <div>
           <NewInventoryItem />
+        </div>
+      )}
+      {currentTab === "Inventory" && editDelete && inventoryItems && (
+        <div>
+          {inventoryItems.map((item: InventoryItem, index: number) => {
+            return (
+              <EditInventoryItem
+                key={`${item._id}-${index}`}
+                index={index}
+                inventoryItem={item}
+                setInventoryItems={setInventoryItems}
+                inventoryItems={inventoryItems}
+              />
+            );
+          })}
         </div>
       )}
     </section>
