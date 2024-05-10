@@ -128,6 +128,6 @@ export const fetchText = async () => {
     `${process.env.NEXT_PUBLIC_BASE_URL}/text-content`
   );
   const textContent = response.data; // This is the resolved data
-  // console.log(textContent); // Now you can consume the data
+
   return textContent;
 };

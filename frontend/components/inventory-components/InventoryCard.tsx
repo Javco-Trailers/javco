@@ -17,15 +17,9 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
   >(null);
   const [isZoomed, setIsZoomed] = useState<boolean>(false);
 
-  console.log(inventoryItem);
-
   useEffect(() => {
     getPhotosForSingleInventory(setImagesForInventoryItem, inventoryItem._id);
   }, []);
-
-  useEffect(() => {
-    if (imagesForInventoryItem) console.log(imagesForInventoryItem);
-  }, [imagesForInventoryItem]);
 
   // zoom on the element
   const handleZoom = () => {

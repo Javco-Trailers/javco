@@ -44,10 +44,6 @@ const Dashboard = () => {
     statusCode && statusCode === 401 ? router.push("/admin/login") : null;
   }, [statusCode]);
 
-  useEffect(() => {
-    console.log(currentTab);
-  }, [currentTab]);
-
   const handleLogout = () => {
     adminLogout();
     router.push("/admin/login");
