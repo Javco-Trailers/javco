@@ -24,12 +24,6 @@ interface pathObj {
   text: string;
 }
 
-// interface NavBarProps {
-//   scrollToSection: (sectionId: string) => void;
-// }
-
-//const ContactUs: React.FC<ContactUsProps>
-
 const NavBar: React.FC = () => {
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   const [getQuoteClicked, setGetQuoteClicked] = useState<boolean>(false);

@@ -10,11 +10,7 @@ import JavcoSignZoomed from "../public/JavcoSignZoomed-min.jpg";
 import Link from "next/link";
 import { fetchText } from "@/globalFunctions/apiCalls/apiCalls";
 
-interface HomeProps {
-  text: any;
-}
-
-const Home: React.FC<HomeProps> = async () => {
+const Home: React.FC = async () => {
   const text = await fetchText();
   console.log(text);
   return (
