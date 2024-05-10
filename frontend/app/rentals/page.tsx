@@ -1,12 +1,18 @@
-"use client";
+"use server";
 import "../globals.css";
-import scrollToSection from "@/globalFunctions/scrollToSections";
+import { fetchText } from "@/globalFunctions/apiCalls/apiCalls";
 import NavBar from "@/components/navbarComponents/NavBar";
 import ContactUs from "@/components/contactUs/contactUs";
 import Copyright from "@/components/copyright/copyRight";
 import RentalsSection from "@/components/servicePageComponents/Rentals";
 
-export default function Home() {
+export default async function RentalsPage() {
+  const text = await fetchText();
+  // Extract the first item from the text array
+  const textData = text.text[0].text;
+
+  // Parse the text to get the actual JSON object
+  const parsedText = JSON.parse(textData);
   return (
     <>
       <div className="overflow-x-hidden">

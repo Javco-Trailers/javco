@@ -4,14 +4,24 @@ import { SetStateAction, Dispatch } from "react";
 axios.defaults.withCredentials = true;
 // apiCalls for inventory
 
-export const getAllInventory = (
-  setStateFunction: Dispatch<SetStateAction<any>>
+export const getAllInventory = async (
+  setStateFunction?: Dispatch<SetStateAction<any>>
 ) => {
-  axios
-    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory`)
-    .then((response) => {
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/inventory`
+    );
+
+    if (setStateFunction) {
       setStateFunction(response.data.items);
-    });
+      return null; // or return a message that indicates it set the state
+    } else {
+      return response.data.items; // return the data if no setStateFunction is provided
+    }
+  } catch (error) {
+    console.error("Error fetching inventory:", error);
+    throw error;
+  }
 };
 
 export const getPhotosForSingleInventory = (

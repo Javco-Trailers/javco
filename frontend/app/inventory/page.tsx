@@ -1,9 +1,7 @@
 "use client";
-
 import ContactUs from "@/components/contactUs/contactUs";
 import NavBar from "@/components/navbarComponents/NavBar";
 import Copyright from "@/components/copyright/copyRight";
-import scrollToSection from "@/globalFunctions/scrollToSections";
 import "../globals.css";
 import InventoryContainer from "@/components/inventory-components/InventoryContainer";
 
