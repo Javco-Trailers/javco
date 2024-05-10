@@ -30,7 +30,11 @@ const InventoryContainer = () => {
         )}
         {/* Main content goes here */}
         {allInventory && (
-          <div className="flex flex-col flex-wrap md:flex-row w-full p-1 justify-between">
+          <div
+            className={`flex flex-col flex-wrap md:flex-row w-full p-1 ${
+              allInventory.length === 1 ? "justify-center" : "justify-between"
+            }`}
+          >
             {allInventory.map((inventoryItem, index) => (
               <div
                 key={`inventory-item-${index}`}

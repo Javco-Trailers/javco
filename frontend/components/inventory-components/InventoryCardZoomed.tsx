@@ -51,19 +51,22 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
           <XCircleIcon size={24} />
         </button>
         {/* Content of the zoomed-in inventory card */}
-        <h1 className="text-2xl font-bold">Model: {inventoryItem.model}</h1>
+        <p className="font-bold text-jblue">
+          <u className="text-lg">MAKE</u>: {inventoryItem.model}
+        </p>
 
-        <p className="font-bold text-black">
-          <u>Year</u>: {inventoryItem.year}
+        <p className="font-bold text-jblue">
+          <u className="text-lg">YEAR</u>: {inventoryItem.year}
         </p>
-        <p className="font-bold text-black">
-          <u>Model</u>: {inventoryItem.model}
+        <p className="font-bold text-jblue">
+          <u className="text-lg">MODEL</u>: {inventoryItem.model}
         </p>
-        <p className="font-bold text-black">
-          <u>Price</u>: {inventoryItem.price}
+        <p className="font-bold text-jblue">
+          <u className="text-lg">PRICE</u>: {inventoryItem.price}
         </p>
-        <p className="font-semibold">
-          Details: {inventoryItem.detailed_description}
+        <p className="font-bold text-jblue">
+          <u className="text-lg">DETAILS</u>::{" "}
+          {inventoryItem.detailed_description}
         </p>
         <Carousel
           responsive={responsive}
@@ -101,6 +104,7 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
               }}
             >
               <Image
+                key={`${index}imagecourselthumbnail`}
                 src={image}
                 width={64}
                 height={64}
