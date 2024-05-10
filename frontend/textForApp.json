@@ -1,5 +1,22 @@
 {
   "text": {
-    "mainPage": {}
+    "Home_Page": {
+      "Main_Header": "Welcome to Javco Trailer Sales Inc.",
+      "Second_Header": "Your Premier Destination for Affordable and Exceptional Semi-Trailers!",
+      "Types_Of_Trailers": {
+        "Type_One": "-Dry Vans",
+        "Type_Two": "-Reefers",
+        "Type_Three": "-Flatbeds",
+        "Type_Four": "-Tankers"
+      },
+      "Info_About_Javco": "Need a trailer? Javco has you covered! We offer a wide selection of Semi-trailers for storage, cartage & OTR use.",
+      "Link_Text": {
+        "Link_To_Rental_Text": "Rent",
+        "Filler": "or",
+        "Link_To_Sales_Text": "Buy",
+        "Link_To_Email": "NOW!"
+      },
+      "Link_To_Interview": "Click here to see view our current inventory!"
+    }
   }
 }

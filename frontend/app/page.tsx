@@ -1,10 +1,9 @@
-"use client";
+"use server";
 
 import React from "react";
 import "./globals.css";
 import NavBar from "@/components/navbarComponents/NavBar";
 import ContactUs from "@/components/contactUs/contactUs";
-import scrollToSection from "@/globalFunctions/scrollToSections";
 import Copyright from "@/components/copyright/copyRight";
 import Image from "next/image";
 import JavcoSignZoomed from "../public/JavcoSignZoomed-min.jpg";
@@ -22,7 +21,7 @@ const Home: React.FC<HomeProps> = async () => {
     <>
       <div className="overflow-x-hidden">
         <div className="bg-white text-jblue mb-2 shadow-lg shadow-indigo-500/40 rounded-b px-8">
-          <NavBar scrollToSection={scrollToSection} />
+          <NavBar />
         </div>
         <div className="bg-jblue text-white text-center mb-2 p-2">
           <h1 className="font-bold text-5xl p-2">

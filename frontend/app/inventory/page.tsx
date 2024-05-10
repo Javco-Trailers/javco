@@ -12,7 +12,7 @@ const InventoryPage = () => {
     <>
       <div className="overflow-x-hidden">
         <div className="bg-white text-jblue mb-2 shadow-lg shadow-indigo-500/40 rounded-b px-8">
-          <NavBar scrollToSection={scrollToSection} />
+          <NavBar />
         </div>
         <InventoryContainer />
         <div id="contact">

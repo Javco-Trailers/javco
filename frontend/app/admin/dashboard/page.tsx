@@ -59,7 +59,7 @@ const Dashboard = () => {
   };
   return (
     <section className="bg-gray-100 p-8 relative">
-      <NavBar scrollToSection={scrollToSection} />
+      <NavBar />
       <div>
         {!authSuccessful ? (
           <div
