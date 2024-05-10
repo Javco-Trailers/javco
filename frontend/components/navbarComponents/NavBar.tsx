@@ -13,8 +13,9 @@ const pathsForNav = [
   { href: "/", text: "Home" },
   { href: "/rentals", text: "Rentals" },
   { href: "/sales", text: "Sales" },
-  { href: "/about", text: "About Us" },
+
   { href: "/inventory", text: "Inventory" },
+  { href: "/about", text: "About Us" },
 ];
 
 interface pathObj {
@@ -55,7 +56,7 @@ const NavBar: React.FC<NavBarProps> = ({ scrollToSection }) => {
                 className="flex gap-1 font-bold text-gray-700 items-center"
               >
                 <Image
-                  className="h-16 w-36 text-primary mt-2 mx-6 pt-4"
+                  className="h-12 w-20 lg:h-16 lg:w-36 text-primary mt-2 mx-6 pt-4"
                   src={javco_logo}
                   alt="Javco"
                   loading="lazy"

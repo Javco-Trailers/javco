@@ -56,20 +56,21 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
               className="rounded w-full "
             />
           </div>
-          <p className="font-bold text-black">
-            <u>Make</u>: {inventoryItem.make}
+          <p className="font-bold text-jblue">
+            <u className="text-lg">MAKE</u>: {inventoryItem.make}
           </p>
-          <p className="font-bold text-black">
-            <u>Year</u>: {inventoryItem.year}
+          <p className="font-bold text-jblue">
+            <u className="text-lg">YEAR</u>: {inventoryItem.year}
           </p>
-          <p className="font-bold text-black">
-            <u>Model</u>: {inventoryItem.model}
+          <p className=" font-bold text-jblue">
+            <u className="text-lg">MODEL</u>: {inventoryItem.model}
           </p>
-          <p className="font-bold text-black">
-            <u>Price</u>: {inventoryItem.price}
+          <p className="font-bold text-jblue">
+            <u className="text-lg">PRICE</u>: {inventoryItem.price}
           </p>
-          <p className="font-bold text-black">
-            <u>About</u>: {inventoryItem.short_description}
+          <p className="font-bold text-jblue">
+            <u className="text-lg">ABOUT</u>: <span></span>
+            {inventoryItem.short_description}
           </p>
         </div>
       )}

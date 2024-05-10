@@ -8,8 +8,16 @@ import scrollToSection from "@/globalFunctions/scrollToSections";
 import Copyright from "@/components/copyright/copyRight";
 import Image from "next/image";
 import JavcoSignZoomed from "../public/JavcoSignZoomed-min.jpg";
+import Link from "next/link";
+import { fetchText } from "@/globalFunctions/apiCalls/apiCalls";
 
-export default function Home() {
+interface HomeProps {
+  text: any;
+}
+
+const Home: React.FC<HomeProps> = async () => {
+  const text = await fetchText();
+  console.log(text);
   return (
     <>
       <div className="overflow-x-hidden">
@@ -58,9 +66,17 @@ export default function Home() {
               <a href="/sales">
                 <u>Buy</u>
               </a>{" "}
-              <a href="mailto:info@javco.co?subject=Javco Inquiry">
+              <Link href="mailto:info@javco.co?subject=Javco Inquiry">
                 <u>NOW!</u>
-              </a>
+              </Link>
+            </h2>
+            <h2>
+              <Link
+                className="text-white font-bold text-2xl underline"
+                href={"/inventory"}
+              >
+                Click here to see view our current inventory!
+              </Link>
             </h2>
           </div>
         </div>
@@ -74,4 +90,6 @@ export default function Home() {
       </div>
     </>
   );
-}
+};
+
+export default Home;
