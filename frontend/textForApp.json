@@ -17,6 +17,43 @@
         "Link_To_Email": "NOW!"
       },
       "Link_To_Interview": "Click here to see view our current inventory!"
+    },
+    "Rentals_Page": {
+      "Main_Header": "Rentals",
+      "Text_Under_Photo": "Javco maintains a quality multi-brand rental fleet for both your short and long-term needs",
+      "Storage_Section": {
+        "Section_Header": "Storage Trailers",
+        "Section_Paragraph_Before_Link_1": "- Alleviate your cramped warehouse space with the security and flexibility of a storage trailer. Javco will deliver right to your dock or jobsite! ",
+        "Link_One_Text": "Call",
+        "Filler_Between_Texts": " or ",
+        "Link_Two_Text": "email",
+        "Ending_Text": " now for a quote!"
+      },
+      "Cartage_Section": {
+        "Section_Header": "Cartage & OTR Trailers",
+        "Section_Paragraph": "- Javco maintains a quality multi-brand rental fleet of cartage and OTR trailers. Fill out a credit application and request a quote! Owner operators welcome!"
+      },
+      "Credit_Application_Text": "Download Credit Application PDF",
+      "Industries_We_Serve": {
+        "Section_Header": "Industries We Serve",
+        "List_Items": [
+          "Manufacturing",
+          "Shopping centers",
+          "Lawn & Garden",
+          "Recycling centers",
+          "Hotels",
+          "Post bulk mail",
+          "Construction Sites",
+          "Merchandizers",
+          "Tradeshow conventions"
+        ]
+      }
+    },
+    "About_Us_Page": {
+      "Main_Header": "About us",
+      "Paragraph_One": "Javco Trailer Sales, Inc. was founded in 1984 by the unlikely duo of Avner Hizmi and John Griska. Avner, an Israeli immigrant, and John, a Pittsburgh-born yinzer and Vietnam veteran, crossed paths in the trailer industry and eventually forged a business partnership that endured a lifetime. John and Avner deftly operated in the Milwaukee and Chicago markets and gradually built a network of trusted vendors and customers.",
+      "Paragraph_Two": "In 1998, they purchased a parcel of land along I-94 and erected a 5,000 square-foot building which serves as our base of operations to this day.",
+      "Paragraph_Three": "Avner passed away in November of 2011. John passed away in May of 2022. We are forever indebted to their entrepreneurship, ingenuity, and mutual loyalty."
     }
   }
 }
