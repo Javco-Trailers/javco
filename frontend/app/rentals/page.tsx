@@ -21,10 +21,12 @@ export default async function RentalsPage() {
         </div>
 
         <div className="w-full bg-white p-2 h-1/5 text-center">
-          <h1 className={`text-jblue text-4xl font-bold mb-2`}>Rentals</h1>
+          <h1 className={`text-jblue text-4xl font-bold mb-2`}>
+            {parsedText.text.Rentals_Page.Main_Header}
+          </h1>
         </div>
         <div className="border-b-2 border-jblue">
-          <RentalsSection />
+          <RentalsSection parsedText={parsedText} />
         </div>
 
         <div id="contact">
