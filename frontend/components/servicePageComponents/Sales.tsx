@@ -1,7 +1,14 @@
 import React from "react";
 import Link from "next/link";
 
-const SalesSection = () => {
+interface SalesSectionProps {
+  parsedText: any;
+}
+
+const SalesSection: React.FC<SalesSectionProps> = ({ parsedText }) => {
+  const salesSectionText = parsedText.text.Sales_Page;
+  const buySection = salesSectionText.Buy_Trailers_Section;
+
   return (
     <section className="bg-gray-100 p-8">
       <div className="max-w-3xl mx-auto text-center">
@@ -9,7 +16,7 @@ const SalesSection = () => {
           <ul>
             <li className="text-left  mb-4">
               <h2 className="font-bold text-xl mb-2 mt-2 text-jblue">
-                Buy Trailers
+                {buySection.Section_Header}
               </h2>
               <ul>
                 <li className="ml-6 text-gray-600">
@@ -20,19 +27,20 @@ const SalesSection = () => {
                     className="text-jblue underline"
                     href="tel:+12628359400"
                   >
-                    Call
+                    {" "}
+                    {buySection.Link_To_Phone}
                   </Link>{" "}
-                  or
+                  {buySection.Filler_Between_Links}
                   <Link
                     className="text-jblue underline"
                     href="mailto:info@javco.co?subject=Javco Inquiry"
                   >
                     {" "}
-                    email
+                    {buySection.Link_To_Email}
                   </Link>{" "}
-                  {"NOW and ask about our current inventory! "}
+                  {`${buySection.Text_Before_Inventory_Link} `}
                   <Link className="text-jblue underline" href={"/inventory"}>
-                    Go check out our inventory now online
+                    {buySection.Inventory_Link_Text}
                   </Link>
                 </li>
               </ul>

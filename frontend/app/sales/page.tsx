@@ -43,11 +43,11 @@ export default async function SalesPage() {
           />
         </div>
         <div className="border-b-2 border-jblue">
-          <SalesSection />
+          <SalesSection parsedText={parsedText} />
         </div>
 
         <div className="border-b-2 border-jblue">
-          <SellTrailers />
+          <SellTrailers parsedText={parsedText} />
         </div>
 
         <div id="contact">
