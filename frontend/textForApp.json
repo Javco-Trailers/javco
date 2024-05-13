@@ -49,6 +49,23 @@
         ]
       }
     },
+    "Sales_Page": {
+      "Main_Header": "Welcome to Javco Trailer Sales Inc.",
+      "Buy_Trailers_Section": {
+        "Section_Header": "Buy Trailers",
+        "Section_Paragraph_Before_Link_1": "- Get the right trailer for the right price! Javco is a licensed dealer of used dry vans, reefers, flatbed, and tanker trailers. ",
+        "Link_To_Phone": "Call",
+        "Filler_Between_Links": " or ",
+        "Link_To_Email": "email",
+        "Text_Before_Inventory_Link": " NOW and ask about our current inventory!",
+        "Inventory_Link_Text": "Go check out our inventory now online."
+      },
+      "Sell_Your_Trailer_Section": {
+        "Section_Header": "Sell Your Trailers to Javco",
+        "Text_Before_Email_Link": "- Thinking of selling your trailer? Javco is always looking for quality inventory at a fair price. Whether you want to trade-in or just downsize your fleet, we'll make the process easy and pain-free. Tell us what you have "
+      },
+      "Link_To_Email": "HERE"
+    },
     "About_Us_Page": {
       "Main_Header": "About us",
       "Paragraph_One": "Javco Trailer Sales, Inc. was founded in 1984 by the unlikely duo of Avner Hizmi and John Griska. Avner, an Israeli immigrant, and John, a Pittsburgh-born yinzer and Vietnam veteran, crossed paths in the trailer industry and eventually forged a business partnership that endured a lifetime. John and Avner deftly operated in the Milwaukee and Chicago markets and gradually built a network of trusted vendors and customers.",

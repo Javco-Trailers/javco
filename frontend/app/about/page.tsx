@@ -21,7 +21,7 @@ export default async function Home() {
       </div>
 
       <div>
-        <AboutUsSection />
+        <AboutUsSection parsedText={parsedText} />
       </div>
 
       <div id="contact">
