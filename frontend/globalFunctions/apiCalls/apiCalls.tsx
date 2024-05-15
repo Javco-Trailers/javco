@@ -145,3 +145,11 @@ export const fetchText = async (setStateFunction: any) => {
     return response.data; // return the data if no setStateFunction is provided
   }
 };
+
+export const replaceText = (text_id: any, text: any) => {
+  axios
+    .put(`${process.env.NEXT_PUBLIC_BASE_URL}/text-content/${text_id}`, text)
+    .then((response) => {
+      console.log(response.data);
+    });
+};

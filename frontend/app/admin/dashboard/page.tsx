@@ -26,14 +26,7 @@ const Dashboard = () => {
   );
 
   const router = useRouter();
-  const optionsForCMS = [
-    "Home",
-    "Rentals",
-    "Sales",
-    "About Us",
-    "Inventory",
-    "Contact Us",
-  ];
+  const optionsForCMS = ["Home", "Rentals", "Sales", "About Us", "Inventory"];
 
   useEffect(() => {
     adminAlreadyLoggedInCheck(setAuthSuccessful, setStatusCode);
