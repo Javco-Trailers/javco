@@ -57,7 +57,7 @@ const NavBar: React.FC = () => {
                   loading="lazy"
                 />
               </Link>
-              <p className="text-jblue font-semibold text-xs mb-2 pb-4">
+              <p className="text-jblue font-semibold text-xs mb-2 p-4">
                 Javco Trailer Sales Inc.
               </p>
             </div>
