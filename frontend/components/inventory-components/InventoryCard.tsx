@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { InventoryItem } from "@/app/types/types";
@@ -12,11 +14,10 @@ interface InventoryProps {
 }
 
 const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
+  const [isZoomed, setIsZoomed] = useState<boolean>(false);
   const [imagesForInventoryItem, setImagesForInventoryItem] = useState<
     string[] | null
   >(null);
-  const [isZoomed, setIsZoomed] = useState<boolean>(false);
-
   useEffect(() => {
     getPhotosForSingleInventory(setImagesForInventoryItem, inventoryItem._id);
   }, []);
@@ -29,27 +30,33 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
   return (
     <div className="w-full h-full">
       {/* Ensure border class is correct */}
-      {!imagesForInventoryItem && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <MoonLoader size={50} color="#2164a6" />
-        </div>
-      )}
-      {imagesForInventoryItem && (
-        <div className="flex flex-col  h-full w-[80vw] md:w-full rounded border-4 border-stone-300 shadow-xl p-2">
-          <div className="relative w-full md:h-[284.44px]">
-            <Maximize2
-              onClick={handleZoom}
-              className="absolute text-white bg-black rounded top-2 right-2 cursor-pointer"
-            />
+      <div className="flex flex-col  h-full w-[80vw] md:w-full rounded border-4 border-stone-300 shadow-xl p-2">
+        {!imagesForInventoryItem ? (
+          <>
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+              <MoonLoader size={50} color="#2164a6" />
+            </div>
+          </>
+        ) : (
+          <div>
+            <div className="relative w-full md:h-[284.44px]">
+              <Maximize2
+                onClick={handleZoom}
+                className="absolute text-white bg-black rounded top-2 right-2 cursor-pointer"
+              />
 
-            <Image
-              width={200}
-              height={200}
-              alt={`Image for ${inventoryItem.short_description}`}
-              src={imagesForInventoryItem[0]}
-              className="rounded w-full "
-            />
+              <Image
+                width={200}
+                height={200}
+                alt={`Image for ${inventoryItem.short_description}`}
+                src={imagesForInventoryItem[0]}
+                className="rounded w-full "
+              />
+            </div>
           </div>
+        )}
+
+        <div>
           <p className="font-bold text-jblue">
             <u className="text-lg">MAKE</u>: {inventoryItem.make}
           </p>
@@ -67,7 +74,8 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
             {inventoryItem.short_description}
           </p>
         </div>
-      )}
+      </div>
+
       {isZoomed && imagesForInventoryItem && (
         <InventoryCardZoomed
           inventoryItem={inventoryItem}
