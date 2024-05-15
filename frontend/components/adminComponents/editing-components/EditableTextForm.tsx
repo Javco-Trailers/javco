@@ -37,14 +37,9 @@ const EditableTextForm: React.FC<EditableTextFormProps> = ({ currentTab }) => {
     }
   }, [allText]);
 
-  useEffect(() => {
-    if (textWithinResponse) console.log(textWithinResponse);
-  }, [textWithinResponse]);
-
   const { register, handleSubmit, setValue } = useForm<FormData>();
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data); // You can use this data however you like, such as sending it to an API
     setTextWithinResponse(data);
     setNewTextToSendToBackend(data);
   };
@@ -56,6 +51,7 @@ const EditableTextForm: React.FC<EditableTextFormProps> = ({ currentTab }) => {
   const handleSendToBackend = () => {
     replaceText(allText[0]._id, newTextToSendToBackend);
     handleShowConfirm();
+    setNewTextToSendToBackend(null);
   };
 
   return (
@@ -241,7 +237,7 @@ const EditableTextForm: React.FC<EditableTextFormProps> = ({ currentTab }) => {
                       <input
                         className="w-1/2"
                         {...register(
-                          "text.Home_Page.Types_Of_Trailers.Link_Text.Link_To_Sales_Text",
+                          "text.Home_Page.Link_Text.Link_To_Sales_Text",
                           {
                             required: true,
                           }
