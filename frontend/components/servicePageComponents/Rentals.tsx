@@ -4,7 +4,16 @@ import Image from "next/image";
 import DryVanInside from "../../public/DryVanInside-min.jpg";
 import DryVansLinedUp from "../../public/dryvansatdock-min.jpg";
 
-const RentalsSection = () => {
+interface RentalSectionsProp {
+  parsedText: any;
+}
+
+const RentalsSection: React.FC<RentalSectionsProp> = ({ parsedText }) => {
+  const rentalsSectionText = parsedText.text.Rentals_Page;
+  const storageSectionText = rentalsSectionText.Storage_Section;
+  const cartageSectionText = rentalsSectionText.Cartage_Section;
+  const industriesWeServeText = rentalsSectionText.Industries_We_Serve;
+
   return (
     <section className="bg-gray-100 p-8">
       <div className="flex flex-col h-1/6 p-4 justify-around md:flex-row">
@@ -28,33 +37,30 @@ const RentalsSection = () => {
       <div className="max-w-3xl mx-auto text-center">
         <div className="m-4 p-4">
           <p className="text-left font-bold mb-4 text-black">
-            Javco maintains a quality multi-brand rental fleet for both your
-            short and long-term needs
+            {rentalsSectionText.Text_Under_Photo}
           </p>
           <div className="border-t-2 border-jblue border-b-2">
             <ul>
               <li className="text-left  mb-4">
                 <h2 className="font-bold text-xl mb-2 mt-2 text-jblue">
-                  Storage Trailers
+                  {storageSectionText.Section_Header}
                 </h2>
                 <ul>
                   <li className="ml-6 text-gray-600">
-                    - Alleviate your cramped warehouse space with the security
-                    and flexibility of a storage trailer. Javco will deliver
-                    right to your dock or jobsite!
+                    {storageSectionText.Section_Paragraph_Before_Link_1}
                     <Link className="text-jblue" href="tel:+12628359400">
                       {" "}
-                      <u>Call</u>
+                      <u>{storageSectionText.Link_One_Text}</u>
                     </Link>{" "}
-                    or
+                    {storageSectionText.Filler_Between_Texts}
                     <Link
                       className="text-jblue"
                       href="mailto:info@javco.co?subject=Javco Inquiry"
                     >
                       {" "}
-                      <u>email</u>
+                      <u>{storageSectionText.Link_Two_Text}</u>
                     </Link>{" "}
-                    now for a quote!
+                    {storageSectionText.Ending_Text}
                   </li>
                 </ul>
               </li>
@@ -65,12 +71,10 @@ const RentalsSection = () => {
             <ul>
               <li className="text-left">
                 <h2 className="font-bold text-xl mb-2 mt-2 text-jblue">
-                  Cartage & OTR Trailers
+                  {cartageSectionText.Section_Header}
                 </h2>
                 <ul className="ml-6 text-gray-600">
-                  - Javco maintains a quality multi-brand rental fleet of
-                  cartage and OTR trailers. Fill out a credit application and
-                  request a quote! Owner operators welcome!
+                  {cartageSectionText.Section_Paragraph}
                 </ul>
               </li>
             </ul>
@@ -82,24 +86,24 @@ const RentalsSection = () => {
               target="_blank"
               download
             >
-              Download Credit Application PDF
+              {rentalsSectionText.Credit_Application_Text}
             </a>
           </div>
         </div>
         <div className="mt-8">
           <h3 className="text-2xl font-bold mb-4 text-black">
-            Industries We Serve
+            {industriesWeServeText.Section_Header}
           </h3>
           <ul className="text-lg text-gray-600 list-disc">
-            <li className="text-gray-600 list-none">Manufacturing</li>
-            <li className="text-gray-600 list-none">Shopping centers</li>
-            <li className="text-gray-600 list-none">Lawn & garden</li>
-            <li className="text-gray-600 list-none">Recycling centers</li>
-            <li className="text-gray-600 list-none">Hotels</li>
-            <li className="text-gray-600 list-none">Post bulk mail</li>
-            <li className="text-gray-600 list-none">Construction sites</li>
-            <li className="text-gray-600 list-none">Merchandizers</li>
-            <li className="text-gray-600 list-none">Tradeshow conventions</li>
+            {industriesWeServeText.List_Items.map(
+              (listItem: string, index: number) => {
+                return (
+                  <li className="list-none" key={`list-for-industries${index}`}>
+                    {listItem}
+                  </li>
+                );
+              }
+            )}
           </ul>
         </div>
       </div>

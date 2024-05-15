@@ -8,11 +8,14 @@ import QuoteForm from "../quoteForm/QuoteForm";
 import Image from "next/image";
 import javco_logo from "../../public/javco_logo.png";
 import Link from "next/link";
+import scrollToSection from "@/globalFunctions/scrollToSections";
 
 const pathsForNav = [
   { href: "/", text: "Home" },
   { href: "/rentals", text: "Rentals" },
   { href: "/sales", text: "Sales" },
+
+  { href: "/inventory", text: "Inventory" },
   { href: "/about", text: "About Us" },
 ];
 
@@ -21,13 +24,7 @@ interface pathObj {
   text: string;
 }
 
-interface NavBarProps {
-  scrollToSection: (sectionId: string) => void;
-}
-
-//const ContactUs: React.FC<ContactUsProps>
-
-const NavBar: React.FC<NavBarProps> = ({ scrollToSection }) => {
+const NavBar: React.FC = () => {
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   const [getQuoteClicked, setGetQuoteClicked] = useState<boolean>(false);
 
@@ -54,7 +51,7 @@ const NavBar: React.FC<NavBarProps> = ({ scrollToSection }) => {
                 className="flex gap-1 font-bold text-gray-700 items-center"
               >
                 <Image
-                  className="h-16 w-36 text-primary mt-2 mx-6 pt-4"
+                  className="h-12 w-20 lg:h-16 lg:w-36 text-primary mt-2 mx-6 pt-4"
                   src={javco_logo}
                   alt="Javco"
                   loading="lazy"
