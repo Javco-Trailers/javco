@@ -75,12 +75,12 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
         >
           {imagesForInventoryItem.map((image: string, index) => {
             return (
-              <div className="bg-gray-500 rounded">
+              <div className="flex justify-center mt-2 mb-2 md:flex-none md:mt-0 md:mb-0 bg-gray-500 rounded">
                 <Image
                   key={`${inventoryItem._id}-${index}`}
                   height={100}
                   width={100}
-                  className="w-full object-contain max-h-[60vh]"
+                  className="w-3/5 md:w-full object-contain max-h-[60vh]"
                   src={image}
                   alt={`${inventoryItem.short_description} image ${index + 1}`}
                 />
