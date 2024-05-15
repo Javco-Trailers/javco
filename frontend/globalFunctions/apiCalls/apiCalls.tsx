@@ -133,11 +133,15 @@ export const adminAlreadyLoggedInCheck = (
     });
 };
 
-export const fetchText = async () => {
+export const fetchText = async (setStateFunction: any) => {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_BASE_URL}/text-content`
   );
-  const textContent = response.data; // This is the resolved data
 
-  return textContent;
+  if (setStateFunction) {
+    setStateFunction(response.data.text);
+    return null; // or return a message that indicates it set the state
+  } else {
+    return response.data; // return the data if no setStateFunction is provided
+  }
 };

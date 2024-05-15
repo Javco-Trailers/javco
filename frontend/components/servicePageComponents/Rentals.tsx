@@ -60,7 +60,7 @@ const RentalsSection: React.FC<RentalSectionsProp> = ({ parsedText }) => {
                       {" "}
                       <u>{storageSectionText.Link_Two_Text}</u>
                     </Link>{" "}
-                    {storageSectionText.Ending_Textx}
+                    {storageSectionText.Ending_Text}
                   </li>
                 </ul>
               </li>

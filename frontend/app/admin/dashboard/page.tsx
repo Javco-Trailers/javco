@@ -8,12 +8,12 @@ import {
   getAllInventory,
 } from "@/globalFunctions/apiCalls/apiCalls";
 import { useRouter } from "next/navigation";
-import NavBar from "@/components/navbarComponents/NavBar";
+
 import "../../globals.css";
-import scrollToSection from "@/globalFunctions/scrollToSections";
 import NewInventoryItem from "@/components/inventory-components/NewInventoryItem";
 import EditInventoryItem from "@/components/inventory-components/EditInventoryItem";
 import { InventoryItem } from "@/app/types/types";
+import EditableTextForm from "@/components/adminComponents/editing-components/EditableTextForm";
 
 const Dashboard = () => {
   const [authSuccessful, setAuthSuccessful] = useState<boolean>(false);
@@ -54,8 +54,7 @@ const Dashboard = () => {
     setCurrentTab(chosenTabValue);
   };
   return (
-    <section className="bg-gray-100 p-8 relative">
-      <NavBar />
+    <section className="bg-gray-100 p-8 h-auto relative">
       <div>
         {!authSuccessful ? (
           <div
@@ -79,8 +78,11 @@ const Dashboard = () => {
           </div>
         )}
       </div>
+      {currentTab !== "Inventory" && (
+        <EditableTextForm currentTab={currentTab} />
+      )}
       {currentTab === "Inventory" && (
-        <div>
+        <div className="h-full">
           {!addNew && !editDelete ? (
             <div>
               <button

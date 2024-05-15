@@ -1,25 +1,16 @@
-"use server";
-
 import React from "react";
-import "./globals.css";
-import NavBar from "@/components/navbarComponents/NavBar";
-import ContactUs from "@/components/contactUs/contactUs";
-import Copyright from "@/components/copyright/copyRight";
+import "../../../app/globals.css";
+
 import Image from "next/image";
-import JavcoSignZoomed from "../public/JavcoSignZoomed-min.jpg";
+import JavcoSignZoomed from "../../../public/JavcoSignZoomed-min.jpg";
 import Link from "next/link";
-import { fetchText } from "@/globalFunctions/apiCalls/apiCalls";
 
-const Home: React.FC = async () => {
-  const text = await fetchText(null);
-  // Extract the first item from the text array
-  const textData = text.text[0].text;
+interface HomePreviewProps {
+  previewText: any;
+}
 
-  // Parse the text to get the actual JSON object
-  const parsedText = JSON.parse(textData);
-
-  // Now you can access the Home_Page key
-  const homePage = parsedText.text.Home_Page;
+const HomePreviewPage: React.FC<HomePreviewProps> = ({ previewText }) => {
+  const homePage = previewText.text.Home_Page;
 
   // Access the keys within Home_Page
   const mainHeader = homePage.Main_Header;
@@ -32,9 +23,6 @@ const Home: React.FC = async () => {
   return (
     <>
       <div className="overflow-x-hidden">
-        <div className="bg-white text-jblue mb-2 shadow-lg shadow-indigo-500/40 rounded-b px-8">
-          <NavBar />
-        </div>
         <div className="bg-jblue text-white text-center mb-2 p-2">
           <h1 className="font-bold text-5xl p-2">{mainHeader}</h1>
         </div>
@@ -52,13 +40,13 @@ const Home: React.FC = async () => {
             {secondHeader}
           </h1>
           <div className="bg-jblue text-white text-center">
-            <div className="flex flex-col justify-center items-center">
-              <div className="font-semibold flex flex-row justify-between p-2 w-3/5 md:w-1/5">
-                <p>{typesOfTrailers.Type_One}</p>
+            <div className="flex flex-col justify-center text-nowrap items-center">
+              <div className="font-semibold flex flex-col md:flex-row justify-between p-2 w-3/5 md:w-1/5">
+                <p className="mr-2">{typesOfTrailers.Type_One}</p>
                 <p>{typesOfTrailers.Type_Two}</p>
               </div>
-              <div className="font-semibold flex flex-row w-2/5 justify-between p-2 md:w-1/5">
-                <p>{typesOfTrailers.Type_Three}</p>
+              <div className="font-semibold flex flex-col md:flex-row w-2/5 justify-between p-2 md:w-1/5">
+                <p className="mr-2">{typesOfTrailers.Type_Three}</p>
                 <p>{typesOfTrailers.Type_Four}</p>
               </div>
             </div>
@@ -85,16 +73,9 @@ const Home: React.FC = async () => {
             </h2>
           </div>
         </div>
-
-        <div id="contact">
-          <ContactUs />
-        </div>
-        <div>
-          <Copyright />
-        </div>
       </div>
     </>
   );
 };
 
-export default Home;
+export default HomePreviewPage;

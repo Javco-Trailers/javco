@@ -7,7 +7,7 @@ import Copyright from "@/components/copyright/copyRight";
 import RentalsSection from "@/components/servicePageComponents/Rentals";
 
 export default async function RentalsPage() {
-  const text = await fetchText();
+  const text = await fetchText(null);
   // Extract the first item from the text array
   const textData = text.text[0].text;
 

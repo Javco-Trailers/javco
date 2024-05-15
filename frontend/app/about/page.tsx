@@ -8,7 +8,7 @@ import Copyright from "@/components/copyright/copyRight";
 import AboutUsSection from "@/components/aboutUs/AboutUsSection";
 
 export default async function Home() {
-  const text = await fetchText();
+  const text = await fetchText(null);
   // Extract the first item from the text array
   const textData = text.text[0].text;
 

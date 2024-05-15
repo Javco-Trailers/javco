@@ -4,6 +4,7 @@ import "../../app/globals.css";
 import Image from "next/image";
 import { XCircleIcon } from "lucide-react";
 import { addNewInventoryItem } from "@/globalFunctions/apiCalls/apiCalls";
+import ConfirmationModal from "../adminComponents/ConfirmationScreen";
 
 type Inputs = {
   year: string;
@@ -24,6 +25,8 @@ const NewInventoryItem: React.FC = () => {
   } = useForm<Inputs>();
   const [preview, setPreview] = useState<string[]>([]);
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [showConfirm, setShowConfirm] = useState<boolean>(Boolean);
+  const [formDataToSend, setFormDataToSend] = useState<any>(null);
 
   const changedHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -90,127 +93,143 @@ const NewInventoryItem: React.FC = () => {
     uploadedFiles.forEach((file, index) => {
       formData.append(`files`, file); // 'files' is the key to represent multiple files
     });
+    setFormDataToSend(formData);
+    setShowConfirm(true);
+  };
 
-    addNewInventoryItem(formData);
-
+  //send the form to the backend on confirm
+  const handleSendToBackend = () => {
+    addNewInventoryItem(formDataToSend);
     reset();
+    setShowConfirm(false);
+  };
+  const closeConfirm = () => {
+    setShowConfirm(false);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      {/* Form fields with validation */}
-      <div>
-        <label htmlFor="year" className="mr-2">
-          Year:
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        {/* Form fields with validation */}
+        <div>
+          <label htmlFor="year" className="mr-2">
+            Year:
+          </label>
+          <input
+            {...register("year", { required: true })}
+            className="input-style"
+            placeholder="Enter year"
+            type="number"
+          />
+          {errors.year && <p className="text-red-500">Year is required</p>}
+        </div>
+        <div>
+          <label htmlFor="make" className="mr-2">
+            Make:
+          </label>
+          <input
+            {...register("make", { required: true })}
+            className="input-style"
+            placeholder="Enter make"
+          />
+          {errors.make && <p className="text-red-500">Make is required</p>}
+        </div>
+        <div>
+          <label htmlFor="model" className="mr-2">
+            Model:
+          </label>
+          <input
+            {...register("model", { required: true })}
+            className="input-style"
+            placeholder="Enter model"
+          />
+          {errors.make && <p className="text-red-500">Model is required</p>}
+        </div>
+        <div>
+          <label htmlFor="price" className="mr-2">
+            Price:
+          </label>
+          <input
+            {...register("price", { required: true })}
+            className="input-style"
+            placeholder="Enter price"
+          />
+          {errors.make && <p className="text-red-500">Price is required</p>}
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="short_description">Short Description</label>
+          <textarea
+            {...register("short_description", { required: true })}
+            className="input-style"
+            placeholder="Enter short description"
+          />
+          {errors.make && (
+            <p className="text-red-500">Short description is required</p>
+          )}
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="detailed_description">Detailed Description</label>
+          <textarea
+            {...register("detailed_description", { required: true })}
+            className="input-style"
+            placeholder="Enter detailed description"
+          />
+          {errors.make && (
+            <p className="text-red-500">Detailed description is required</p>
+          )}
+        </div>
+        <label htmlFor="files" className="mr-2">
+          Files:
         </label>
         <input
-          {...register("year", { required: true })}
-          className="input-style"
-          placeholder="Enter year"
-          type="number"
-        />
-        {errors.year && <p className="text-red-500">Year is required</p>}
-      </div>
-      <div>
-        <label htmlFor="make" className="mr-2">
-          Make:
-        </label>
-        <input
-          {...register("make", { required: true })}
-          className="input-style"
-          placeholder="Enter make"
-        />
-        {errors.make && <p className="text-red-500">Make is required</p>}
-      </div>
-      <div>
-        <label htmlFor="model" className="mr-2">
-          Model:
-        </label>
-        <input
-          {...register("model", { required: true })}
-          className="input-style"
-          placeholder="Enter model"
-        />
-        {errors.make && <p className="text-red-500">Model is required</p>}
-      </div>
-      <div>
-        <label htmlFor="price" className="mr-2">
-          Price:
-        </label>
-        <input
-          {...register("price", { required: true })}
-          className="input-style"
-          placeholder="Enter price"
-        />
-        {errors.make && <p className="text-red-500">Price is required</p>}
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="short_description">Short Description</label>
-        <textarea
-          {...register("short_description", { required: true })}
-          className="input-style"
-          placeholder="Enter short description"
-        />
-        {errors.make && (
-          <p className="text-red-500">Short description is required</p>
-        )}
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="detailed_description">Detailed Description</label>
-        <textarea
-          {...register("detailed_description", { required: true })}
-          className="input-style"
-          placeholder="Enter detailed description"
-        />
-        {errors.make && (
-          <p className="text-red-500">Detailed description is required</p>
-        )}
-      </div>
-      <label htmlFor="files" className="mr-2">
-        Files:
-      </label>
-      <input
-        type="file"
-        name="file"
-        accept="image/*"
-        multiple
-        onChange={changedHandler}
-      />{" "}
-      {/* Handle file changes */}
-      <div className="flex flex-wrap">
-        {preview.map((url, index) => (
-          <div
-            key={`${index}-div`}
-            className="relative" // Make the button position relative to this container
-          >
-            {/* Button to remove the image */}
-            <button
-              onClick={removeFile}
-              key={`button-for-removal-${index}`}
-              data-index={index} // Set the data-index
-              className="absolute z-10 top-3 right-3 bg-white rounded-full text-black-500 hover:text-red-700"
+          type="file"
+          name="file"
+          accept="image/*"
+          multiple
+          onChange={changedHandler}
+        />{" "}
+        {/* Handle file changes */}
+        <div className="flex flex-wrap">
+          {preview.map((url, index) => (
+            <div
+              key={`${index}-div`}
+              className="relative" // Make the button position relative to this container
             >
-              <XCircleIcon size={24} /> {/* Display the "X" icon */}
-            </button>
-            <Image
-              src={url}
-              alt={`Preview ${index}`}
-              key={`Preview ${index}`}
-              height={200}
-              width={200}
-              className="p-2 rounded "
-            />
-          </div>
-        ))}
-      </div>
-      {/* Submit button */}
-      <button
-        type="submit"
-        className="px-4 py-2 bg-jblue hover:bg-pink-700 text-white rounded"
-      >
-        Submit
-      </button>
-    </form>
+              {/* Button to remove the image */}
+              <button
+                onClick={removeFile}
+                key={`button-for-removal-${index}`}
+                data-index={index} // Set the data-index
+                className="absolute z-10 top-3 right-3 bg-white rounded-full text-black-500 hover:text-red-700"
+              >
+                <XCircleIcon size={24} /> {/* Display the "X" icon */}
+              </button>
+              <Image
+                src={url}
+                alt={`Preview ${index}`}
+                key={`Preview ${index}`}
+                height={200}
+                width={200}
+                className="p-2 rounded "
+              />
+            </div>
+          ))}
+        </div>
+        {/* Submit button */}
+        <button
+          type="submit"
+          className="px-4 py-2 bg-jblue hover:bg-pink-700 text-white rounded"
+        >
+          Submit
+        </button>
+      </form>
+      {showConfirm && (
+        <ConfirmationModal
+          sendToBackendFunction={handleSendToBackend}
+          closeFunction={closeConfirm}
+        />
+      )}
+    </div>
   );
 };
 
