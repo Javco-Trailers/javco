@@ -438,8 +438,8 @@ const EditableTextForm: React.FC<EditableTextFormProps> = ({ currentTab }) => {
                     <label className="text-sm text-jblue mr-2">
                       Ending Text:
                     </label>
-                    <input
-                      className="w-1/2"
+                    <textarea
+                      className="w-auto"
                       {...register(
                         "text.Rentals_Page.Storage_Section.Ending_Text",
                         { required: true }
@@ -679,7 +679,7 @@ const EditableTextForm: React.FC<EditableTextFormProps> = ({ currentTab }) => {
                       Text Before Inventory Link:
                     </label>
                     <textarea
-                      className="w-auto"
+                      className="w-auto mr-2"
                       {...register(
                         "text.Sales_Page.Buy_Trailers_Section.Text_Before_Inventory_Link",
                         { required: true }
