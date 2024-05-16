@@ -1,14 +1,26 @@
+"use client"
+
 import "../../app/globals.css";
-
+import { useState, useEffect } from "react";
 import { InventoryItem } from "@/app/types/types";
-
+import { getAllInventory } from "@/globalFunctions/apiCalls/apiCalls";
 import InventoryCard from "./InventoryCard";
+
 
 interface InventoryContainerProps {
   data: any;
 }
 
 const InventoryContainer: React.FC<InventoryContainerProps> = ({ data }) => {
+ const [fetchedData, setFetchedData] = useState<any>(data);
+
+  useEffect(() => {
+  getAllInventory(setFetchedData);
+       
+     
+  },[])
+
+
   return (
     <section className="bg-gray-100 p-8 relative">
       <div className="max-w-3xl mx-auto">
@@ -29,7 +41,7 @@ const InventoryContainer: React.FC<InventoryContainerProps> = ({ data }) => {
             data.length === 1 ? "justify-center" : "justify-between"
           }`}
         >
-          {data.map((inventoryItem: InventoryItem, index: number) => (
+          {fetchedData.map((inventoryItem: InventoryItem, index: number) => (
             <div
               key={`inventory-item-${index}`}
               className="w-full sm:w-1/2 md:w-1/3 p-2"
