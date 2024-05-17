@@ -5,9 +5,11 @@ import Copyright from "@/components/copyright/copyRight";
 import "../globals.css";
 import InventoryContainer from "@/components/inventory-components/InventoryContainer";
 import { getAllInventory } from "@/globalFunctions/apiCalls/apiCalls";
+import action from "../action";
 
 const InventoryPage = async () => {
   const data = await getAllInventory(null);
+  action()
 
   return (
     <>
