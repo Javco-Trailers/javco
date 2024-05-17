@@ -6,26 +6,25 @@ import { toast, Bounce } from "react-toastify";
 axios.defaults.withCredentials = true;
 // apiCalls for inventory
 
-export const getAllInventory = async (
-  setStateFunction?: Dispatch<SetStateAction<any>>
-) => {
+export const getAllInventory = async (setStateFunction:any) => {
   try {
-    const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/inventory`
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory`, {
+      next: { tags: ['collection'] }
+    });
+    
+    const data = await res.json();
 
     if (setStateFunction) {
-      setStateFunction(response.data.items);
+      setStateFunction(data.items);
       return null; // or return a message that indicates it set the state
     } else {
-      return response.data.items; // return the data if no setStateFunction is provided
+      return data.items; // return the data if no setStateFunction is provided
     }
   } catch (error) {
     console.error("Error fetching inventory:", error);
     throw error;
   }
 };
-
 export const getPhotosForSingleInventory = (
   setStateFunction: SetStateAction<any>,
   inventoryId: string

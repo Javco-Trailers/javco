@@ -36,10 +36,6 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-console.log(inventoryItems)
-  },[inventoryItems])
-
-  useEffect(() => {
     statusCode && statusCode === 401 ? router.push("/admin/login") : null;
   }, [statusCode]);
 
