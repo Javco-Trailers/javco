@@ -36,7 +36,7 @@ export const getPhotosForSingleInventory = (
     });
 };
 
-export const addNewInventoryItem = (newItem: any, inventoryItems:any, setInventoryItems:any, reset:any, setUploadedFiles:Dispatch<SetStateAction<File[]>>) => {
+export const addNewInventoryItem = (newItem: any, inventoryItems:any, setInventoryItems:any, reset:any, setUploadedFiles:any) => {
   axios
     .post(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory`, newItem)
     .then((response)=>{
