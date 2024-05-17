@@ -5,6 +5,7 @@ import Image from "next/image";
 import { XCircleIcon } from "lucide-react";
 import { addNewInventoryItem } from "@/globalFunctions/apiCalls/apiCalls";
 import ConfirmationModal from "../adminComponents/ConfirmationScreen";
+import { InventoryItem } from "@/app/types/types";
 
 type Inputs = {
   year: string;
@@ -16,7 +17,12 @@ type Inputs = {
   files: any;
 };
 
-const NewInventoryItem: React.FC = () => {
+interface NewInventoryItemProps {
+  inventoryItems: InventoryItem[] | null;
+  setInventoryItems: any
+}
+
+const NewInventoryItem: React.FC<NewInventoryItemProps> = ({inventoryItems, setInventoryItems}) => {
   const {
     register,
     handleSubmit,
@@ -99,7 +105,7 @@ const NewInventoryItem: React.FC = () => {
 
   //send the form to the backend on confirm
   const handleSendToBackend = () => {
-    addNewInventoryItem(formDataToSend);
+    addNewInventoryItem(formDataToSend, inventoryItems, setInventoryItems);
     reset();
     setShowConfirm(false);
   };

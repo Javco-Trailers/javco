@@ -14,6 +14,8 @@ import NewInventoryItem from "@/components/inventory-components/NewInventoryItem
 import EditInventoryItem from "@/components/inventory-components/EditInventoryItem";
 import { InventoryItem } from "@/app/types/types";
 import EditableTextForm from "@/components/adminComponents/editing-components/EditableTextForm";
+import { ToastContainer, Bounce } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 const Dashboard = () => {
   const [authSuccessful, setAuthSuccessful] = useState<boolean>(false);
@@ -32,6 +34,10 @@ const Dashboard = () => {
     adminAlreadyLoggedInCheck(setAuthSuccessful, setStatusCode);
     getAllInventory(setInventoryItems);
   }, []);
+
+  useEffect(() => {
+console.log(inventoryItems)
+  },[inventoryItems])
 
   useEffect(() => {
     statusCode && statusCode === 401 ? router.push("/admin/login") : null;
@@ -110,7 +116,9 @@ const Dashboard = () => {
       )}
       {currentTab === "Inventory" && addNew && (
         <div>
-          <NewInventoryItem />
+          <NewInventoryItem 
+                setInventoryItems={setInventoryItems}
+                inventoryItems={inventoryItems}/>
         </div>
       )}
       {currentTab === "Inventory" && editDelete && inventoryItems && (
@@ -128,6 +136,21 @@ const Dashboard = () => {
           })}
         </div>
       )}
+        <>
+        <ToastContainer
+position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+transition={Bounce}
+/>
+      </>
     </section>
   );
 };

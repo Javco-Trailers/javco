@@ -1,5 +1,7 @@
+import NewInventoryItem from "@/components/inventory-components/NewInventoryItem";
 import axios from "axios";
 import { SetStateAction, Dispatch } from "react";
+import { toast, Bounce } from "react-toastify";
 
 axios.defaults.withCredentials = true;
 // apiCalls for inventory
@@ -35,16 +37,67 @@ export const getPhotosForSingleInventory = (
     });
 };
 
-export const addNewInventoryItem = (newItem: any) => {
+export const addNewInventoryItem = (newItem: any, inventoryItems:any, setInventoryItems:any) => {
   axios
     .post(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory`, newItem)
-    .then((response) => {
-      console.log(response.data);
+    .then((response)=>{
+return response.data.inventory_item})
+      .then((inventoryItem)=>{setInventoryItems([...inventoryItems, inventoryItem])
+    })
+    .then(() => {
+       toast.success(`Inventory Item Added Successfully`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }).catch(() => {
+      toast.info(`Uh oh, something went wrong`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     });
 };
 
+
 export const deleteInventoryItem = (inventory_id: any) => {
-  axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory/${inventory_id}`);
+  axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory/${inventory_id}`).then(() => {
+       toast.success(`Inventory Item Deleted Successfully`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }).catch(() => {
+      toast.info(`Uh oh, something went wrong`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    });
 };
 
 export const updateInventoryItem = (inventory_id: any, formData: any) => {
