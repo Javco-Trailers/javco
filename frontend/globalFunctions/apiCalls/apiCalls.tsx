@@ -36,12 +36,14 @@ export const getPhotosForSingleInventory = (
     });
 };
 
-export const addNewInventoryItem = (newItem: any, inventoryItems:any, setInventoryItems:any) => {
+export const addNewInventoryItem = (newItem: any, inventoryItems:any, setInventoryItems:any, reset:any, setUploadedFiles:Dispatch<SetStateAction<File[]>>) => {
   axios
     .post(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory`, newItem)
     .then((response)=>{
 return response.data.inventory_item})
-      .then((inventoryItem)=>{setInventoryItems([...inventoryItems, inventoryItem])
+      .then((inventoryItem)=>{setInventoryItems([...inventoryItems, inventoryItem]);
+        setUploadedFiles([]);
+        reset();
     })
     .then(() => {
        toast.success(`Inventory Item Added Successfully`, {
