@@ -105,10 +105,8 @@ const NewInventoryItem: React.FC<NewInventoryItemProps> = ({inventoryItems, setI
 
   //send the form to the backend on confirm
   const handleSendToBackend = () => {
-    addNewInventoryItem(formDataToSend, inventoryItems, setInventoryItems, reset());
+    addNewInventoryItem(formDataToSend, inventoryItems, setInventoryItems, reset, setUploadedFiles, setPreview);
     setShowConfirm(false);
-    setUploadedFiles([])
-    setPreview([])
   };
   const closeConfirm = () => {
     setShowConfirm(false);
