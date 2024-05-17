@@ -5,17 +5,14 @@ import { useState, useEffect } from "react";
 import { InventoryItem } from "@/app/types/types";
 import { getAllInventory } from "@/globalFunctions/apiCalls/apiCalls";
 import InventoryCard from "./InventoryCard";
+import { MoonLoader } from "react-spinners";
 
 
-interface InventoryContainerProps {
-  data: any;
-}
-
-const InventoryContainer: React.FC<InventoryContainerProps> = ({ data }) => {
- const [fetchedData, setFetchedData] = useState<any>(data);
+const InventoryContainer: React.FC = () => {
+ const [allInventory, setAllInventory] = useState<InventoryItem[]| null>(null);
 
   useEffect(() => {
-  getAllInventory(setFetchedData);
+  getAllInventory(setAllInventory);
        
      
   },[])
@@ -28,20 +25,20 @@ const InventoryContainer: React.FC<InventoryContainerProps> = ({ data }) => {
           Inventory
         </h1>
         {/* Loader that covers the entire screen */}
-        {/* {!allInventory && (
+        {!allInventory && (
           <div
             className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" // Full-screen overlay with opaque background
           >
             <MoonLoader size={50} color="#2164a6" />
           </div>
-        )} */}
+        )}
 
-        <div
+        {allInventory && (<div
           className={`flex flex-col flex-wrap md:flex-row w-full p-1 ${
-            data.length === 1 ? "justify-center" : "justify-between"
+            allInventory.length === 1 ? "justify-center" : "justify-between"
           }`}
         >
-          {fetchedData.map((inventoryItem: InventoryItem, index: number) => (
+          {allInventory.map((inventoryItem: InventoryItem, index: number) => (
             <div
               key={`inventory-item-${index}`}
               className="w-full sm:w-1/2 md:w-1/3 p-2"
@@ -49,7 +46,7 @@ const InventoryContainer: React.FC<InventoryContainerProps> = ({ data }) => {
               <InventoryCard inventoryItem={inventoryItem} />
             </div>
           ))}
-        </div>
+        </div>)}
       </div>
     </section>
   );
