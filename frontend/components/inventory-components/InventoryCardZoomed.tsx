@@ -1,14 +1,12 @@
 import { useState, useRef } from "react";
 import { InventoryItem } from "@/app/types/types";
 import { XCircleIcon } from "lucide-react";
-import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import LazyImage from "./LazyImage";
 
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 1,
   },
