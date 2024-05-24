@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
+import Head from 'next/head';
 
 export const metadata = {
   title: "Javco",
@@ -13,6 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+        <Head>
+           <meta name="description" content={metadata.description} />
+        <link rel="preload" href="/_next/static/css/15cbae759d1218d5.css" as="style" />
+        {/* Other meta tags, title, etc. can go here */}
+      </Head>
       <body>
         {children}
         <Analytics />
