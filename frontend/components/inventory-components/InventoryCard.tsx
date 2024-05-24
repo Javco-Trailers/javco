@@ -7,6 +7,7 @@ import "../../app/globals.css";
 import { getPhotosForSingleInventory } from "@/globalFunctions/apiCalls/apiCalls";
 import { Maximize2 } from "lucide-react";
 import LazyImage from "./LazyImage";
+import { PacmanLoader } from "react-spinners";
 
 interface InventoryProps {
   inventoryItem: InventoryItem;
@@ -38,8 +39,8 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
       <div>
         {!imagesForInventoryItem ? (
           <div className="relative w-full md:h-[284.44px] bg-gray-200">
-            <div className="absolute inset-0 flex justify-center items-center text-gray-500">
-              Loading pictures...
+            <div className="absolute inset-0 flex justify-center items-center">
+              <PacmanLoader color={"rgb(33, 99, 166)"} />
             </div>
           </div>
         ) : (
