@@ -10,15 +10,11 @@ import LazyImage from "./LazyImage";
 
 interface InventoryProps {
   inventoryItem: InventoryItem;
+  imageDataForItem: string[]
 }
 
-const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
+const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem, imageDataForItem }) => {
   const [isZoomed, setIsZoomed] = useState<boolean>(false);
-  const [imagesForInventoryItem, setImagesForInventoryItem] = useState<string[] | null>(null);
-
-  useEffect(() => {
-    getPhotosForSingleInventory(setImagesForInventoryItem, inventoryItem._id);
-  }, [inventoryItem._id]);
 
   useEffect(() => {
     isZoomed
@@ -34,10 +30,10 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
   return (
     <div className="w-full h-full  border-gray-200 border-2 rounded p-2">
       <div>
-        {!imagesForInventoryItem ? (
+        {!imageDataForItem ? (
           <div className="relative w-full md:h-[284.44px] bg-gray-200">
             <div className="absolute inset-0 flex justify-center items-center text-gray-500">
-              Loading...
+              Loading pictures...
             </div>
           </div>
         ) : (
@@ -52,7 +48,7 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
                 width={200}
                 height={200}
                 alt={`Image for ${inventoryItem.short_description}`}
-                src={imagesForInventoryItem[0]}
+                src={imageDataForItem[0]}
                 className="rounded w-full"
               />
             </div>
@@ -74,11 +70,12 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
         </p>
       </div>
 
-      {isZoomed && imagesForInventoryItem && (
+      {isZoomed && imageDataForItem && (
         <InventoryCardZoomed
+        key={`${imageDataForItem[0]}`}
           inventoryItem={inventoryItem}
           handleZoom={handleZoom}
-          imagesForInventoryItem={imagesForInventoryItem}
+          imagesForInventoryItem={imageDataForItem}
         />
       )}
     </div>

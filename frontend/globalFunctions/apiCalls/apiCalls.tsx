@@ -1,4 +1,3 @@
-import NewInventoryItem from "@/components/inventory-components/NewInventoryItem";
 import axios from "axios";
 import { SetStateAction, Dispatch } from "react";
 import { toast, Bounce } from "react-toastify";
@@ -25,16 +24,31 @@ export const getAllInventory = async (setStateFunction:any) => {
     throw error;
   }
 };
-export const getPhotosForSingleInventory = (
-  setStateFunction: SetStateAction<any>,
+export const getPhotosForSingleInventory = async (
+  setStateFunction: any,
   inventoryId: string
 ) => {
-  axios
-    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory/${inventoryId}/images`)
-    .then((response) => {
-      setStateFunction(response.data.images);
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory/${inventoryId}/images`, {
+      next: { tags: ['collection'] }
     });
+
+    if (!res.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await res.json();
+    if(setStateFunction){
+    setStateFunction(data.images);
+    }
+
+    return data.images
+  } catch (error) {
+    console.error(`Error fetching images for inventory ${inventoryId}:`, error);
+    throw error;
+  }
 };
+
 
 export const addNewInventoryItem = (newItem: any, inventoryItems:any, setInventoryItems:any, reset:any, setUploadedFiles:any, setPreview:any) => {
   axios
