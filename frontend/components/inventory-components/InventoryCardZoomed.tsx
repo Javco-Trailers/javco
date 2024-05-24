@@ -69,7 +69,7 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
           <u className="text-lg">DETAILS</u>::{" "}
           {inventoryItem.detailed_description}
         </p>
-        <Carousel
+        {imagesForInventoryItem && (<Carousel
           responsive={responsive}
           beforeChange={(nextSlide: number) => setActiveIndex(nextSlide)}
           ref={carouselRef}
@@ -88,7 +88,7 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
               </div>
             );
           })}
-        </Carousel>
+        </Carousel>)}
         {/* Preview Thumbnails */}
         <div className="flex justify-center space-x-2">
           {" "}
