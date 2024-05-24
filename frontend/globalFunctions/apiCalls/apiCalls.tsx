@@ -24,6 +24,18 @@ export const getAllInventory = async (setStateFunction: any) => {
     throw error;
   }
 };
+
+export const getImageForPreviewDisplay = (
+  setStateFunction: SetStateAction<any>,
+  fileId: string
+) => {
+  axios
+    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory/image/${fileId}`)
+    .then((response) => {
+      setStateFunction(response.data);
+    });
+};
+
 export const getPhotosForSingleInventory = (
   setStateFunction: SetStateAction<any>,
   inventoryId: string
