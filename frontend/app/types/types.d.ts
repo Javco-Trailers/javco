@@ -4,6 +4,7 @@ export interface InventoryItem {
   make: string; // Manufacturer
   model: string; // Model name
   price: string; // Price (as a string)
+  short_description: string; // Brief description
   detailed_description: string; // Detailed description
   image_ids: string[]; // Array of image ObjectId strings
 }
