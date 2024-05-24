@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense, lazy } from "react";
+import { useState, useEffect} from "react";
 import { InventoryItem } from "@/app/types/types";
 import InventoryCardZoomed from "./InventoryCardZoomed";
 import "../../app/globals.css";
@@ -14,7 +14,13 @@ interface InventoryProps {
 
 const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem, imageDataForItem }) => {
   const [isZoomed, setIsZoomed] = useState<boolean>(false);
-  const [imagesForCarousel, setImagesForCarousel] = useState<string[]>(imageDataForItem)
+  const [imagesForCarousel, setImagesForCarousel] = useState<string[] | null>(null)
+
+  useEffect(() => {
+    if(imageDataForItem){
+      setImagesForCarousel(imageDataForItem)
+    }
+  })
 
   useEffect(() => {
     isZoomed
