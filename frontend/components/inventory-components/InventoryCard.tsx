@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { useState, useEffect, Suspense, lazy } from "react";
 import { InventoryItem } from "@/app/types/types";
 import InventoryCardZoomed from "./InventoryCardZoomed";
 import "../../app/globals.css";
 import { getPhotosForSingleInventory } from "@/globalFunctions/apiCalls/apiCalls";
-import { MoonLoader } from "react-spinners";
-import { Maximize2, XIcon } from "lucide-react";
+import { Maximize2 } from "lucide-react";
+import LazyImage from "./LazyImage";
 
 interface InventoryProps {
   inventoryItem: InventoryItem;
@@ -15,12 +14,11 @@ interface InventoryProps {
 
 const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
   const [isZoomed, setIsZoomed] = useState<boolean>(false);
-  const [imagesForInventoryItem, setImagesForInventoryItem] = useState<
-    string[] | null
-  >(null);
+  const [imagesForInventoryItem, setImagesForInventoryItem] = useState<string[] | null>(null);
+
   useEffect(() => {
     getPhotosForSingleInventory(setImagesForInventoryItem, inventoryItem._id);
-  }, []);
+  }, [inventoryItem._id]);
 
   useEffect(() => {
     isZoomed
@@ -34,15 +32,14 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
   };
 
   return (
-    <div className="w-full h-full">
-      {/* Ensure border class is correct */}
-      <div className="flex flex-col  h-full w-[80vw] md:w-full rounded border-4 border-stone-300 shadow-xl p-2">
+    <div className="w-full h-full  border-gray-200 border-2 rounded p-2">
+      <div>
         {!imagesForInventoryItem ? (
-          <>
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-              <MoonLoader size={50} color="#2164a6" />
+          <div className="relative w-full md:h-[284.44px] bg-gray-200">
+            <div className="absolute inset-0 flex justify-center items-center text-gray-500">
+              Loading...
             </div>
-          </>
+          </div>
         ) : (
           <div>
             <div className="relative w-full md:h-[284.44px]">
@@ -51,35 +48,30 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
                 className="absolute text-white bg-black rounded top-2 right-2 cursor-pointer"
               />
 
-              <Image
+              <LazyImage
                 width={200}
                 height={200}
                 alt={`Image for ${inventoryItem.short_description}`}
                 src={imagesForInventoryItem[0]}
-                className="rounded w-full "
+                className="rounded w-full"
               />
             </div>
           </div>
         )}
-
-        <div>
-          <p className="font-bold text-jblue">
-            <u className="text-lg">MAKE</u>: {inventoryItem.make}
-          </p>
-          <p className="font-bold text-jblue">
-            <u className="text-lg">YEAR</u>: {inventoryItem.year}
-          </p>
-          <p className=" font-bold text-jblue">
-            <u className="text-lg">MODEL</u>: {inventoryItem.model}
-          </p>
-          <p className="font-bold text-jblue">
-            <u className="text-lg">PRICE</u>: {inventoryItem.price}
-          </p>
-          <p className="font-bold text-jblue">
-            <u className="text-lg">ABOUT</u>: <span></span>
-            {inventoryItem.short_description}
-          </p>
-        </div>
+      </div>
+      <div>
+        <p className="font-bold text-jblue mt-2">
+          <u className="text-lg">MAKE</u>: {inventoryItem.make}
+        </p>
+        <p className="font-bold text-jblue">
+          <u className="text-lg">YEAR</u>: {inventoryItem.year}
+        </p>
+        <p className="font-bold text-jblue">
+          <u className="text-lg">MODEL</u>: {inventoryItem.model}
+        </p>
+        <p className="font-bold text-jblue">
+          <u className="text-lg">PRICE</u>: {inventoryItem.price}
+        </p>
       </div>
 
       {isZoomed && imagesForInventoryItem && (

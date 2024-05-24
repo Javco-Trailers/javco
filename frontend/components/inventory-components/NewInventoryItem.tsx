@@ -91,7 +91,6 @@ const NewInventoryItem: React.FC<NewInventoryItemProps> = ({inventoryItems, setI
     formData.append("year", data.year);
     formData.append("make", data.make);
     formData.append("model", data.model);
-    formData.append("short_description", data.short_description || "");
     formData.append("detailed_description", data.detailed_description || "");
     formData.append("price", data.price);
 
@@ -161,22 +160,12 @@ const NewInventoryItem: React.FC<NewInventoryItemProps> = ({inventoryItems, setI
           />
           {errors.make && <p className="text-red-500">Price is required</p>}
         </div>
-        <div className="flex flex-col">
-          <label htmlFor="short_description">Short Description</label>
-          <textarea
-            {...register("short_description", { required: true })}
-            className="input-style"
-            placeholder="Enter short description"
-          />
-          {errors.make && (
-            <p className="text-red-500">Short description is required</p>
-          )}
-        </div>
+    
         <div className="flex flex-col">
           <label htmlFor="detailed_description">Detailed Description</label>
           <textarea
             {...register("detailed_description", { required: true })}
-            className="input-style"
+            className="input-style p-2"
             placeholder="Enter detailed description"
           />
           {errors.make && (

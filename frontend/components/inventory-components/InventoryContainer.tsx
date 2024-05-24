@@ -17,24 +17,16 @@ const InventoryContainer: React.FC<InventoryContainerProps> = ({ data }) => {
         <h1 className="text-4xl text-center mb-4 font-bold text-jblue">
           Inventory
         </h1>
-        {/* Loader that covers the entire screen */}
-        {/* {!allInventory && (
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" // Full-screen overlay with opaque background
-          >
-            <MoonLoader size={50} color="#2164a6" />
-          </div>
-        )} */}
 
         <div
           className={`flex flex-col flex-wrap md:flex-row w-full p-1 ${
-            data.length === 1 ? "justify-center" : "justify-between"
+            data.length === 1 ? "justify-center" : "justify-start"
           }`}
         >
           {data.map((inventoryItem: InventoryItem, index: number) => (
             <div
               key={`inventory-item-${index}`}
-              className="w-full sm:w-1/2 md:w-1/3 p-2"
+              className="w-full sm:w-1/2 md:w-1/3 p-2 basis-1/3"
             >
               <InventoryCard inventoryItem={inventoryItem} />
             </div>

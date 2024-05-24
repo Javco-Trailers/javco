@@ -54,7 +54,6 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
       make: inventoryItem.make,
       model: inventoryItem.model,
       price: inventoryItem.price,
-      short_description: inventoryItem.short_description,
       detailed_description: inventoryItem.detailed_description,
     },
   });
@@ -159,7 +158,6 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
     formData.append("year", data.year);
     formData.append("make", data.make);
     formData.append("model", data.model);
-    formData.append("short_description", data.short_description || "");
     formData.append("detailed_description", data.detailed_description || "");
     formData.append("price", data.price);
 
@@ -233,13 +231,7 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
           {errors.price && <span>Price is required</span>}
         </div>
 
-        <div className="flex flex-col">
-          <label htmlFor="short_description">Short Description:</label>
-          <textarea
-            {...register("short_description")}
-            defaultValue={inventoryItem.short_description}
-          />
-        </div>
+      
 
         <div className="flex flex-col">
           <label htmlFor="detailed_description">Detailed Description:</label>

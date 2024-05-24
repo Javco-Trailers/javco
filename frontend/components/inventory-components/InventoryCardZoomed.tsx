@@ -4,6 +4,7 @@ import { XCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import LazyImage from "./LazyImage";
 
 const responsive = {
   superLargeDesktop: {
@@ -76,7 +77,7 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
           {imagesForInventoryItem.map((image: string, index) => {
             return (
               <div className="flex justify-center mt-2 mb-2 md:flex-none md:mt-0 md:mb-0 bg-gray-500 rounded">
-                <Image
+                <LazyImage
                   key={`${inventoryItem._id}-${index}`}
                   height={100}
                   width={100}
@@ -103,7 +104,7 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
                 carouselRef.current.goToSlide(index); // Programmatically move the carousel
               }}
             >
-              <Image
+              <LazyImage
                 key={`${index}imagecourselthumbnail`}
                 src={image}
                 width={64}
