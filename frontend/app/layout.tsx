@@ -16,8 +16,6 @@ export default function RootLayout({
     <html lang="en">
         <Head>
            <meta name="description" content={metadata.description} />
-        <link rel="stylesheet" as="style" href="/_next/static/css/15cbae759d1218d5.css"></link>
-        {/* Other meta tags, title, etc. can go here */}
       </Head>
       <body>
         {children}

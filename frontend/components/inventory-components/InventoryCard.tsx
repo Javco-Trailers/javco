@@ -4,7 +4,6 @@ import { useState, useEffect, Suspense, lazy } from "react";
 import { InventoryItem } from "@/app/types/types";
 import InventoryCardZoomed from "./InventoryCardZoomed";
 import "../../app/globals.css";
-import { getPhotosForSingleInventory } from "@/globalFunctions/apiCalls/apiCalls";
 import { Maximize2 } from "lucide-react";
 import LazyImage from "./LazyImage";
 
@@ -15,6 +14,7 @@ interface InventoryProps {
 
 const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem, imageDataForItem }) => {
   const [isZoomed, setIsZoomed] = useState<boolean>(false);
+  const [imagesForCarousel, setImagesForCarousel] = useState<string[]>(imageDataForItem)
 
   useEffect(() => {
     isZoomed
@@ -70,9 +70,9 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem, imageDataForIt
         </p>
       </div>
 
-      {isZoomed && imageDataForItem && (
+      {isZoomed && imagesForCarousel&& (
         <InventoryCardZoomed
-        key={`${imageDataForItem[0]}`}
+        key={`${imagesForCarousel[0]}`}
           inventoryItem={inventoryItem}
           handleZoom={handleZoom}
           imagesForInventoryItem={imageDataForItem}
