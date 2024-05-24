@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { InventoryItem } from "@/app/types/types";
 import { XCircleIcon } from "lucide-react";
 import LazyImage from "./LazyImage";
@@ -30,13 +30,11 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
   };
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50" // Full-screen opaque background with high z-index
-    >
-      <div className="w-4/5 bg-white p-4 rounded-lg shadow-xl relative">
+    <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
+      <div className="w-4/5 bg-white p-4 rounded-lg shadow-xl relative h-[70vh] overflow-y-auto">
         <button
           onClick={handleZoom}
-          className="absolute top-2 right-2 text-gray-600" // Close button in top-right corner
+          className="absolute top-2 right-2 text-gray-600"
         >
           <XCircleIcon size={24} />
         </button>
@@ -55,7 +53,7 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
           <u className="text-lg">PRICE</u>: {inventoryItem.price}
         </p>
         <p className="font-bold text-jblue">
-          <u className="text-lg">DETAILS</u>::{" "}
+          <u className="text-lg">DETAILS</u>:{" "}
           {inventoryItem.detailed_description}
         </p>
         <div className="relative h-[50vh] p-2 m-1 ">
@@ -70,7 +68,7 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
             src={imagesForInventoryItem[activeIndex]}
             width={64}
             height={64}
-            className="object-contain w-full h-full bg-black bg-opacity-50 rounded border-jblue border-2" // Maintain aspect ratio
+            className="object-contain w-full h-full bg-black bg-opacity-50 rounded border-jblue border-2"
             alt={`Thumbnail for ${inventoryItem.short_description}`}
           />
           <button
@@ -82,16 +80,14 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
         </div>
         {/* Preview Thumbnails */}
         <div className="flex justify-center space-x-2">
-          {" "}
-          {/* Horizontal spacing for thumbnails */}
           {imagesForInventoryItem.map((image, index) => (
             <div
               key={`${inventoryItem._id}-${index}-thumbnail`}
               className={`w-16 h-16 bg-gray-200 rounded-lg border-2 cursor-pointer ${
                 activeIndex === index ? "border-jblue" : "border-transparent"
-              }`} // Highlight active thumbnail
+              }`}
               onClick={() => {
-                setActiveIndex(index); // Update the active index
+                setActiveIndex(index);
               }}
             >
               <LazyImage
@@ -99,7 +95,7 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
                 src={image}
                 width={64}
                 height={64}
-                className="object-contain w-full h-full" // Maintain aspect ratio
+                className="object-contain w-full h-full"
                 alt={`Thumbnail for ${inventoryItem.short_description}`}
               />
             </div>

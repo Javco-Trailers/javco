@@ -131,8 +131,31 @@ export const updateInventoryItem = (inventory_id: any, formData: any) => {
       `${process.env.NEXT_PUBLIC_BASE_URL}/inventory/${inventory_id}`,
       formData
     )
-    .then((response) => {
-      console.log(response.data);
+    .then(() => {
+      toast.success(`Inventory Item Edited Successfully`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    })
+    .catch(() => {
+      toast.info(`Uh oh, something went wrong`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     });
 };
 
