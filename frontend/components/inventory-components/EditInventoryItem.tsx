@@ -255,13 +255,15 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
         </div>
 
         <div className="flex justify-between">
-          <button
-            type="button"
-            onClick={handleSubmit(onSubmit)}
-            className="px-4 py-2 bg-jblue hover:bg-pink-700 text-white rounded"
-          >
-            Save
-          </button>
+          {uploadedFiles && (
+            <button
+              type="button"
+              onClick={handleSubmit(onSubmit)}
+              className="px-4 py-2 bg-jblue hover:bg-pink-700 text-white rounded"
+            >
+              Save
+            </button>
+          )}
           <button
             type="button"
             onClick={handleConfirmModal}
