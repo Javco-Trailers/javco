@@ -5,12 +5,12 @@ import { toast, Bounce } from "react-toastify";
 axios.defaults.withCredentials = true;
 // apiCalls for inventory
 
-export const getAllInventory = async (setStateFunction:any) => {
+export const getAllInventory = async (setStateFunction: any) => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory`, {
-      next: { tags: ['collection'] }
+      next: { tags: ["collection"] },
     });
-    
+
     const data = await res.json();
 
     if (setStateFunction) {
@@ -24,44 +24,38 @@ export const getAllInventory = async (setStateFunction:any) => {
     throw error;
   }
 };
-export const getPhotosForSingleInventory = async (
-  setStateFunction: any,
+export const getPhotosForSingleInventory = (
+  setStateFunction: SetStateAction<any>,
   inventoryId: string
 ) => {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory/${inventoryId}/images`, {
-      next: { tags: ['collection'] }
+  axios
+    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory/${inventoryId}/images`)
+    .then((response) => {
+      setStateFunction(response.data.images);
     });
-
-    if (!res.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    const data = await res.json();
-    if(setStateFunction){
-    setStateFunction(data.images);
-    }
-
-    return data.images
-  } catch (error) {
-    console.error(`Error fetching images for inventory ${inventoryId}:`, error);
-    throw error;
-  }
 };
 
-
-export const addNewInventoryItem = (newItem: any, inventoryItems:any, setInventoryItems:any, reset:any, setUploadedFiles:any, setPreview:any) => {
+export const addNewInventoryItem = (
+  newItem: any,
+  inventoryItems: any,
+  setInventoryItems: any,
+  reset: any,
+  setUploadedFiles: any,
+  setPreview: any
+) => {
   axios
     .post(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory`, newItem)
-    .then((response)=>{
-return response.data.inventory_item})
-      .then((inventoryItem)=>{setInventoryItems([...inventoryItems, inventoryItem]);
-        setUploadedFiles([]);
-        setPreview([])
-        reset();
+    .then((response) => {
+      return response.data.inventory_item;
+    })
+    .then((inventoryItem) => {
+      setInventoryItems([...inventoryItems, inventoryItem]);
+      setUploadedFiles([]);
+      setPreview([]);
+      reset();
     })
     .then(() => {
-       toast.success(`Inventory Item Added Successfully`, {
+      toast.success(`Inventory Item Added Successfully`, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -72,7 +66,8 @@ return response.data.inventory_item})
         theme: "light",
         transition: Bounce,
       });
-    }).catch(() => {
+    })
+    .catch(() => {
       toast.info(`Uh oh, something went wrong`, {
         position: "top-center",
         autoClose: 5000,
@@ -87,10 +82,11 @@ return response.data.inventory_item})
     });
 };
 
-
 export const deleteInventoryItem = (inventory_id: any) => {
-  axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory/${inventory_id}`).then(() => {
-       toast.success(`Inventory Item Deleted Successfully`, {
+  axios
+    .delete(`${process.env.NEXT_PUBLIC_BASE_URL}/inventory/${inventory_id}`)
+    .then(() => {
+      toast.success(`Inventory Item Deleted Successfully`, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -101,7 +97,8 @@ export const deleteInventoryItem = (inventory_id: any) => {
         theme: "light",
         transition: Bounce,
       });
-    }).catch(() => {
+    })
+    .catch(() => {
       toast.info(`Uh oh, something went wrong`, {
         position: "top-center",
         autoClose: 5000,

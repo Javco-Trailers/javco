@@ -4,17 +4,23 @@ import { useState, useEffect, Suspense, lazy } from "react";
 import { InventoryItem } from "@/app/types/types";
 import InventoryCardZoomed from "./InventoryCardZoomed";
 import "../../app/globals.css";
+import { getPhotosForSingleInventory } from "@/globalFunctions/apiCalls/apiCalls";
 import { Maximize2 } from "lucide-react";
 import LazyImage from "./LazyImage";
 
 interface InventoryProps {
   inventoryItem: InventoryItem;
-  imageDataForItem: string[]
 }
 
-const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem, imageDataForItem }) => {
+const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
   const [isZoomed, setIsZoomed] = useState<boolean>(false);
-  const [imagesForCarousel, setImagesForCarousel] = useState<string[]>(imageDataForItem)
+  const [imagesForInventoryItem, setImagesForInventoryItem] = useState<
+    string[] | null
+  >(null);
+
+  useEffect(() => {
+    getPhotosForSingleInventory(setImagesForInventoryItem, inventoryItem._id);
+  }, [inventoryItem._id]);
 
   useEffect(() => {
     isZoomed
@@ -30,7 +36,7 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem, imageDataForIt
   return (
     <div className="w-full h-full  border-gray-200 border-2 rounded p-2">
       <div>
-        {!imageDataForItem ? (
+        {!imagesForInventoryItem ? (
           <div className="relative w-full md:h-[284.44px] bg-gray-200">
             <div className="absolute inset-0 flex justify-center items-center text-gray-500">
               Loading pictures...
@@ -48,7 +54,7 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem, imageDataForIt
                 width={200}
                 height={200}
                 alt={`Image for ${inventoryItem.short_description}`}
-                src={imageDataForItem[0]}
+                src={imagesForInventoryItem[0]}
                 className="rounded w-full"
               />
             </div>
@@ -70,12 +76,11 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem, imageDataForIt
         </p>
       </div>
 
-      {isZoomed && imagesForCarousel&& (
+      {isZoomed && imagesForInventoryItem && (
         <InventoryCardZoomed
-        key={`${imagesForCarousel[0]}`}
           inventoryItem={inventoryItem}
           handleZoom={handleZoom}
-          imagesForInventoryItem={imageDataForItem}
+          imagesForInventoryItem={imagesForInventoryItem}
         />
       )}
     </div>

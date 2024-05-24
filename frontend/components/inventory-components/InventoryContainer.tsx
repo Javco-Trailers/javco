@@ -6,12 +6,9 @@ import InventoryCard from "./InventoryCard";
 
 interface InventoryContainerProps {
   data: any;
-  imageArrayAfterPromises:any
 }
 
-const InventoryContainer: React.FC<InventoryContainerProps> = ({ data, imageArrayAfterPromises }) => {
-
-  
+const InventoryContainer: React.FC<InventoryContainerProps> = ({ data }) => {
   return (
     <section className="bg-gray-100 p-8 relative">
       <div className="max-w-3xl mx-auto">
@@ -29,7 +26,7 @@ const InventoryContainer: React.FC<InventoryContainerProps> = ({ data, imageArra
               key={`inventory-item-${index}`}
               className="w-full sm:w-1/2 md:w-1/3 p-2 basis-1/3"
             >
-              <InventoryCard inventoryItem={inventoryItem} imageDataForItem={imageArrayAfterPromises[index]}/>
+              <InventoryCard inventoryItem={inventoryItem} />
             </div>
           ))}
         </div>
