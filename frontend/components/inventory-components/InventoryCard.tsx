@@ -25,8 +25,11 @@ const InventoryCard: React.FC<InventoryProps> = ({ inventoryItem }) => {
 
   useEffect(() => {
     getImageForPreviewDisplay(setPreviewPhoto, inventoryItem.image_ids[0]);
-    getPhotosForSingleInventory(setImagesForInventoryItem, inventoryItem._id);
   }, [inventoryItem._id]);
+
+  useEffect(() => {
+    getPhotosForSingleInventory(setImagesForInventoryItem, inventoryItem._id);
+  }, [previewPhoto]);
 
   useEffect(() => {
     isZoomed
