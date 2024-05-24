@@ -25,7 +25,7 @@ const InventoryPage = async () => {
         <div className="bg-white text-jblue mb-2 shadow-lg shadow-indigo-500/40 rounded-b px-8">
           <NavBar />
         </div>
-        {data && imageArrayAfterPromises && (<InventoryContainer data={data} imageArrayAfterPromises={imageArrayAfterPromises}/>)}
+        <InventoryContainer data={data} imageArrayAfterPromises={imageArrayAfterPromises}/>
         <div id="contact">
           <ContactUs />
         </div>

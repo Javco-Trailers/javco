@@ -1,28 +1,8 @@
 import { useState, useRef } from "react";
 import { InventoryItem } from "@/app/types/types";
 import { XCircleIcon } from "lucide-react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import LazyImage from "./LazyImage";
-
-const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
-    items: 1,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 interface ZoomedInventoryProps {
   inventoryItem: InventoryItem;
@@ -36,7 +16,18 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
   imagesForInventoryItem,
 }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const carouselRef = useRef<any>(null);
+
+  const handleGoForward = () => {
+    activeIndex < imagesForInventoryItem.length - 1
+      ? setActiveIndex((prev: number) => prev + 1)
+      : setActiveIndex(0);
+  };
+
+  const handleGoBack = () => {
+    activeIndex > 0
+      ? setActiveIndex((prev: number) => prev - 1)
+      : setActiveIndex(imagesForInventoryItem.length - 1);
+  };
 
   return (
     <div
@@ -67,26 +58,28 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
           <u className="text-lg">DETAILS</u>::{" "}
           {inventoryItem.detailed_description}
         </p>
-       <Carousel
-          responsive={responsive}
-          beforeChange={(nextSlide: number) => setActiveIndex(nextSlide)}
-          ref={carouselRef}
-        >
-          {imagesForInventoryItem.map((image: string, index) => {
-            return (
-              <div className="flex justify-center mt-2 mb-2 md:flex-none md:mt-0 md:mb-0 bg-gray-500 rounded">
-                <LazyImage
-                  key={`${inventoryItem._id}-${index}`}
-                  height={100}
-                  width={100}
-                  className="w-3/5 md:w-full object-contain max-h-[60vh]"
-                  src={image}
-                  alt={`${inventoryItem.short_description} image ${index + 1}`}
-                />
-              </div>
-            );
-          })}
-        </Carousel>
+        <div className="relative h-[50vh] p-2 m-1 ">
+          <button
+            onClick={handleGoBack}
+            className="absolute top-1/2 left-2 bg-white rounded-r p-2 border-2 border-jblue transform -translate-y-1/2"
+          >
+            <ChevronLeftIcon />
+          </button>
+          <LazyImage
+            key={`${activeIndex}imagecourselthumbnail`}
+            src={imagesForInventoryItem[activeIndex]}
+            width={64}
+            height={64}
+            className="object-contain w-full h-full bg-black bg-opacity-50 rounded border-jblue border-2" // Maintain aspect ratio
+            alt={`Thumbnail for ${inventoryItem.short_description}`}
+          />
+          <button
+            onClick={handleGoForward}
+            className="absolute top-1/2 right-2 bg-white rounded-r p-2 border-2 border-jblue transform -translate-y-1/2"
+          >
+            <ChevronRightIcon />
+          </button>
+        </div>
         {/* Preview Thumbnails */}
         <div className="flex justify-center space-x-2">
           {" "}
@@ -99,7 +92,6 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
               }`} // Highlight active thumbnail
               onClick={() => {
                 setActiveIndex(index); // Update the active index
-                carouselRef.current.goToSlide(index); // Programmatically move the carousel
               }}
             >
               <LazyImage
