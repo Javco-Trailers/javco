@@ -31,7 +31,7 @@ const InventoryCardZoomed: React.FC<ZoomedInventoryProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
-      <div className="w-4/5 bg-white p-4 rounded-lg shadow-xl relative h-[70vh] overflow-y-auto">
+      <div className="w-4/5 bg-white p-4 rounded-lg shadow-xl relative h-[70vh] md:h-[85vh] overflow-y-auto">
         <button
           onClick={handleZoom}
           className="absolute top-2 right-2 text-gray-600"

@@ -8,17 +8,7 @@ import {
   getPhotosForSingleInventory,
 } from "@/globalFunctions/apiCalls/apiCalls";
 import ConfirmationModal from "../adminComponents/ConfirmationScreen";
-
-interface InventoryItem {
-  _id: string;
-  year: number;
-  make: string;
-  model: string;
-  price: string;
-  short_description: string;
-  detailed_description: string;
-  image_ids: string[]; // Array of existing image IDs
-}
+import { InventoryItem } from "@/app/types/types";
 
 interface EditInventoryItemProps {
   inventoryItem: InventoryItem; // The existing inventory item to edit
@@ -32,7 +22,6 @@ type Inputs = {
   make: string;
   model: string;
   price: string;
-  short_description: string;
   detailed_description: string;
   files: any;
 };
@@ -167,8 +156,6 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
     });
 
     updateInventoryItem(inventoryItem._id, formData); // Call API to update
-
-    reset(); // Optionally reset form after submission
   };
 
   const handleDelete = () => {
@@ -230,8 +217,6 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
           />
           {errors.price && <span>Price is required</span>}
         </div>
-
-      
 
         <div className="flex flex-col">
           <label htmlFor="detailed_description">Detailed Description:</label>
