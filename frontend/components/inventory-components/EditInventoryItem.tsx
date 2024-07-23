@@ -237,6 +237,7 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
           {preview.map((url, index) => (
             <div key={index} className="relative">
               <button
+                type="button"
                 onClick={removeFile}
                 data-index={index}
                 className="absolute top-3 right-3 bg-white rounded-full text-red-500 hover:text-red-700"
