@@ -121,6 +121,8 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
   };
 
   const removeFile = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    event.stopPropagation()
     const index = event.currentTarget.getAttribute("data-index") || "";
     const indexAsNumber = parseInt(index);
 
