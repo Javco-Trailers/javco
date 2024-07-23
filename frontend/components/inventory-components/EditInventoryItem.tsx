@@ -93,6 +93,8 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
 
   //change for adding files
   const changedHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault();
+        event.stopPropagation();
     const files = event.target.files;
 
     if (files) {
