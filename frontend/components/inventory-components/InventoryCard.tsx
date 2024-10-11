@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense, lazy } from "react";
+import { useState, useEffect } from "react";
 import { InventoryItem } from "@/app/types/types";
 import InventoryCardZoomed from "./InventoryCardZoomed";
 import "../../app/globals.css";
