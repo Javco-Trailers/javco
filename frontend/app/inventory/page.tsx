@@ -8,12 +8,8 @@ import {
   getAllInventory,
   getPhotosForSingleInventory,
 } from "@/globalFunctions/apiCalls/apiCalls";
-import action from "../action";
-import { InventoryItem } from "../types/types";
 
 const InventoryPage = async () => {
-  const data = await getAllInventory(null);
-  action();
 
   return (
     <>
@@ -21,7 +17,7 @@ const InventoryPage = async () => {
         <div className="bg-white text-jblue mb-2 shadow-lg shadow-indigo-500/40 rounded-b px-8">
           <NavBar />
         </div>
-        <InventoryContainer data={data} />
+        <InventoryContainer />
         <div id="contact">
           <ContactUs />
         </div>
