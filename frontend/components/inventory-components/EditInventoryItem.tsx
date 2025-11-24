@@ -93,6 +93,8 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
 
   //change for adding files
   const changedHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault();
+        event.stopPropagation();
     const files = event.target.files;
 
     if (files) {
@@ -121,6 +123,8 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
   };
 
   const removeFile = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    event.stopPropagation()
     const index = event.currentTarget.getAttribute("data-index") || "";
     const indexAsNumber = parseInt(index);
 
@@ -237,6 +241,7 @@ const EditInventoryItem: React.FC<EditInventoryItemProps> = ({
           {preview.map((url, index) => (
             <div key={index} className="relative">
               <button
+                type="button"
                 onClick={removeFile}
                 data-index={index}
                 className="absolute top-3 right-3 bg-white rounded-full text-red-500 hover:text-red-700"

@@ -191,6 +191,7 @@ const NewInventoryItem: React.FC<NewInventoryItemProps> = ({inventoryItems, setI
             >
               {/* Button to remove the image */}
               <button
+                type="button"
                 onClick={removeFile}
                 key={`button-for-removal-${index}`}
                 data-index={index} // Set the data-index
