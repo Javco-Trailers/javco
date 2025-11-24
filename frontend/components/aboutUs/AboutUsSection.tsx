@@ -1,23 +1,16 @@
-// components/AboutUsSection.tsx
-import React from "react";
 import Image from "next/image";
 import salesLot from "../../public/picture-1-email-edited-min.jpg";
 import YoungFounders from "../../public/FoundersWhenYoung-min.jpg";
 import Memorial from "../../public/JavcoFounders-min.jpg";
 import Aerial from "../../public/AerialPic-min.jpg";
 
-interface AboutUsSectionProps {
-  parsedText: any;
-}
-
-const AboutUsSection: React.FC<AboutUsSectionProps> = ({ parsedText }) => {
-  const aboutUsText = parsedText.text.About_Us_Page;
+const AboutUsSection = () => {
 
   return (
     <section className="bg-gray-100 p-8">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl text-center mb-4 font-bold text-jblue">
-          {aboutUsText.Main_Header}
+          About us
         </h1>
         <div className="flex justify-center items-center mb-4">
           <Image
@@ -29,7 +22,7 @@ const AboutUsSection: React.FC<AboutUsSectionProps> = ({ parsedText }) => {
           />
         </div>
         <p className="text-lg text-left font-semibold text-gray-600 mb-2 p-4">
-          {aboutUsText.Paragraph_One}
+          Javco Trailer Sales, Inc. was founded in 1984 by the unlikely duo of Avner Hizmi and John Griska. Avner, an Israeli immigrant, and John, a Pittsburgh-born yinzer and Vietnam veteran, crossed paths in the trailer industry and eventually forged a business partnership that endured a lifetime. John and Avner deftly operated in the Milwaukee and Chicago markets and gradually built a network of trusted vendors and customers.
         </p>
         <div className="flex justify-center items-center mb-4">
           <Image
@@ -41,7 +34,7 @@ const AboutUsSection: React.FC<AboutUsSectionProps> = ({ parsedText }) => {
           />
         </div>
         <p className="text-lg text-left font-semibold text-gray-600 mb-4 p-4">
-          {aboutUsText.Paragraph_Two}
+          In 1998, they purchased a parcel of land along I-94 and erected a 5,000 square-foot building which serves as our base of operations to this day.
         </p>
         <div className="flex justify-center items-center mb-4">
           <Image
@@ -53,7 +46,7 @@ const AboutUsSection: React.FC<AboutUsSectionProps> = ({ parsedText }) => {
           />
         </div>
         <p className="text-lg text-left font-semibold text-gray-600 mb-8 p-4">
-          {aboutUsText.Paragraph_Three}
+          Avner passed away in November of 2011. John passed away in May of 2022. We are forever indebted to their entrepreneurship, ingenuity, and mutual loyalty.
         </p>
         <div className="flex justify-center items-center mb-4">
           <Image

@@ -1,6 +1,5 @@
 "use server";
 import "../globals.css";
-import { fetchText } from "@/globalFunctions/apiCalls/apiCalls";
 import NavBar from "@/components/navbarComponents/NavBar";
 import ContactUs from "@/components/contactUs/contactUs";
 import Copyright from "@/components/copyright/copyRight";
@@ -11,12 +10,7 @@ import Reefer from "../../public/ReeferVan-min.png";
 import DryVan from "../../public/DryVanForSales-min.png";
 
 export default async function SalesPage() {
-  const text = await fetchText(null);
-  // Extract the first item from the text array
-  const textData = text.text[0].text;
 
-  // Parse the text to get the actual JSON object
-  const parsedText = JSON.parse(textData);
   return (
     <>
       <div className="overflow-x-hidden">
@@ -43,11 +37,11 @@ export default async function SalesPage() {
           />
         </div>
         <div className="border-b-2 border-jblue">
-          <SalesSection parsedText={parsedText} />
+          <SalesSection />
         </div>
 
         <div className="border-b-2 border-jblue">
-          <SellTrailers parsedText={parsedText} />
+          <SellTrailers />
         </div>
 
         <div id="contact">

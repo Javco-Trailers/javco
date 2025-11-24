@@ -1,8 +1,5 @@
 import { MapPinIcon, PhoneCallIcon, Mail } from "lucide-react";
 
-
-
-
 const ContactUs: React.FC = () => {
 
   return (

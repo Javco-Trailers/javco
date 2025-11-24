@@ -1,18 +1,19 @@
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import DryVanInside from "../../public/DryVanInside-min.jpg";
 import DryVansLinedUp from "../../public/dryvansatdock-min.jpg";
 
-interface RentalSectionsProp {
-  parsedText: any;
-}
+const industriesWeServeText = ["Manufacturing",
+"Shopping centers",
+"Lawn & Garden",
+"Recycling centers",
+"Hotels",
+"Post bulk mail",
+"Construction Sites",
+"Merchandizers",
+"Tradeshow conventions"]
 
-const RentalsSection: React.FC<RentalSectionsProp> = ({ parsedText }) => {
-  const rentalsSectionText = parsedText.text.Rentals_Page;
-  const storageSectionText = rentalsSectionText.Storage_Section;
-  const cartageSectionText = rentalsSectionText.Cartage_Section;
-  const industriesWeServeText = rentalsSectionText.Industries_We_Serve;
+const RentalsSection  = () => {
 
   return (
     <section className="bg-gray-100 p-8">
@@ -37,30 +38,28 @@ const RentalsSection: React.FC<RentalSectionsProp> = ({ parsedText }) => {
       <div className="max-w-3xl mx-auto text-center">
         <div className="m-4 p-4">
           <p className="text-left font-bold mb-4 text-black">
-            {rentalsSectionText.Text_Under_Photo}
+            Javco maintains a quality multi-brand rental fleet for both your short and long-term needs
           </p>
           <div className="border-t-2 border-jblue border-b-2">
             <ul>
               <li className="text-left  mb-4">
                 <h2 className="font-bold text-xl mb-2 mt-2 text-jblue">
-                  {storageSectionText.Section_Header}
+                  Storage Trailers
                 </h2>
                 <ul>
                   <li className="ml-6 text-gray-600">
-                    {storageSectionText.Section_Paragraph_Before_Link_1}
-                    <Link className="text-jblue" href="tel:+12628359400">
-                      {" "}
-                      <u>{storageSectionText.Link_One_Text}</u>
-                    </Link>{" "}
-                    {storageSectionText.Filler_Between_Texts}
+                    {"Alleviate your cramped warehouse space with the security and flexibility of a storage trailer. Javco will deliver right to your dock or jobsite! "}
+                    <Link className="text-jblue underline" href="tel:+12628359400">
+                      Call
+                    </Link>
+                    {" or "}
                     <Link
-                      className="text-jblue"
+                      className="text-jblue underline"
                       href="mailto:info@javco.co?subject=Javco Inquiry"
-                    >
-                      {" "}
-                      <u>{storageSectionText.Link_Two_Text}</u>
-                    </Link>{" "}
-                    {storageSectionText.Ending_Text}
+                    > 
+                      Email
+                    </Link>
+                    {" now for a quote"}
                   </li>
                 </ul>
               </li>
@@ -71,10 +70,10 @@ const RentalsSection: React.FC<RentalSectionsProp> = ({ parsedText }) => {
             <ul>
               <li className="text-left">
                 <h2 className="font-bold text-xl mb-2 mt-2 text-jblue">
-                  {cartageSectionText.Section_Header}
+                  Cartage & OTR Trailers
                 </h2>
                 <ul className="ml-6 text-gray-600">
-                  {cartageSectionText.Section_Paragraph}
+                  Javco maintains a quality multi-brand rental fleet of cartage and OTR trailers. Fill out a credit application and request a quote! Owner operators welcome!
                 </ul>
               </li>
             </ul>
@@ -86,16 +85,16 @@ const RentalsSection: React.FC<RentalSectionsProp> = ({ parsedText }) => {
               target="_blank"
               download
             >
-              {rentalsSectionText.Credit_Application_Text}
+              Download Credit Application PDF
             </a>
           </div>
         </div>
         <div className="mt-8">
           <h3 className="text-2xl font-bold mb-4 text-black">
-            {industriesWeServeText.Section_Header}
+            Industries We Serve
           </h3>
           <ul className="text-lg text-gray-600 list-disc">
-            {industriesWeServeText.List_Items.map(
+            {industriesWeServeText.map(
               (listItem: string, index: number) => {
                 return (
                   <li className="list-none" key={`list-for-industries${index}`}>
