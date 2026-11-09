@@ -74,6 +74,8 @@ pnpm build
 - Every page is statically prerendered. Security headers and the CSP are set in `frontend/next.config.ts`.
 - Inventory is the Cherry Trader embed. Cherry Trader only allows `https://www.javco.co` to frame it, so it is blank on
   localhost and Vercel preview URLs.
+- The location map uses the Maps Embed API with `NEXT_PUBLIC_MAPS` (see `frontend/.env.example`); without the key it
+  falls back to a keyless address embed.
 - The old CMS backend (admin login, inventory CRUD, editable text) has been retired. `/admin/*` redirects home.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

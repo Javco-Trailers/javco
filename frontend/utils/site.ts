@@ -24,8 +24,14 @@ export const CONTACT = {
 
 export const ADDRESS_ONE_LINE = `${CONTACT.street}, ${CONTACT.city}, ${CONTACT.region} ${CONTACT.postalCode}`
 export const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS_ONE_LINE)}`
-// Keyless embed: avoids shipping a Maps API key to the browser.
-export const MAPS_EMBED = `https://www.google.com/maps?q=${encodeURIComponent(ADDRESS_ONE_LINE)}&output=embed`
+// Google Place ID for Javco's business listing, so the map shows the named pin rather than a bare address.
+export const MAPS_PLACE_ID = 'ChIJNY_vg59uBYgRXmWJTrJDh-Q'
+// Maps Embed API keys are public by design; keep this one restricted to javco.co referrers in Google Cloud.
+const MAPS_API_KEY = process.env.NEXT_PUBLIC_MAPS
+export const MAPS_EMBED = MAPS_API_KEY
+    ? `https://www.google.com/maps/embed/v1/place?q=place_id:${MAPS_PLACE_ID}&key=${MAPS_API_KEY}`
+    // Fallback for local dev without the key
+    : `https://www.google.com/maps?q=${encodeURIComponent(ADDRESS_ONE_LINE)}&output=embed`
 
 export const INVENTORY_EMBED = 'https://cherrytrader.com/embed/seller/javco-trailer-sales-inc-ef07a243'
 export const CREDIT_APPLICATION = '/creditApplication.pdf'
