@@ -43,8 +43,9 @@ export const metadata: Metadata = {
         images: [SITE_SOCIAL_IMAGE]
     },
     robots: { index: true, follow: true },
-    // Google Search Console URL-prefix ownership check (HTML tag method); set the content value in Vercel.
-    verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined }
+    // Google Search Console ownership check for the https://www.javco.co/ URL-prefix property (HTML tag method).
+    // Public by design; keep it in place, Google re-checks periodically.
+    verification: { google: 'LgqNcJws9jpnsyI-32tkJxnKq47VAI18ywm-gMdQCkU' }
 }
 
 export const viewport: Viewport = {
