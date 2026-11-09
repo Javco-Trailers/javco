@@ -42,7 +42,9 @@ export const metadata: Metadata = {
         description: SITE_DESCRIPTION,
         images: [SITE_SOCIAL_IMAGE]
     },
-    robots: { index: true, follow: true }
+    robots: { index: true, follow: true },
+    // Google Search Console URL-prefix ownership check (HTML tag method); set the content value in Vercel.
+    verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined }
 }
 
 export const viewport: Viewport = {
