@@ -9,7 +9,7 @@ export default function LocalBusinessJsonLd() {
         name: SITE_LEGAL_NAME,
         description: SITE_DESCRIPTION,
         url: SITE_ORIGIN,
-        logo: `${SITE_ORIGIN}/javco_logo.png`,
+        logo: `${SITE_ORIGIN}/images/javco-logo.png`,
         image: `${SITE_ORIGIN}${SITE_SOCIAL_IMAGE}`,
         telephone: '+1-262-835-9400',
         email: CONTACT.email,

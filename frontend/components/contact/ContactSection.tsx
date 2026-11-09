@@ -27,11 +27,15 @@ export default function ContactSection() {
                                 <a
                                     href={href}
                                     {...external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
-                                    className="group flex items-center gap-4 rounded-xl bg-white p-4 shadow-card ring-1 ring-line transition
-                                        hover:ring-brand-200"
+                                    className="
+                                        group flex items-center gap-4 rounded-xl bg-white p-4 shadow-card ring-1 ring-line
+                                        transition hover:ring-brand-200
+                                    "
                                 >
-                                    <span className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600
-                                        group-hover:bg-brand-600 group-hover:text-white"
+                                    <span className="
+                                        flex size-12 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600
+                                        group-hover:bg-brand-600 group-hover:text-white
+                                    "
                                     >
                                         <Icon className="size-5" aria-hidden="true" />
                                     </span>
@@ -48,7 +52,7 @@ export default function ContactSection() {
                     <iframe
                         title={`Map showing Javco Trailer Sales at ${ADDRESS_ONE_LINE}`}
                         src={MAPS_EMBED}
-                        className="aspect-[4/3] w-full"
+                        className="aspect-4/3 w-full"
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
                     />

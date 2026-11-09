@@ -8,7 +8,7 @@ export default function SiteFooter() {
             <div className="container-page grid gap-10 py-14 md:grid-cols-3">
                 <div>
                     <p className="font-display text-2xl font-bold text-white">Javco Trailer Sales</p>
-                    <p className="mt-3 max-w-xs text-sm leading-relaxed text-brand-200">
+                    <p className="mt-3 max-w-xs text-sm/relaxed text-brand-200">
                         Family-built and trusted by Wisconsin and Chicagoland fleets since {FOUNDED_YEAR}.
                     </p>
                 </div>
@@ -41,7 +41,9 @@ export default function SiteFooter() {
                             </a>
                         </li>
                         <li>
-                            <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 hover:text-white">
+                            <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer" className="
+                                flex items-start gap-2 hover:text-white
+                            ">
                                 <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" /> {ADDRESS_ONE_LINE}
                             </a>
                         </li>

@@ -3,10 +3,10 @@ import Image, { type StaticImageData } from 'next/image'
 import PageHero from '@/components/ui/PageHero'
 import CtaBand from '@/components/ui/CtaBand'
 import ContactSection from '@/components/contact/ContactSection'
-import heroImage from '@/public/AerialPic-min.jpg'
-import foundersYoungImage from '@/public/FoundersWhenYoung-min.jpg'
-import salesLotImage from '@/public/picture-1-email-edited-min.jpg'
-import foundersImage from '@/public/JavcoFounders-min.jpg'
+import heroImage from '@/public/images/aerial-lot.jpg'
+import foundersYoungImage from '@/public/images/founders-early.jpg'
+import salesLotImage from '@/public/images/original-sales-lot.jpg'
+import foundersImage from '@/public/images/founders-later.jpg'
 import { pageMetadata } from '@/utils/seo'
 import { FOUNDED_YEAR } from '@/utils/site'
 
@@ -80,13 +80,13 @@ export default function AboutPage() {
                                     alt={milestone.alt}
                                     placeholder="blur"
                                     sizes="(min-width: 1024px) 50vw, 100vw"
-                                    className="max-h-[28rem] w-full rounded-2xl object-cover shadow-raised"
+                                    className="max-h-112 w-full rounded-2xl object-cover shadow-raised"
                                 />
                             </div>
                             <div>
                                 <p className="eyebrow text-brand-600">{milestone.year}</p>
                                 <h2 className="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl">{milestone.title}</h2>
-                                <p className="mt-4 text-lg leading-relaxed text-ink-muted">{milestone.body}</p>
+                                <p className="mt-4 text-lg/relaxed text-ink-muted">{milestone.body}</p>
                             </div>
                         </li>
                     ))}

@@ -43,7 +43,11 @@ const nextConfig: NextConfig = {
     },
     async redirects() {
         // The retired CMS admin lived here; send any old bookmarks home instead of a 404.
-        return [{ source: '/admin/:path*', destination: '/', permanent: true }]
+        return [
+            { source: '/admin/:path*', destination: '/', permanent: true },
+            // The credit application has been shared by link; keep the old filename working.
+            { source: '/creditApplication.pdf', destination: '/credit-application.pdf', permanent: true }
+        ]
     }
 }
 

@@ -19,9 +19,9 @@ export default function InventoryEmbed() {
                 <div className="absolute inset-0 grid content-start gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3" aria-hidden="true">
                     {Array.from({ length: 6 }, (_, index) => (
                         <div key={index} className="animate-pulse space-y-3">
-                            <div className="aspect-[4/3] rounded-xl bg-slate-200" />
-                            <div className="h-4 w-3/4 rounded bg-slate-200" />
-                            <div className="h-4 w-1/2 rounded bg-slate-200" />
+                            <div className="aspect-4/3 rounded-xl bg-skeleton" />
+                            <div className="h-4 w-3/4 rounded-sm bg-skeleton" />
+                            <div className="h-4 w-1/2 rounded-sm bg-skeleton" />
                         </div>
                     ))}
                 </div>

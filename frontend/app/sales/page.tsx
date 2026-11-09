@@ -5,9 +5,9 @@ import { ArrowRight, Mail } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 import CtaBand from '@/components/ui/CtaBand'
 import ContactSection from '@/components/contact/ContactSection'
-import heroImage from '@/public/picture-1-email-edited-min.jpg'
-import reeferImage from '@/public/ReeferVan-min.png'
-import dryVanImage from '@/public/DryVanForSales-min.png'
+import heroImage from '@/public/images/original-sales-lot.jpg'
+import reeferImage from '@/public/images/reefer-truck.png'
+import dryVanImage from '@/public/images/dry-van-truck.png'
 import { pageMetadata } from '@/utils/seo'
 import { CONTACT, TRAILER_TYPES } from '@/utils/site'
 
@@ -41,7 +41,7 @@ export default function SalesPage() {
                         <h2 id="buy-heading" className="mt-3 text-4xl font-bold text-brand-900 sm:text-5xl">
                             Quality used trailers, honest pricing
                         </h2>
-                        <p className="mt-5 text-lg leading-relaxed text-ink-muted">
+                        <p className="mt-5 text-lg/relaxed text-ink-muted">
                             Call or email and ask about what&apos;s on the lot, or browse our inventory online.
                             We&apos;ll help you match
                             the trailer to your freight and budget.
@@ -77,7 +77,7 @@ export default function SalesPage() {
                     <div className="lg:col-span-2">
                         <p className="eyebrow text-accent-400">Sell or trade-in</p>
                         <h2 id="sell-heading" className="mt-3 text-4xl font-bold sm:text-5xl">Thinking of selling your trailer?</h2>
-                        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-brand-100">
+                        <p className="mt-5 max-w-2xl text-lg/relaxed text-brand-100">
                             Javco is always looking for quality inventory at a fair price.
                             Whether you want to trade in or downsize your
                             fleet, we&apos;ll make the process easy and pain-free. Tell us what you have.

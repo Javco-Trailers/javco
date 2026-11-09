@@ -5,8 +5,8 @@ import PageHero from '@/components/ui/PageHero'
 import CtaBand from '@/components/ui/CtaBand'
 import ContactSection from '@/components/contact/ContactSection'
 import QuoteButton from '@/components/quote/QuoteButton'
-import heroImage from '@/public/dryvansatdock-min.jpg'
-import interiorImage from '@/public/DryVanInside-min.jpg'
+import heroImage from '@/public/images/dry-vans-at-dock.jpg'
+import interiorImage from '@/public/images/dry-van-interior.jpg'
 import { pageMetadata } from '@/utils/seo'
 import { CONTACT, CREDIT_APPLICATION } from '@/utils/site'
 
@@ -58,7 +58,7 @@ export default function RentalsPage() {
                         <h2 id="storage-heading" className="mt-3 text-4xl font-bold text-brand-900 sm:text-5xl">
                             Out of room? Park a trailer at your dock.
                         </h2>
-                        <p className="mt-5 text-lg leading-relaxed text-ink-muted">
+                        <p className="mt-5 text-lg/relaxed text-ink-muted">
                             Alleviate a cramped warehouse with the security and flexibility of a storage trailer.
                             Javco delivers right to
                             your dock or jobsite.
@@ -77,7 +77,7 @@ export default function RentalsPage() {
                         alt="The clean, empty interior of a dry van storage trailer"
                         placeholder="blur"
                         sizes="(min-width: 1024px) 50vw, 100vw"
-                        className="max-h-[32rem] w-full rounded-2xl object-cover shadow-raised"
+                        className="max-h-128 w-full rounded-2xl object-cover shadow-raised"
                     />
                 </div>
             </section>
@@ -89,7 +89,7 @@ export default function RentalsPage() {
                         <h2 id="otr-heading" className="mt-3 text-4xl font-bold text-brand-900 sm:text-5xl">
                             Road-ready trailers for your loads
                         </h2>
-                        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-muted">
+                        <p className="mt-5 max-w-2xl text-lg/relaxed text-ink-muted">
                             Javco maintains a quality multi-brand rental fleet of cartage and over-the-road trailers.
                             Fill out a credit
                             application and request a quote. Owner-operators welcome!
@@ -102,7 +102,7 @@ export default function RentalsPage() {
                             <li>Email it to {CONTACT.email} or bring it by the lot.</li>
                             <li>We&apos;ll confirm availability and get you rolling.</li>
                         </ol>
-                        <a href={CREDIT_APPLICATION} download className="btn btn-brand mt-6 w-full">
+                        <a href={CREDIT_APPLICATION} download className="mt-6 btn w-full btn-brand">
                             <Download className="size-4" aria-hidden="true" /> Credit application (PDF)
                         </a>
                     </div>
@@ -115,7 +115,9 @@ export default function RentalsPage() {
                     <h2 id="industries-heading" className="mt-3 text-4xl font-bold text-brand-900">Industries we work with</h2>
                     <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3">
                         {INDUSTRIES.map(industry => (
-                            <li key={industry} className="rounded-xl bg-surface-muted px-4 py-3 font-medium text-ink ring-1 ring-line">
+                            <li key={industry} className="
+                                rounded-xl bg-surface-muted px-4 py-3 font-medium text-ink ring-1 ring-line
+                            ">
                                 {industry}
                             </li>
                         ))}

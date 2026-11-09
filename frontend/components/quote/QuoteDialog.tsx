@@ -10,7 +10,7 @@ interface QuoteDialogProps {
 }
 
 const inputClass = 'mt-1 block w-full rounded-lg border border-line bg-white px-3 py-2.5 text-sm text-ink shadow-xs '
-    + 'placeholder:text-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none'
+    + 'placeholder:text-ink-subtle focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-hidden'
 const labelClass = 'block text-sm font-medium text-ink'
 
 export default function QuoteDialog({ ref }: QuoteDialogProps) {
@@ -30,8 +30,10 @@ export default function QuoteDialog({ ref }: QuoteDialogProps) {
         <dialog
             ref={ref}
             aria-labelledby={field('title')}
-            className="m-auto w-[min(40rem,calc(100%-2rem))] rounded-2xl bg-white p-0 text-ink shadow-raised backdrop:bg-brand-950/60
-                backdrop:backdrop-blur-sm"
+            className="
+                m-auto w-[min(40rem,calc(100%-2rem))] rounded-2xl bg-white p-0 text-ink shadow-raised backdrop:bg-brand-950/60
+                backdrop:backdrop-blur-sm
+            "
         >
             <div className="flex items-start justify-between gap-4 border-b border-line px-6 py-5">
                 <div>
@@ -43,7 +45,9 @@ export default function QuoteDialog({ ref }: QuoteDialogProps) {
                 <form method="dialog">
                     <button
                         type="submit"
-                        className="inline-flex size-9 items-center justify-center rounded-lg text-ink-muted hover:bg-surface-muted"
+                        className="
+                            inline-flex size-9 items-center justify-center rounded-lg text-ink-muted hover:bg-surface-muted
+                        "
                     >
                         <span className="sr-only">Close</span>
                         <X className="size-5" aria-hidden="true" />
@@ -104,7 +108,9 @@ export default function QuoteDialog({ ref }: QuoteDialogProps) {
                 </div>
 
                 <div className="flex flex-col-reverse gap-3 pt-2 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
-                    <a href={CREDIT_APPLICATION} download className="inline-flex items-center gap-2 text-sm font-medium text-brand-700 hover:underline">
+                    <a href={CREDIT_APPLICATION} download className="
+                        inline-flex items-center gap-2 text-sm font-medium text-brand-700 hover:underline
+                    ">
                         <Download className="size-4" aria-hidden="true" />
                         Credit application (PDF)
                     </a>

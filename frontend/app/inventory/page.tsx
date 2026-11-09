@@ -3,7 +3,7 @@ import { ExternalLink } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 import ContactSection from '@/components/contact/ContactSection'
 import InventoryEmbed from '@/components/inventory/InventoryEmbed'
-import heroImage from '@/public/reefers lined up-min.jpg'
+import heroImage from '@/public/images/reefers-lined-up.jpg'
 import { pageMetadata } from '@/utils/seo'
 import { CONTACT, INVENTORY_EMBED } from '@/utils/site'
 

@@ -5,7 +5,7 @@ export const SITE_NAME = 'Javco Trailer Sales'
 export const SITE_LEGAL_NAME = 'Javco Trailer Sales, Inc.'
 export const SITE_DESCRIPTION = 'Used semi-trailer sales, rentals and storage in Franksville, Wisconsin. '
     + 'Dry vans, reefers, flatbeds and tankers serving Milwaukee, Racine, Kenosha and Chicagoland since 1984.'
-export const SITE_SOCIAL_IMAGE = '/JavcoSignZoomed-min.jpg'
+export const SITE_SOCIAL_IMAGE = '/images/javco-sign.jpg'
 export const FOUNDED_YEAR = 1984
 
 export const CONTACT = {
@@ -34,7 +34,7 @@ export const MAPS_EMBED = MAPS_API_KEY
     : `https://www.google.com/maps?q=${encodeURIComponent(ADDRESS_ONE_LINE)}&output=embed`
 
 export const INVENTORY_EMBED = 'https://cherrytrader.com/embed/seller/javco-trailer-sales-inc-ef07a243'
-export const CREDIT_APPLICATION = '/creditApplication.pdf'
+export const CREDIT_APPLICATION = '/credit-application.pdf'
 
 export interface NavItem {
     href: string

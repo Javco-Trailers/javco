@@ -5,6 +5,7 @@ import stylistic from '@stylistic/eslint-plugin'
 import nextPlugin from '@next/eslint-plugin-next'
 import reactHooks from 'eslint-plugin-react-hooks'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
+import betterTailwind from 'eslint-plugin-better-tailwindcss'
 
 // Mirrors the findadoc monorepo conventions: ESLint flat config, typescript-eslint, @stylistic for formatting
 // (no Prettier) and an accessibility plugin.
@@ -55,6 +56,21 @@ export default tseslint.config(
             '@stylistic/eol-last': ['error', 'always'],
             '@stylistic/no-trailing-spaces': 'error',
             '@stylistic/no-multiple-empty-lines': ['error', { max: 1 }]
+        }
+    },
+    // Tailwind class hygiene: canonical v4 names, consistent order, no unknown/conflicting/duplicate classes.
+    {
+        files: ['**/*.{ts,tsx}'],
+        ...betterTailwind.configs.recommended,
+        settings: {
+            'better-tailwindcss': { entryPoint: 'app/globals.css' }
+        },
+        rules: {
+            ...betterTailwind.configs.recommended.rules,
+            'better-tailwindcss/enforce-consistent-line-wrapping': ['error', { printWidth: 130, indent: 4, group: 'never', preferSingleLine: true }],
+            'better-tailwindcss/no-unknown-classes': 'error',
+            'better-tailwindcss/enforce-canonical-classes': 'error',
+            'better-tailwindcss/enforce-shorthand-classes': 'error'
         }
     }
 )

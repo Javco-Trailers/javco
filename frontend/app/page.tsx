@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, BadgeDollarSign, Box, Handshake, Layers, Snowflake, Truck, Warehouse, Droplets } from 'lucide-react'
-import heroImage from '@/public/AerialPic-min.jpg'
-import signImage from '@/public/JavcoSignZoomed-min.jpg'
-import foundersImage from '@/public/FoundersWhenYoung-min.jpg'
+import heroImage from '@/public/images/aerial-lot.jpg'
+import signImage from '@/public/images/javco-sign.jpg'
+import foundersImage from '@/public/images/founders-early.jpg'
 import ContactSection from '@/components/contact/ContactSection'
 import CtaBand from '@/components/ui/CtaBand'
 import QuoteButton from '@/components/quote/QuoteButton'
@@ -115,7 +115,7 @@ export default function HomePage() {
                                     <Icon className="size-6" aria-hidden="true" />
                                 </span>
                                 <h3 className="mt-5 text-2xl font-bold text-ink">{name}</h3>
-                                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{blurb}</p>
+                                <p className="mt-2 text-sm/relaxed text-ink-muted">{blurb}</p>
                             </li>
                         ))}
                     </ul>
@@ -124,23 +124,25 @@ export default function HomePage() {
 
             <section aria-labelledby="services-heading" className="bg-surface-muted py-20">
                 <div className="container-page">
-                    <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                        <div className="max-w-2xl">
-                            <p className="eyebrow text-brand-600">How we help</p>
-                            <h2 id="services-heading" className="mt-3 text-4xl font-bold text-brand-900 sm:text-5xl">
-                                One lot. Every trailer need.
-                            </h2>
-                        </div>
+                    <div className="max-w-2xl">
+                        <p className="eyebrow text-brand-600">How we help</p>
+                        <h2 id="services-heading" className="mt-3 text-4xl font-bold text-brand-900 sm:text-5xl">
+                            One lot. Every trailer need.
+                        </h2>
                     </div>
                     <ul className="mt-12 grid gap-6 md:grid-cols-2">
                         {SERVICES.map(({ icon: Icon, title, href, body }) => (
                             <li key={title}>
                                 <Link
                                     href={href}
-                                    className="group flex h-full gap-5 rounded-2xl bg-white p-6 shadow-card ring-1 ring-line transition
-                                        hover:-translate-y-0.5 hover:shadow-raised hover:ring-brand-200"
+                                    className="
+                                        group flex h-full gap-5 rounded-2xl bg-white p-6 shadow-card ring-1 ring-line transition
+                                        hover:-translate-y-0.5 hover:shadow-raised hover:ring-brand-200
+                                    "
                                 >
-                                    <span className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-brand-600 text-white">
+                                    <span className="
+                                        flex size-14 shrink-0 items-center justify-center rounded-xl bg-brand-600 text-white
+                                    ">
                                         <Icon className="size-7" aria-hidden="true" />
                                     </span>
                                     <span>
@@ -175,7 +177,9 @@ export default function HomePage() {
                             alt="The Javco Trailer Sales sign"
                             placeholder="blur"
                             sizes="(min-width: 1024px) 20vw, 40vw"
-                            className="absolute -right-4 -bottom-8 hidden w-2/5 rounded-xl border-4 border-white shadow-raised sm:block"
+                            className="
+                                absolute -right-4 -bottom-8 hidden w-2/5 rounded-xl border-4 border-white shadow-raised sm:block
+                            "
                         />
                     </div>
                     <div>
@@ -183,12 +187,12 @@ export default function HomePage() {
                         <h2 id="heritage-heading" className="mt-3 text-4xl font-bold text-brand-900 sm:text-5xl">
                             Built on a handshake in {FOUNDED_YEAR}
                         </h2>
-                        <p className="mt-5 text-lg leading-relaxed text-ink-muted">
+                        <p className="mt-5 text-lg/relaxed text-ink-muted">
                             Javco was founded by an unlikely duo, Avner Hizmi and John Griska,
                             who built a network of trusted vendors and
                             customers across the Milwaukee and Chicago markets. Their lot on I-94 is still our home base today.
                         </p>
-                        <Link href="/about" className="btn btn-outline mt-8">
+                        <Link href="/about" className="mt-8 btn btn-outline">
                             Read our history <ArrowRight className="size-4" aria-hidden="true" />
                         </Link>
                     </div>

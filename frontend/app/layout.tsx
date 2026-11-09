@@ -5,6 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import SiteHeader from '@/components/layout/SiteHeader'
 import SiteFooter from '@/components/layout/SiteFooter'
 import LocalBusinessJsonLd from '@/components/seo/LocalBusinessJsonLd'
+import { cn } from '@/utils/cn'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_ORIGIN, SITE_SOCIAL_IMAGE } from '@/utils/site'
 import './globals.css'
 
@@ -51,11 +52,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="en" className={`${inter.variable} ${barlow.variable}`}>
+        <html lang="en" className={cn(inter.variable, barlow.variable)}>
             <body className="flex min-h-dvh flex-col">
                 <a
                     href="#main"
-                    className="sr-only z-50 rounded-md bg-white px-4 py-2 font-semibold text-brand-700 focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+                    className="
+                        sr-only z-50 rounded-md bg-white px-4 py-2 font-semibold text-brand-700 focus:not-sr-only focus:fixed
+                        focus:top-3 focus:left-3
+                    "
                 >
                     Skip to content
                 </a>

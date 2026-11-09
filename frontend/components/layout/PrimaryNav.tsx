@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
+import { cn } from '@/utils/cn'
 import { NAV_ITEMS } from '@/utils/site'
 
 interface PrimaryNavProps {
@@ -50,9 +51,14 @@ export default function PrimaryNav({ children }: PrimaryNavProps) {
             <nav
                 id="primary-nav"
                 aria-label="Primary"
-                className={`${open ? 'flex' : 'hidden'} absolute inset-x-0 top-full flex-col gap-6 border-b border-line bg-white
-                    px-4 pt-4 pb-6 shadow-raised lg:static lg:flex lg:flex-1 lg:flex-row lg:items-center lg:justify-end lg:gap-8
-                    lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none`}
+                className={cn(
+                    open ? 'flex' : 'hidden',
+                    // Mobile: dropdown drawer under the header
+                    'absolute inset-x-0 top-full flex-col gap-6 border-b border-line bg-white px-4 pt-4 pb-6 shadow-raised',
+                    // Desktop: inline row
+                    'lg:static lg:flex lg:flex-1 lg:flex-row lg:items-center lg:justify-end lg:gap-8',
+                    'lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none'
+                )}
             >
                 <ul className="flex flex-col gap-1 lg:flex-row lg:gap-1">
                     {NAV_ITEMS.map(item => {
@@ -63,11 +69,11 @@ export default function PrimaryNav({ children }: PrimaryNavProps) {
                                     href={item.href}
                                     onClick={close}
                                     aria-current={active ? 'page' : undefined}
-                                    className={`block rounded-md px-3 py-2 text-base font-medium transition-colors lg:text-sm ${
-                                        active
-                                            ? 'bg-brand-50 text-brand-700'
-                                            : 'text-ink-muted hover:bg-surface-muted hover:text-ink'
-                                    }`}
+                                    className={cn(
+                                        'block rounded-md px-3 py-2 text-base font-medium transition-colors lg:text-sm',
+                                        active && 'bg-brand-50 text-brand-700',
+                                        !active && 'text-ink-muted hover:bg-surface-muted hover:text-ink'
+                                    )}
                                 >
                                     {item.label}
                                 </Link>
