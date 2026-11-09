@@ -1,54 +1,99 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@theme {
+    --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-display: var(--font-barlow), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+    /* Brand: the original Javco blue, rgb(33, 99, 166), plus a tonal scale around it */
+    --color-brand-50: #eef4fb;
+    --color-brand-100: #d6e4f4;
+    --color-brand-200: #adc9e8;
+    --color-brand-500: #2f7ac4;
+    --color-brand-600: #2163a6;
+    --color-brand-700: #1a5088;
+    --color-brand-800: #153f6b;
+    --color-brand-900: #0f2c4c;
+    --color-brand-950: #0a1d33;
+
+    /* Safety-amber accent for primary calls to action */
+    --color-accent-400: #fbbf24;
+    --color-accent-500: #f59e0b;
+    --color-accent-600: #d97706;
+
+    --color-ink: #0f172a;
+    --color-ink-muted: #475569;
+    --color-surface: #ffffff;
+    --color-surface-muted: #f4f7fb;
+    --color-line: #e2e8f0;
+
+    --shadow-card: 0 1px 2px rgb(15 23 42 / 0.06), 0 4px 16px rgb(15 23 42 / 0.06);
+    --shadow-raised: 0 10px 30px rgb(15 23 42 / 0.12);
+    --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@layer base {
+    html {
+        color-scheme: light;
+        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        @apply bg-surface text-ink font-sans antialiased;
+    }
+
+    h1, h2, h3 {
+        @apply font-display tracking-tight text-balance;
+    }
+
+    p {
+        text-wrap: pretty;
+    }
+
+    :focus-visible {
+        outline: 3px solid var(--color-accent-500);
+        outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@utility container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
 }
 
-body {
-  margin: 0;
-  padding: 0;
+@utility btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold whitespace-nowrap
+        transition-colors duration-200 ease-(--ease-soft) disabled:opacity-60;
 }
 
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
+@utility btn-primary {
+    @apply bg-accent-500 text-brand-950 hover:bg-accent-400;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: white;
-  border-radius: 5px;
+@utility btn-brand {
+    @apply bg-brand-600 text-white hover:bg-brand-700;
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: white;
-  border-radius: 5px;
+@utility btn-ghost-light {
+    @apply bg-white/10 text-white ring-1 ring-white/30 ring-inset hover:bg-white/20;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #2163a6;
+@utility btn-outline {
+    @apply bg-white text-brand-700 ring-1 ring-brand-200 ring-inset hover:bg-brand-50;
+}
+
+@utility eyebrow {
+    @apply text-xs font-semibold tracking-[0.18em] uppercase;
 }

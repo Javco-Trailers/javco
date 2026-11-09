@@ -51,11 +51,40 @@ its customers great value.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+The site lives in `frontend/` and follows the findadoc monorepo conventions (pnpm, ESLint flat config with
+@stylistic, Tailwind v4 tokens, Vitest, Renovate, semantic PR titles).
+
+```bash
+cd frontend
+corepack enable
+pnpm install
+pnpm dev        # http://localhost:3000
+pnpm lint       # ESLint (formatting is enforced by @stylistic, there is no Prettier)
+pnpm typecheck
+pnpm test       # Vitest: SEO/sitemap/robots sync and quote-email builder
+pnpm build
+```
+
+- Node 24 (`frontend/.nvmrc`), pnpm 10 (`packageManager` in `frontend/package.json`).
+- Business details (phone, address, nav, embeds) live in `frontend/utils/site.ts`; SEO helpers in `frontend/utils/seo.ts`.
+- Every page is statically prerendered. Security headers and the CSP are set in `frontend/next.config.ts`.
+- Inventory is the Cherry Trader embed. Cherry Trader only allows `https://www.javco.co` to frame it, so it is blank on
+  localhost and Vercel preview URLs.
+- The old CMS backend (admin login, inventory CRUD, editable text) has been retired. `/admin/*` redirects home.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- ROADMAP -->
 ## Roadmap
 
 - [x] Quick and eay pages for customer readability
-- [ ] Improve lighthouse accessibility scores
+- [x] Improve lighthouse accessibility scores
+- [x] Sitemap, robots and structured data
+- [x] Security headers and CSP
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
