@@ -25,6 +25,7 @@ export default function InventoryPage() {
                 <a href={CONTACT.phoneHref} className="btn btn-primary">Call {CONTACT.phoneDisplay}</a>
                 <a href={INVENTORY_EMBED} target="_blank" rel="noopener noreferrer" className="btn btn-ghost-light">
                     Open full listings <ExternalLink className="size-4" aria-hidden="true" />
+                    <span className="sr-only">(opens in a new tab)</span>
                 </a>
             </PageHero>
 

@@ -22,7 +22,9 @@ export default function SiteFooter() {
                             </li>
                         ))}
                         <li>
-                            <a href={CREDIT_APPLICATION} download className="hover:text-white hover:underline">Credit application</a>
+                            <a href={CREDIT_APPLICATION} download className="hover:text-white hover:underline">
+                                Credit application <span className="sr-only">(PDF download)</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -45,6 +47,7 @@ export default function SiteFooter() {
                                 flex items-start gap-2 hover:text-white
                             ">
                                 <MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" /> {ADDRESS_ONE_LINE}
+                                <span className="sr-only">(opens Google Maps in a new tab)</span>
                             </a>
                         </li>
                     </ul>

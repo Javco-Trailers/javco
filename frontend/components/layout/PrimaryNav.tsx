@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
@@ -19,14 +19,18 @@ function isActive(pathname: string, href: string) {
 export default function PrimaryNav({ children }: PrimaryNavProps) {
     const pathname = usePathname()
     const [open, setOpen] = useState(false)
+    const toggleRef = useRef<HTMLButtonElement>(null)
 
     useEffect(() => {
         if (!open) {
             return
         }
         const onKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
+            // Ignore Escape meant for the quote dialog, which closes itself
+            if (event.key === 'Escape' && !document.querySelector('dialog[open]')) {
                 setOpen(false)
+                // Focus was inside the now-hidden menu; hand it back to the toggle
+                toggleRef.current?.focus()
             }
         }
         document.addEventListener('keydown', onKeyDown)
@@ -38,6 +42,7 @@ export default function PrimaryNav({ children }: PrimaryNavProps) {
     return (
         <>
             <button
+                ref={toggleRef}
                 type="button"
                 className="inline-flex size-11 items-center justify-center rounded-lg text-brand-800 hover:bg-brand-50 lg:hidden"
                 aria-expanded={open}

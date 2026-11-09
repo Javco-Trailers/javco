@@ -22,7 +22,7 @@
 
     --color-ink: #0f172a;
     --color-ink-muted: #475569;
-    --color-ink-subtle: #94a3b8;
+    --color-ink-subtle: #64748b; /* 4.8:1 on white, meets WCAG AA for placeholder text */
     --color-surface: #ffffff;
     --color-surface-muted: #f4f7fb;
     --color-line: #e2e8f0;
@@ -51,6 +51,13 @@
 
     p {
         text-wrap: pretty;
+    }
+
+    /* Tailwind v4 preflight resets buttons to cursor: default; restore the pointer for anything clickable. */
+    button:not(:disabled),
+    [role="button"]:not([aria-disabled="true"]),
+    summary {
+        cursor: pointer;
     }
 
     :focus-visible {

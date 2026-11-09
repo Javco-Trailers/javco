@@ -67,7 +67,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                     Skip to content
                 </a>
                 <SiteHeader />
-                <main id="main" className="flex-1">
+                {/* tabIndex lets the skip link move keyboard and screen-reader focus here, not just scroll */}
+                <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
                     {children}
                 </main>
                 <SiteFooter />

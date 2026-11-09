@@ -20,7 +20,7 @@ export default function QuoteButton({ className, label = 'Request a quote' }: Qu
 
     return (
         <>
-            <button type="button" className={className} onClick={() => dialogRef.current?.showModal()}>
+            <button type="button" aria-haspopup="dialog" className={className} onClick={() => dialogRef.current?.showModal()}>
                 <FileText className="size-4" aria-hidden="true" />
                 {label}
             </button>
