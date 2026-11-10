@@ -8,6 +8,7 @@ export default function Image() {
     return renderShareImage({
         eyebrow: 'Franksville, Wisconsin',
         title: 'Semi-trailers to buy, rent & store.',
+        cta: 'Request a quote',
         photo: 'images/aerial-lot.jpg'
     })
 }

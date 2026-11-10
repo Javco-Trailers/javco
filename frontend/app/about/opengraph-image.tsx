@@ -8,6 +8,7 @@ export default function Image() {
     return renderShareImage({
         eyebrow: 'About us',
         title: 'Four decades of trailers and trust, since 1984',
+        cta: 'Visit our lot',
         photo: 'images/aerial-lot.jpg'
     })
 }

@@ -8,6 +8,7 @@ export default function Image() {
     return renderShareImage({
         eyebrow: 'Sales',
         title: 'The right trailer at the right price',
+        cta: 'Shop trailers for sale',
         photo: 'images/original-sales-lot.jpg'
     })
 }

@@ -12,7 +12,7 @@ import { CONTACT, CREDIT_APPLICATION } from '@/utils/site'
 
 export const metadata: Metadata = pageMetadata({
     title: 'Trailer Rentals & Storage',
-    description: 'Rent storage, cartage and OTR semi-trailers from Javco in Franksville, WI. Delivered to your dock or jobsite, short or long term.',
+    description: 'Rent storage, cartage and OTR semi-trailers from Javco in Franksville, WI. Delivered to your dock, short or long term.',
     path: '/rentals'
 })
 

@@ -8,6 +8,7 @@ export default function Image() {
     return renderShareImage({
         eyebrow: 'Rentals',
         title: 'A quality rental fleet for short and long-term needs',
+        cta: 'Get a rental quote',
         photo: 'images/dry-vans-at-dock.jpg'
     })
 }
