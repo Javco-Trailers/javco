@@ -12,7 +12,7 @@ import { FOUNDED_YEAR } from '@/utils/site'
 
 export const metadata: Metadata = pageMetadata({
     title: 'About Us',
-    description: `Founded in ${FOUNDED_YEAR} by Avner Hizmi and John Griska, Javco Trailer Sales has served Milwaukee and Chicago trucking for four decades.`,
+    description: `Founded in ${FOUNDED_YEAR} by Avner Hizmi and John Griska, Javco has served Milwaukee and Chicago trucking for four decades.`,
     path: '/about'
 })
 

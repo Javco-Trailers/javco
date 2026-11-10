@@ -6,7 +6,7 @@ import SiteHeader from '@/components/layout/SiteHeader'
 import SiteFooter from '@/components/layout/SiteFooter'
 import LocalBusinessJsonLd from '@/components/seo/LocalBusinessJsonLd'
 import { cn } from '@/utils/cn'
-import { SITE_DESCRIPTION, SITE_NAME, SITE_ORIGIN } from '@/utils/site'
+import { HOME_TITLE, SITE_DESCRIPTION, SITE_NAME, SITE_ORIGIN } from '@/utils/site'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
@@ -16,8 +16,6 @@ const barlow = Barlow_Semi_Condensed({
     variable: '--font-barlow',
     display: 'swap'
 })
-
-const HOME_TITLE = `${SITE_NAME} | Semi-Trailer Sales, Rentals & Storage in Wisconsin`
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_ORIGIN),

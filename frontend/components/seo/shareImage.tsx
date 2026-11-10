@@ -26,9 +26,11 @@ interface ShareImageInput {
     title: string
     // Photo under public/, e.g. 'images/aerial-lot.jpg'
     photo: string
+    // Call to action shown as a button on the card, e.g. 'Get a quote'
+    cta: string
 }
 
-export async function renderShareImage({ eyebrow, title, photo }: ShareImageInput) {
+export async function renderShareImage({ eyebrow, title, photo, cta }: ShareImageInput) {
     const [semibold, bold, photoSrc, logoSrc] = await Promise.all([
         readFile(fontFile(600)),
         readFile(fontFile(700)),
@@ -60,11 +62,29 @@ export async function renderShareImage({ eyebrow, title, photo }: ShareImageInpu
                     <div style={{ display: 'flex', marginTop: 'auto', fontSize: 28, fontWeight: 600, color: '#fbbf24', letterSpacing: 3 }}>
                         {eyebrow.toUpperCase()}
                     </div>
-                    <div style={{ display: 'flex', marginTop: 12, maxWidth: 900, fontSize: 76, fontWeight: 700, lineHeight: 1.02, color: 'white' }}>
+                    <div style={{ display: 'flex', marginTop: 12, maxWidth: 900, fontSize: 70, fontWeight: 700, lineHeight: 1.02, color: 'white' }}>
                         {title}
                     </div>
-                    <div style={{ display: 'flex', marginTop: 28, fontSize: 30, fontWeight: 600, color: '#cfe0f3' }}>
-                        {`${CONTACT.phoneDisplay}  ·  ${CONTACT.city}, ${CONTACT.region}  ·  Since ${FOUNDED_YEAR}`}
+                    <div style={{ display: 'flex', alignItems: 'center', marginTop: 32, gap: 28 }}>
+                        <div
+                            style={{
+                                display: 'flex',
+                                background: '#f59e0b',
+                                color: '#0a1d33',
+                                borderRadius: 12,
+                                padding: '14px 28px',
+                                fontSize: 32,
+                                fontWeight: 700
+                            }}
+                        >
+                            {`${cta} →`}
+                        </div>
+                        <div style={{ display: 'flex', fontSize: 32, fontWeight: 700, color: 'white' }}>
+                            {`Call ${CONTACT.phoneDisplay}`}
+                        </div>
+                    </div>
+                    <div style={{ display: 'flex', marginTop: 18, fontSize: 24, fontWeight: 600, color: '#cfe0f3' }}>
+                        {`javco.co  ·  ${CONTACT.city}, ${CONTACT.region}  ·  Since ${FOUNDED_YEAR}`}
                     </div>
                 </div>
             </div>

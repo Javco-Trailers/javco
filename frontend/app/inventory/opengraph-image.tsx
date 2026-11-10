@@ -8,6 +8,7 @@ export default function Image() {
     return renderShareImage({
         eyebrow: 'Inventory',
         title: 'Trailers on the lot right now',
+        cta: "See what's on the lot",
         photo: 'images/reefers-lined-up.jpg'
     })
 }
