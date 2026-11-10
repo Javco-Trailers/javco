@@ -7,6 +7,15 @@ import { HOME_TITLE, SITE_DESCRIPTION, SITE_NAME } from '@/utils/site'
 const MAX_TITLE = 60
 const MAX_DESCRIPTION = 125
 
+// Length as it appears in the page source, which is what SEO checkers measure: '&' is written as '&amp;' and so on.
+const htmlLength = (text: string) => text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+    .length
+
 const pages: Record<string, () => Promise<{ metadata: Metadata }>> = {
     '/inventory': () => import('@/app/inventory/page'),
     '/rentals': () => import('@/app/rentals/page'),
@@ -16,8 +25,8 @@ const pages: Record<string, () => Promise<{ metadata: Metadata }>> = {
 
 describe('page metadata length', () => {
     it('home title and description fit', () => {
-        expect(HOME_TITLE.length).toBeLessThanOrEqual(MAX_TITLE)
-        expect(SITE_DESCRIPTION.length).toBeLessThanOrEqual(MAX_DESCRIPTION)
+        expect(htmlLength(HOME_TITLE)).toBeLessThanOrEqual(MAX_TITLE)
+        expect(htmlLength(SITE_DESCRIPTION)).toBeLessThanOrEqual(MAX_DESCRIPTION)
     })
 
     for (const [path, load] of Object.entries(pages)) {
@@ -25,8 +34,8 @@ describe('page metadata length', () => {
             const { metadata } = await load()
             // Pages set a short title; the layout template appends " | Javco Trailer Sales"
             const fullTitle = `${String(metadata.title)} | ${SITE_NAME}`
-            expect(fullTitle.length).toBeLessThanOrEqual(MAX_TITLE)
-            expect(String(metadata.description).length).toBeLessThanOrEqual(MAX_DESCRIPTION)
+            expect(htmlLength(fullTitle)).toBeLessThanOrEqual(MAX_TITLE)
+            expect(htmlLength(String(metadata.description))).toBeLessThanOrEqual(MAX_DESCRIPTION)
         })
     }
 })

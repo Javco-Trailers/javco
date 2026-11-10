@@ -4,10 +4,11 @@ export const SITE_ORIGIN = 'https://www.javco.co'
 export const SITE_NAME = 'Javco Trailer Sales'
 export const SITE_LEGAL_NAME = 'Javco Trailer Sales, Inc.'
 // Home page title and meta description. Kept within what Google and social previews show without truncating:
-// titles <= 60 characters, descriptions <= 125 (tests/seo.spec.ts enforces this for every page).
-export const HOME_TITLE = `${SITE_NAME} | Trailer Sales & Rentals in Wisconsin`
+// titles <= 60 characters, descriptions <= 125. Checkers count the escaped HTML, so '&' costs 5 (&amp;); prefer 'and'.
+// tests/metadata.spec.ts enforces this for every page.
+export const HOME_TITLE = `${SITE_NAME} | Semi-Trailer Rentals in Wisconsin`
 export const SITE_DESCRIPTION = 'Used semi-trailer sales, rentals and storage in Franksville, WI. '
-    + 'Dry vans, reefers and flatbeds for Milwaukee & Chicagoland.'
+    + 'Dry vans, reefers and flatbeds for Milwaukee and Chicago.'
 // Photos of the business for search-engine structured data (stable public URLs)
 export const BUSINESS_PHOTOS = ['/images/javco-sign.jpg', '/images/aerial-lot.jpg', '/images/reefers-lined-up.jpg']
 export const FOUNDED_YEAR = 1984
