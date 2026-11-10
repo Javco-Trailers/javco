@@ -11,7 +11,7 @@ import { pageMetadata } from '@/utils/seo'
 import { CONTACT, CREDIT_APPLICATION } from '@/utils/site'
 
 export const metadata: Metadata = pageMetadata({
-    title: 'Trailer Rentals & Storage',
+    title: 'Trailer Rentals and Storage',
     description: 'Rent storage, cartage and OTR semi-trailers from Javco in Franksville, WI. Delivered to your dock, short or long term.',
     path: '/rentals'
 })
