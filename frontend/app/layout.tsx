@@ -6,7 +6,7 @@ import SiteHeader from '@/components/layout/SiteHeader'
 import SiteFooter from '@/components/layout/SiteFooter'
 import LocalBusinessJsonLd from '@/components/seo/LocalBusinessJsonLd'
 import { cn } from '@/utils/cn'
-import { SITE_DESCRIPTION, SITE_NAME, SITE_ORIGIN, SITE_SOCIAL_IMAGE } from '@/utils/site'
+import { SITE_DESCRIPTION, SITE_NAME, SITE_ORIGIN } from '@/utils/site'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
@@ -17,30 +17,31 @@ const barlow = Barlow_Semi_Condensed({
     display: 'swap'
 })
 
+const HOME_TITLE = `${SITE_NAME} | Semi-Trailer Sales, Rentals & Storage in Wisconsin`
+
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_ORIGIN),
     title: {
-        default: `${SITE_NAME} | Semi-Trailer Sales, Rentals & Storage in Wisconsin`,
+        default: HOME_TITLE,
         template: `%s | ${SITE_NAME}`
     },
     description: SITE_DESCRIPTION,
     applicationName: SITE_NAME,
     alternates: { canonical: SITE_ORIGIN },
     formatDetection: { telephone: false },
+    // Share images come from each route's opengraph-image.tsx (1200x630, generated at build time).
     openGraph: {
         type: 'website',
         locale: 'en_US',
         url: SITE_ORIGIN,
         siteName: SITE_NAME,
-        title: SITE_NAME,
-        description: SITE_DESCRIPTION,
-        images: [{ url: SITE_SOCIAL_IMAGE, alt: 'The Javco Trailer Sales sign at our Franksville, WI lot' }]
+        title: HOME_TITLE,
+        description: SITE_DESCRIPTION
     },
     twitter: {
         card: 'summary_large_image',
-        title: SITE_NAME,
-        description: SITE_DESCRIPTION,
-        images: [SITE_SOCIAL_IMAGE]
+        title: HOME_TITLE,
+        description: SITE_DESCRIPTION
     },
     robots: { index: true, follow: true },
     // Google Search Console ownership check for the https://www.javco.co/ URL-prefix property (HTML tag method).
