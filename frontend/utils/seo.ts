@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { NAV_ITEMS, SITE_NAME, SITE_ORIGIN, SITE_SOCIAL_IMAGE } from './site'
+import { NAV_ITEMS, SITE_NAME, SITE_ORIGIN } from './site'
 
 // Paths crawlers should skip. robots.ts reads this, and tests/seo.spec.ts keeps it in sync with the sitemap.
 export const ROBOTS_DISALLOW_PATHS = ['/admin'] as const
@@ -33,14 +33,12 @@ export function pageMetadata({ title, description, path }: PageMetadataInput): M
             url,
             siteName: SITE_NAME,
             locale: 'en_US',
-            type: 'website',
-            images: [{ url: SITE_SOCIAL_IMAGE, alt: 'The Javco Trailer Sales sign at our Franksville, WI lot' }]
+            type: 'website'
         },
         twitter: {
             card: 'summary_large_image',
             title: `${title} | ${SITE_NAME}`,
-            description,
-            images: [SITE_SOCIAL_IMAGE]
+            description
         }
     }
 }

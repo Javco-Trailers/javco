@@ -5,7 +5,8 @@ export const SITE_NAME = 'Javco Trailer Sales'
 export const SITE_LEGAL_NAME = 'Javco Trailer Sales, Inc.'
 export const SITE_DESCRIPTION = 'Used semi-trailer sales, rentals and storage in Franksville, Wisconsin. '
     + 'Dry vans, reefers, flatbeds and tankers serving Milwaukee, Racine, Kenosha and Chicagoland since 1984.'
-export const SITE_SOCIAL_IMAGE = '/images/javco-sign.jpg'
+// Photos of the business for search-engine structured data (stable public URLs)
+export const BUSINESS_PHOTOS = ['/images/javco-sign.jpg', '/images/aerial-lot.jpg', '/images/reefers-lined-up.jpg']
 export const FOUNDED_YEAR = 1984
 
 export const CONTACT = {
